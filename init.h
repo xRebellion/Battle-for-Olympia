@@ -5,6 +5,8 @@
 
 #include "point.h"
 #include "listdp.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 
 /*
@@ -54,9 +56,12 @@ typedef struct {
     int Move;
     char AttackType; //'m' untuk melee, 'r' untuk ranged
     boolean Hit; //kesempatan serangan, true bila belum menyerang, false bila sudah menyerang
-    Point Location;
+    POINT Location;
     int Harga;
 } TypeUnit;
+
+#define PosX(U) (U).Location.X
+#define PosY(U) (U).Location.Y
 
 
 /*

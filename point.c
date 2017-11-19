@@ -12,7 +12,7 @@
 
 /* *** DEFINISI PROTOTIPE PRIMITIF *** */
 /* *** Konstruktor membentuk POINT *** */
-POINT MakePOINT (float X, float Y)
+POINT MakePOINT (int X, int Y)
 /* Membentuk sebuah POINT dari komponen-komponennya */
 {
     POINT P;
@@ -32,7 +32,7 @@ void BacaPOINT (POINT * P)
 /* I.S. Sembarang */
 /* F.S. P terdefinisi */
 {
-    scanf("%f %f", &Absis(*P), &Ordinat(*P));
+    scanf("%d %d", &Absis(*P), &Ordinat(*P));
 }
 void TulisPOINT (POINT P)
 /* Nilai P ditulis ke layar dengan format "(X,Y)"
@@ -43,7 +43,7 @@ void TulisPOINT (POINT P)
 /* I.S. P terdefinisi */
 /* F.S. P tertulis di layar dengan format "(X,Y)" */
 {
-    printf("(%.2f,%.2f)", Absis(P), Ordinat(P));
+    printf("(%d,%d)", Absis(P), Ordinat(P));
 }
 
 /* *** Kelompok operasi relasional terhadap POINT *** */
@@ -111,7 +111,7 @@ POINT NextY (POINT P)
 {
     return MakePOINT(Absis(P), (Ordinat(P)+1));
 }
-POINT PlusDelta (POINT P, float deltaX, float deltaY)
+POINT PlusDelta (POINT P, int deltaX, int deltaY)
 /* Mengirim salinan P yang absisnya adalah Absis(P) + deltaX dan ordinatnya adalah Ordinat(P) + deltaY */
 {
     return MakePOINT((Absis(P) + deltaX), (Ordinat(P) + deltaY));
@@ -129,23 +129,23 @@ POINT MirrorOf (POINT P, boolean SbX)
         return MakePOINT((-1 * Absis(P)), Ordinat(P));
     }
 }
-float Jarak0 (POINT P)
+int Jarak0 (POINT P)
 /* Menghitung jarak P ke (0,0) */
 {
     return (sqrt((Absis(P))*(Absis(P)) + (Ordinat(P))*(Ordinat(P))));
 }
-float Panjang (POINT P1, POINT P2)
+int Panjang (POINT P1, POINT P2)
 /* Menghitung jarak antar dua titik - a.k.a. panjang garis */
 {
     //KAMUS LOKAL - u/ menghitung selisih, kemudian dikuadratkan, lalu di akar.
-    float selisihX, selisihY;
+    int selisihX, selisihY;
     selisihX = Absis(P1) - Absis(P2);
     selisihY = Ordinat(P1) - Ordinat(P2);
 
     return(sqrt((selisihX * selisihX) + (selisihY * selisihY)));
 
 }
-void Geser (POINT *P, float deltaX, float deltaY)
+void Geser (POINT *P, int deltaX, int deltaY)
 /* I.S. P terdefinisi */
 /* F.S. P digeser, absisnya sebesar deltaX dan ordinatnya sebesar deltaY */
 {
@@ -181,7 +181,7 @@ void Putar (POINT *P, float Sudut)
 /* F.S. P digeser sebesar Sudut derajat dengan sumbu titik (0,0) */
 {
     //KAMUS LOKAL
-    float XBaru, YBaru;
+    int XBaru, YBaru;
     const float PI = 3.14159265358979323846;
     //MENGGUNAKAN RUMUS TRANSFORMASI ROTASI PADA SUATU TITIK DENGAN PUSAT (0,0)
     XBaru = Absis(*P) * cos(-Sudut*PI/180) - Ordinat(*P) * sin(-Sudut*PI/180);
