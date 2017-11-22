@@ -1,0 +1,120 @@
+# depslib dependency file v1.0
+1504723836 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\adt\array.c
+	"array.h"
+	<stdio.h>
+
+1511364877 c:\users\user\desktop\technical stuff\c\battle-for-olympia\adt\array.h
+	"boolean.h"
+
+1504068141 c:\users\user\desktop\technical stuff\c\battle-for-olympia\adt\boolean.h
+
+1504113687 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\adt\jam.c
+	"jam.h"
+	<stdio.h>
+
+1504068190 c:\users\user\desktop\technical stuff\c\battle-for-olympia\adt\jam.h
+	"boolean.h"
+
+1510584239 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\adt\listdp.c
+	"listdp.h"
+	<stdio.h>
+	<stdlib.h>
+
+1508398098 c:\users\user\desktop\technical stuff\c\battle-for-olympia\adt\listdp.h
+	"boolean.h"
+
+1508839843 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\adt\listlinier.c
+	"listlinier.h"
+	<stdlib.h>
+	<stdio.h>
+
+1508426714 c:\users\user\desktop\technical stuff\c\battle-for-olympia\adt\listlinier.h
+	"boolean.h"
+
+1508840418 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\adt\listsirkuler.c
+	"listsirkuler.h"
+	<stdlib.h>
+	<stdio.h>
+
+1508836722 c:\users\user\desktop\technical stuff\c\battle-for-olympia\adt\listsirkuler.h
+	"boolean.h"
+
+1505653341 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\adt\matriks.c
+	<stdio.h>
+	"matriks.h"
+
+1505261292 c:\users\user\desktop\technical stuff\c\battle-for-olympia\adt\matriks.h
+	"boolean.h"
+
+1506952852 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\adt\mesinkar.c
+	"mesinkar.h"
+	<stdio.h>
+
+1473918380 c:\users\user\desktop\technical stuff\c\battle-for-olympia\adt\mesinkar.h
+	"boolean.h"
+
+1506953248 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\adt\mesinkata.c
+	"mesinkata.h"
+	"mesinkar.h"
+
+1506180318 c:\users\user\desktop\technical stuff\c\battle-for-olympia\adt\mesinkata.h
+	"boolean.h"
+	"mesinkar.h"
+
+1511084058 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\adt\point.c
+	"point.h"
+	<stdio.h>
+	<math.h>
+
+1511085738 c:\users\user\desktop\technical stuff\c\battle-for-olympia\adt\point.h
+	"boolean.h"
+
+1507158273 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\adt\queue.c
+	"queue.h"
+	<stdlib.h>
+
+1506950794 c:\users\user\desktop\technical stuff\c\battle-for-olympia\adt\queue.h
+	"boolean.h"
+
+1507385212 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\adt\stackt.c
+	"stackt.h"
+
+1507382260 c:\users\user\desktop\technical stuff\c\battle-for-olympia\adt\stackt.h
+	"boolean.h"
+
+1511364466 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\main.c
+	"Movement.h"
+	"Map.h"
+	"rekruit.h"
+	"UpdateInfo.h"
+
+1511365050 c:\users\user\desktop\technical stuff\c\battle-for-olympia\movement.h
+	"init.h"
+	"Map.h"
+
+1511365030 c:\users\user\desktop\technical stuff\c\battle-for-olympia\init.h
+	"ADT/boolean.h"
+	"ADT/point.h"
+	"ADT/listdp.h"
+	<stdio.h>
+	<stdlib.h>
+
+1511364444 c:\users\user\desktop\technical stuff\c\battle-for-olympia\map.h
+	<stdio.h>
+	<stdlib.h>
+	"init.h"
+
+1511364229 c:\users\user\desktop\technical stuff\c\battle-for-olympia\rekruit.h
+	"init.h"
+	<stdio.h>
+	<stdlib.h>
+
+1511365075 c:\users\user\desktop\technical stuff\c\battle-for-olympia\updateinfo.h
+	"ADT/boolean.h"
+	"ADT/point.h"
+	"ADT/listdp.h"
+	"init.h"
+
+1511365096 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\map.c
+	"Map.h"
+

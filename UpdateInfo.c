@@ -1,7 +1,3 @@
-#include "boolean.h"
-#include "point.h"
-#include "listdp.h"
-#include "init.h"
 
 int Earning (player P)
 /*Untuk menghitung income player */

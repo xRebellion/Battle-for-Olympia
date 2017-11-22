@@ -1,23 +1,20 @@
 //Movement.c
-
-#include "init.h"
-
+#include "Movement.h"
 
 
-
-char determineDirection(Unit unit, int x, int y)
+char determineDirection(TypeUnit unit, int x, int y)
 //Untuk menentukan arah gerak dari si unit
 //Belum dibuat untuk yang diagonal
 {
     char direction;
-    if (unit.x == x)
+    if (PosX(unit) == x)
     {
-        if(unit.y > y)
+        if(PosY(unit) > y)
         {
             direction = 's';
         }
         else
-        if(unit.y < y)
+        if(PosY(unit) < y)
         {
             direction = 'n';
         }
@@ -27,14 +24,14 @@ char determineDirection(Unit unit, int x, int y)
         }
     }
     else
-    if (unit.y == y)
+    if (PosY(unit) == y)
     {
-        if(unit.x > x)
+        if(PosX(unit) > x)
         {
             direction = 'w';
         }
         else
-        if (unit.x < x)
+        if (PosX(unit) < x)
         {
             direction = 'e';
         }
@@ -45,15 +42,16 @@ char determineDirection(Unit unit, int x, int y)
     } else //cek diagonal
     {
         /*DIAGONAL IDENTIFIER:
-        /* North East -> 'a'
-        /* South East -> 'b'
-        /* South West -> 'c'
-        /* North West -> 'd'
-        /********************/
+         North East -> 'a'
+         South East -> 'b'
+         South West -> 'c'
+         North West -> 'd'
+        */
         //cek diagonal
         //else
-        direction = 'x'
+        direction = 'x';
     }
+    return direction;
 }
 
 
@@ -64,18 +62,18 @@ boolean isMovePossible (Map * M, TypeUnit unit, char direction, int x, int y)
     boolean blocked = false;
     int * step = &unit.MaxMove;
 
-    if(direction = 'n') // north
+    if(direction == 'n') // north
     {
         for (i = 0;((i <= *step) && (!blocked)); i++)
         {
-            if (/*ada unit musuh di M[unit.x][unit.y+i]*/ )
+            if (M.Tiles[PosX(unit)][PosY(unit)] )
             {
                 blocked = true;
             }
         }
 
     } else
-    if(direction = 'e') // east
+    if(direction == 'e') // east
     {
         for (i = 0;((i <= *step) && (!blocked)); i++)
         {
@@ -85,7 +83,7 @@ boolean isMovePossible (Map * M, TypeUnit unit, char direction, int x, int y)
             }
         }
     } else
-    if(direction = 's') // south
+    if(direction == 's') // south
     {
         for (i = 0;((i <= *step) && (!blocked)); i++)
         {
@@ -95,7 +93,7 @@ boolean isMovePossible (Map * M, TypeUnit unit, char direction, int x, int y)
             }
         }
     } else
-    if(direction = 'w') // west
+    if(direction == 'w') // west
     {
         for (i = 0;((i <= *step) && (!blocked)); i++)
         {
@@ -142,13 +140,21 @@ boolean Move(Map * M, TypeUnit * unit, int x, int y)
 
 }
 
+void InsertDummyUnit(Map * M, TypeUnit currUnit)
+{
+
+}
+
 void MoveCommand(Map * M, TypeUnit currUnit, int * PrevX, int * PrevY)
 {
-    char direction
+    char direction;
     int x, y;
     *PrevX = PosX(currUnit);
     *PrevY = PosY(currUnit);
 
+    //InsertDummyUnit(M, currUnit);
+    PrintMap(*M,(*M).NBrsEff,(*M).NKolEff);
+    //RemoveDummyUnit(M, currUnit);
     printf("Where do you want to move? ( Input: x y )\n");
     scanf ("%d %d", &x, &y);
     direction = determineDirection(currUnit,x,y);

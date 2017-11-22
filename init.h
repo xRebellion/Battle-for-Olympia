@@ -1,10 +1,10 @@
 #ifndef tipebentukan_H
 #define tipebentukan_H
 
-#include "boolean.h"
+#include "ADT/boolean.h"
 
-#include "point.h"
-#include "listdp.h"
+#include "ADT/point.h"
+#include "ADT/listdp.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -19,12 +19,12 @@ typedef struct {
 
 //untuk tipe infotype dan address disesuaikan nanti queue mau dipake di bagian mana
 typedef int infotype;
-typedef int address;   /* indeks tabel */
+typedef int idx;   /* indeks tabel */
 /* Contoh deklarasi variabel bertype Queue : */
 /* Versi I : tabel dinamik, Head dan Tail eksplisit, ukuran disimpan */
 typedef struct { infotype * T;   /* tabel penyimpan elemen */
-                 address HEAD;  /* alamat penghapusan */
-                 address TAIL;  /* alamat penambahan */
+                 idx HEAD;  /* alamat penghapusan */
+                 idx TAIL;  /* alamat penambahan */
                  int MaxEl;     /* Max elemen queue */
                } Queue;
 /* Jika Q adalah Queue, maka akses elemen : */
@@ -43,8 +43,22 @@ typedef struct {
 
 
 
+#define BrsMin 0
+#define BrsMax 100
+#define KolMin 0
+#define KolMax 100
+
+typedef int indeks; /* indeks baris, kolom */
 typedef struct {
-    //Maha
+    char Building;
+    char Unit;
+    char Misc;
+}ElType;
+
+typedef struct {
+	ElType Tiles[BrsMax][KolMax];
+    int NBrsEff; /* banyaknya/ukuran baris yg terdefinisi */
+	int NKolEff; /* banyaknya/ukuran kolom yg terdefinisi */
 } Map;
 
 typedef struct {
@@ -67,9 +81,15 @@ typedef struct {
 /*
 MASIH RAGU. takut 2 list ini bentrok pas pemanggilan Info(P), Next(P), First(L)nya.
 */
+typedef struct {
+    //kepemilikan, gold, tipe
+    char * Owner;
+    int Gold;
+    char * Type;
+} Building;
 
-typedef struct tElmtlist *addressU;
-typedef struct tElmtlist {
+typedef struct tUElmtlist *addressU;
+typedef struct tUElmtlist {
 	TypeUnit info;
 	addressU next;
 } ElmtListU;
@@ -77,8 +97,8 @@ typedef struct {
 	addressU First;
 } ListUnit;
 
-typedef struct t1Elmtlist *addressV;
-typedef struct t1Elmtlist {
+typedef struct tVElmtlist *addressV;
+typedef struct tVElmtlist {
 	Building info;
 	addressV next;
 } ElmtListV;
@@ -88,19 +108,13 @@ typedef struct {
 
 #define Info(P) (P)->info
 #define Next(P) (P)->next
-#define First(L) (L).First
 
 
-typedef struct {
-    //kepemilikan, gold, tipe
-    char * Owner;
-    int Gold;
-    char * Type;
-} Building;
+
 
 typedef struct {
     //income, upkeep, gold, warna, dst
-    int Gold
+    int Gold;
     ListUnit Unit;
     ListVillages Villages;
     int Income;
