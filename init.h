@@ -55,7 +55,7 @@ typedef struct {
 
 typedef struct {
     char ID;
-    //string Name *antisipasi kalo recruit 2 atau lebih unit dengan tipe sama
+    char * Name;
     int MaxHealth;
     int Health;
     int Attack;
@@ -64,6 +64,7 @@ typedef struct {
     char AttackType; //'m' untuk melee, 'r' untuk ranged
     boolean Hit; //kesempatan serangan, true bila belum menyerang, false bila sudah menyerang
     POINT Location;
+    int Upkeep;
     int Harga;
 } TypeUnit;
 

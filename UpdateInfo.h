@@ -3,6 +3,7 @@
 #include "ADT/listdp.h"
 #include "init.h"
 #include "ListTypeCast.h"
+#include "ListTypeCastGetter.h"
 
 int Earning (Player P);
 /*Untuk menghitung income player */
@@ -13,5 +14,5 @@ int Expense (Player P);
 void PrintUnit (Player P);
 /* Menampilkan semua unit yang dimiliki player */
 
-Player UpdateInfo ();
+void UpdateInfo (Player * P);
 /* Mengupdate informasi pemaain tiap turn */

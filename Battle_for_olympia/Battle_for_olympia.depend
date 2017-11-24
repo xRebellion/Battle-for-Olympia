@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1504723836 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\adt\array.c
+1511520256 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\adt\array.c
 	"array.h"
 	<stdio.h>
 
@@ -15,7 +15,7 @@
 1504068190 c:\users\user\desktop\technical stuff\c\battle-for-olympia\adt\jam.h
 	"boolean.h"
 
-1510584239 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\adt\listdp.c
+1511520363 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\adt\listdp.c
 	"listdp.h"
 	<stdio.h>
 	<stdlib.h>
@@ -61,7 +61,7 @@
 	"boolean.h"
 	"mesinkar.h"
 
-1511084058 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\adt\point.c
+1511520391 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\adt\point.c
 	"point.h"
 	<stdio.h>
 	<math.h>
@@ -69,14 +69,14 @@
 1511085738 c:\users\user\desktop\technical stuff\c\battle-for-olympia\adt\point.h
 	"boolean.h"
 
-1507158273 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\adt\queue.c
+1511520363 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\adt\queue.c
 	"queue.h"
 	<stdlib.h>
 
 1506950794 c:\users\user\desktop\technical stuff\c\battle-for-olympia\adt\queue.h
 	"boolean.h"
 
-1507385212 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\adt\stackt.c
+1511520391 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\adt\stackt.c
 	"stackt.h"
 
 1507382260 c:\users\user\desktop\technical stuff\c\battle-for-olympia\adt\stackt.h
@@ -94,7 +94,7 @@
 	"init.h"
 	"Map.h"
 
-1511517414 c:\users\user\desktop\technical stuff\c\battle-for-olympia\init.h
+1511519347 c:\users\user\desktop\technical stuff\c\battle-for-olympia\init.h
 	"ADT/boolean.h"
 	"ADT/point.h"
 	"ADT/listdp.h"
@@ -111,11 +111,13 @@
 	<stdio.h>
 	<stdlib.h>
 
-1511365075 c:\users\user\desktop\technical stuff\c\battle-for-olympia\updateinfo.h
+1511519819 c:\users\user\desktop\technical stuff\c\battle-for-olympia\updateinfo.h
 	"ADT/boolean.h"
 	"ADT/point.h"
 	"ADT/listdp.h"
 	"init.h"
+	"ListTypeCast.h"
+	"ListTypeCastGetter.h"
 
 1511514617 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\map.c
 	"Map.h"
@@ -131,4 +133,11 @@
 
 1511517560 c:\users\user\desktop\technical stuff\c\battle-for-olympia\listtypecast.h
 	"init.h"
+
+1511519199 c:\users\user\desktop\technical stuff\c\battle-for-olympia\listtypecastgetter.h
+	"init.h"
+	"ListTypeCast.h"
+
+1511519889 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\updateinfo.c
+	"UpdateInfo.h"
 

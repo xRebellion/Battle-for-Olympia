@@ -20,7 +20,7 @@ boolean IsEmpty (List L)
     return (First(L) == Nil && Last(L) == Nil);
 }
 /****************** PEMBUATAN LIST KOSONG ******************/
-void CreateEmpty (List *L)
+void CreateEmptyL (List *L)
 /* I.S. L sembarang  */
 /* F.S. Terbentuk list kosong. Lihat definisi di atas. */
 {

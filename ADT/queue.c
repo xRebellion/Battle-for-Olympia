@@ -2,12 +2,12 @@
 #include <stdlib.h>
 
 /* ********* Prototype ********* */
-boolean IsEmpty (Queue Q)
+boolean IsQEmpty (Queue Q)
 /* Mengirim true jika Q kosong: lihat definisi di atas */
 {
     return (Head(Q) == Nil && Tail(Q) == Nil);
 }
-boolean IsFull (Queue Q)
+boolean IsQFull (Queue Q)
 /* Mengirim true jika tabel penampung elemen Q sudah penuh */
 /* yaitu mengandung elemen sebanyak MaxEl */
 {
@@ -15,7 +15,7 @@ boolean IsFull (Queue Q)
 }
 //tail = 100
 //head = 1
-int NBElmt (Queue Q)
+int NBElmtQ (Queue Q)
 /* Mengirimkan banyaknya elemen queue. Mengirimkan 0 jika Q kosong. */
 {
     if(IsEmpty(Q))
@@ -33,7 +33,7 @@ int NBElmt (Queue Q)
     }
 }
 /* *** Kreator *** */
-void CreateEmpty (Queue * Q, int Max)
+void CreateEmptyQ (Queue * Q, int Max)
 /* I.S. sembarang */
 /* F.S. Sebuah Q kosong terbentuk dan salah satu kondisi sbb: */
 /* Jika alokasi berhasil, Tabel memori dialokasi berukuran Max+1 */

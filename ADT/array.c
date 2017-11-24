@@ -58,14 +58,14 @@ IdxType GetLastIdx (TabInt T)
 }
 
 /* ********** Test Indeks yang valid ********** */
-boolean IsIdxValid (TabInt T, IdxType i)
+boolean IsArrIdxValid (TabInt T, IdxType i)
 /* Mengirimkan true jika i adalah indeks yang valid utk ukuran tabel */
 /* yaitu antara indeks yang terdefinisi utk container*/
 {
     return (i >= IdxMin && i <= MaxNbEl(T));
 }
 
-boolean IsIdxEff (TabInt T, IdxType i)
+boolean IsArrIdxEff (TabInt T, IdxType i)
 /* Mengirimkan true jika i adalah indeks yang terdefinisi utk tabel */
 /* yaitu antara FirstIdx(T)..LastIdx(T) */
 {
@@ -74,7 +74,7 @@ boolean IsIdxEff (TabInt T, IdxType i)
 
 /* ********** TEST KOSONG/PENUH ********** */
 /* *** Test tabel kosong *** */
-boolean IsEmpty (TabInt T)
+boolean IsArrayEmpty (TabInt T)
 /* Mengirimkan true jika tabel T kosong, mengirimkan false jika tidak */
 {
     return (Neff(T) == 0);
@@ -266,7 +266,7 @@ TabInt KaliTab (TabInt T1, TabInt T2)
     Neff(TSum) = Neff(T1);
     return TSum;
 }
-TabInt KaliKons (TabInt Tin, ElType c)
+TabInt KaliKonsArr (TabInt Tin, ElType c)
 /* Prekondisi : Tin tidak kosong */
 /* Mengirimkan tabel dengan setiap elemen Tin dikalikan c */
 {

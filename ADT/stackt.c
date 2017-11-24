@@ -14,12 +14,12 @@ void CreateEmpty (Stack *S)
 }
 
 /* ************ Predikat Untuk test keadaan KOLEKSI ************ */
-boolean IsEmpty (Stack S)
+boolean IsEmptyS (Stack S)
 /* Mengirim true jika Stack kosong: lihat definisi di atas */
 {
     return Top(S) == Nil;
 }
-boolean IsFull (Stack S)
+boolean IsFullS (Stack S)
 /* Mengirim true jika tabel penampung nilai elemen stack penuh */
 {
     return Top(S) == MaxEl;

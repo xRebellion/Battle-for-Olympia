@@ -27,6 +27,7 @@ int setBuildingGold (Building building, int Gold);
 
 int setBuildingType (Building building, char NewType);
 // Usage : Info(P) = setBuildingType(NewType)
+
 TypeUnit getUnit (int addr);
 // Usage : unit = getUnit (Info(P))
 
