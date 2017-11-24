@@ -1,3 +1,4 @@
+#include "rekruit.h"
 
 void Recruit(Player P)
 {
@@ -25,15 +26,15 @@ void Recruit(Player P)
         printf("=== List of Recruits ===\n");
         printf("1. Archer | Health 20 | ATK 4 | 5G\n ");
         printf("2. Swordsman | Health 20 | ATK 3 | 4G\n ");
-        printf("3. White Mage | Health () | ATK () | ()G\n")
-        printf("Enter no. of unit you want to recruit:")
+        printf("3. White Mage | Health () | ATK () | ()G\n");
+        printf("Enter no. of unit you want to recruit:");
         scanf("%d",&pilunit);
         loop = true;
 
         while(loop){
             if(pilunit==1){
                 loop = false;
-                if(P.Gold >= Swordsman.harga){
+                if(P.Gold >= Swordsman.Harga){
                     //masukin unit ke list yang mana?
                 }
                 else {//P.Gold< typeunit.harga
@@ -42,7 +43,7 @@ void Recruit(Player P)
             }
             else if (pilunit==2){
                 loop = false;
-                if(P.Gold >= Archer.harga){
+                if(P.Gold >= Archer.Harga){
                 //masukin unit ke list yang mana?
                 }
                 else {//P.Gold< typeunit.harga
@@ -51,7 +52,7 @@ void Recruit(Player P)
             }
             else if (pilunit == 3){
                 loop = false;
-                if(P.Gold >= WM.harga){
+                if(P.Gold >= WM.Harga){
                 //masukin unit ke list yang mana?
                 }
                 else {//P.Gold< typeunit.harga
@@ -59,7 +60,7 @@ void Recruit(Player P)
                 }
             }
             else{//pilihan diluar 1/2/3
-                printf("Please enter the correct number\n")
+                printf("Please enter the correct number\n");
             }
         }
 

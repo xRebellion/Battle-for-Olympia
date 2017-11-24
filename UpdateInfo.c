@@ -1,31 +1,36 @@
+#include "UpdateInfo.h"
 
-int Earning (player P)
+
+int Earning (Player P)
 /*Untuk menghitung income player */
 {
-    Player P;
     int sum = 0;
-    if(!IsEmpty(Player.Villages)){
-        addressV P;
-        P = Player.Villages.First;
-        while (!IsEmpty(Player.Villages)){
-            sum = sum + Info(P);
-            P = Next(P);
+    if(!IsEmpty(P.Villages))
+    {
+        address A;
+        A = First(P.Villages);
+        while (A != Nil)
+        {
+            sum = sum + getUnit(Info(A)).Gold;
+            A = Next(A);
         }
     }
     return sum;
 }
 
-int Expense (player P)
+int Expense (Player P)
 /*Untuk menghitung income player */
 {
-    Player P;
+
     int sum = 0;
-    if(!IsEmpty(Player.Unit)){
-        addressU P;
-        P = Player.Unit.First;
-        while (!IsEmpty(Player.Unit)){
-            sum = sum + Info(P);
-            P = Next(P);
+    if(!IsEmpty(P.Unit))
+    {
+        address A;
+        A = First(Player.Unit);
+        while (A != Nil)
+        {
+            sum = sum + Info(A);
+            A = Next(A);
         }
     }
     return sum;
@@ -56,7 +61,7 @@ void PrintUnit (Player P)
     }
 }
 
-player UpdateInfo ()
+Player UpdateInfo ()
 /* Mengupdate informasi pemaain tiap turn */
 {
     Player P;

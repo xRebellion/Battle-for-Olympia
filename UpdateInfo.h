@@ -2,6 +2,7 @@
 #include "ADT/point.h"
 #include "ADT/listdp.h"
 #include "init.h"
+#include "ListTypeCast.h"
 
 int Earning (Player P);
 /*Untuk menghitung income player */

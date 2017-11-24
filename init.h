@@ -17,6 +17,18 @@ typedef struct {
 */
 
 
+typedef struct {
+    //income, upkeep, gold, warna, dst
+    int PlayerID;
+    int Gold;
+    List Unit;
+    List Villages;
+    int Income;
+    int Upkeep;
+    //Warna
+    //aing gatau warna pake tipe apa lul
+} Player;
+
 //untuk tipe infotype dan address disesuaikan nanti queue mau dipake di bagian mana
 typedef int infotype;
 typedef int idx;   /* indeks tabel */
@@ -41,27 +53,8 @@ typedef struct {
     int Length;
 } Kata;
 
-
-
-#define BrsMin 0
-#define BrsMax 100
-#define KolMin 0
-#define KolMax 100
-
-typedef int indeks; /* indeks baris, kolom */
 typedef struct {
-    char Building;
-    char Unit;
-    char Misc;
-}ElType;
-
-typedef struct {
-	ElType Tiles[BrsMax][KolMax];
-    int NBrsEff; /* banyaknya/ukuran baris yg terdefinisi */
-	int NKolEff; /* banyaknya/ukuran kolom yg terdefinisi */
-} Map;
-
-typedef struct {
+    char ID;
     //string Name *antisipasi kalo recruit 2 atau lebih unit dengan tipe sama
     int MaxHealth;
     int Health;
@@ -78,33 +71,38 @@ typedef struct {
 #define PosY(U) (U).Location.Y
 
 
-/*
-MASIH RAGU. takut 2 list ini bentrok pas pemanggilan Info(P), Next(P), First(L)nya.
-*/
 typedef struct {
     //kepemilikan, gold, tipe
-    char * Owner;
+    char ID;
+    Player Owner;
     int Gold;
-    char * Type;
+    char Type;
 } Building;
+// Types:
+// C = Castle
+// V = Village
+// T = Tower
 
-typedef struct tUElmtlist *addressU;
-typedef struct tUElmtlist {
-	TypeUnit info;
-	addressU next;
-} ElmtListU;
-typedef struct {
-	addressU First;
-} ListUnit;
+#define BrsMin 0
+#define BrsMax 100
+#define KolMin 0
+#define KolMax 100
 
-typedef struct tVElmtlist *addressV;
-typedef struct tVElmtlist {
-	Building info;
-	addressV next;
-} ElmtListV;
+typedef int indeks; /* indeks baris, kolom */
 typedef struct {
-	addressV First;
-} ListVillages;
+    Building building;
+    TypeUnit unit;
+    char Misc;
+}ElType;
+
+typedef struct {
+	ElType Tiles[BrsMax][KolMax];
+    int NBrsEff; /* banyaknya/ukuran baris yg terdefinisi */
+	int NKolEff; /* banyaknya/ukuran kolom yg terdefinisi */
+} Map;
+
+
+
 
 #define Info(P) (P)->info
 #define Next(P) (P)->next
@@ -112,15 +110,5 @@ typedef struct {
 
 
 
-typedef struct {
-    //income, upkeep, gold, warna, dst
-    int Gold;
-    ListUnit Unit;
-    ListVillages Villages;
-    int Income;
-    int Upkeep;
-    //Warna
-    //aing gatau warna pake tipe apa lul
-} Player;
 
 #endif

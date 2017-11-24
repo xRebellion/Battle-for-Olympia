@@ -57,7 +57,7 @@ char determineDirection(TypeUnit unit, int x, int y)
 
 
 boolean isMovePossible (Map * M, TypeUnit unit, char direction, int x, int y)
-{
+{/*
     int i;
     boolean blocked = false;
     int * step = &unit.MaxMove;
@@ -66,7 +66,7 @@ boolean isMovePossible (Map * M, TypeUnit unit, char direction, int x, int y)
     {
         for (i = 0;((i <= *step) && (!blocked)); i++)
         {
-            if (M.Tiles[PosX(unit)][PosY(unit)] )
+            if (M.Tiles[PosX(unit)][PosY(unit)])
             {
                 blocked = true;
             }
@@ -77,7 +77,7 @@ boolean isMovePossible (Map * M, TypeUnit unit, char direction, int x, int y)
     {
         for (i = 0;((i <= *step) && (!blocked)); i++)
         {
-            if (/*ada unit musuh di M[unit.x+i][unit.y]*/ )
+            if (/*ada unit musuh di M[unit.x+i][unit.y])
             {
                 blocked = true;
             }
@@ -87,7 +87,7 @@ boolean isMovePossible (Map * M, TypeUnit unit, char direction, int x, int y)
     {
         for (i = 0;((i <= *step) && (!blocked)); i++)
         {
-            if (/*ada unit musuh di M[unit.x][unit.y-i]*/ )
+            if (/*ada unit musuh di M[unit.x][unit.y-i] )
             {
                 blocked = true;
             }
@@ -97,7 +97,7 @@ boolean isMovePossible (Map * M, TypeUnit unit, char direction, int x, int y)
     {
         for (i = 0;((i <= *step) && (!blocked)); i++)
         {
-            if (/*ada unit musuh di M[unit.x-i][unit.y]*/ )
+            if (/*ada unit musuh di M[unit.x-i][unit.y] )
             {
                 blocked = true;
             }
@@ -115,7 +115,7 @@ boolean isMovePossible (Map * M, TypeUnit unit, char direction, int x, int y)
     }
 
     return !blocked;
-
+*/
 }
 
 
@@ -124,8 +124,8 @@ boolean Move(Map * M, TypeUnit * unit, int x, int y)
     char direction = 'x'; //Initial State: X, arti: not possible
     int * step; //pointer to maxmove
     boolean movePossible = true;
-    step = unit.MaxMove;
-    movePossible = isMovePossible(*M, *unit, direction);
+    //step = &(unit.MaxMove);
+    //movePossible = isMovePossible(M, *unit, direction);
     if(!movePossible)
     {
         return false;

@@ -31,6 +31,70 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="../ADT/array.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../ADT/array.h" />
+		<Unit filename="../ADT/jam.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../ADT/jam.h" />
+		<Unit filename="../ADT/listdp.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../ADT/listdp.h" />
+		<Unit filename="../ADT/listlinier.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../ADT/listlinier.h" />
+		<Unit filename="../ADT/listsirkuler.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../ADT/listsirkuler.h" />
+		<Unit filename="../ADT/matriks.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../ADT/matriks.h" />
+		<Unit filename="../ADT/mesinkar.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../ADT/mesinkar.h" />
+		<Unit filename="../ADT/mesinkata.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../ADT/mesinkata.h" />
+		<Unit filename="../ADT/point.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../ADT/point.h" />
+		<Unit filename="../ADT/queue.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../ADT/queue.h" />
+		<Unit filename="../ADT/stackt.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../ADT/stackt.h" />
+		<Unit filename="../Main.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../Map.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../Map.h" />
+		<Unit filename="../Movement.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../UpdateInfo.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../UpdateInfo.h" />
+		<Unit filename="../boolean.h" />
+		<Unit filename="../init.h" />
+		<Unit filename="../rekruit.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../rekruit.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />

@@ -10,8 +10,8 @@ void CreateEmptyMap(Map *M,int *NBrs, int *NKol) {
     scanf("%d",NKol);
     for (i = 0; i < *NBrs; i++) {
         for (j = 0; j < *NKol; j++) {
-            (*M).Tiles[i][j].Building = ' ';
-            (*M).Tiles[i][j].Unit = ' ';
+            (*M).Tiles[i][j].building.ID = ' ';
+            (*M).Tiles[i][j].unit.ID = ' ';
             (*M).Tiles[i][j].Misc = ' ';
         }
     }
@@ -27,6 +27,11 @@ void CreateEmptyMap(Map *M,int *NBrs, int *NKol) {
     (*M).Tiles[2][*NKol-2].Building ='C';
     (*M).Tiles[1][*NKol-2].Building ='T';
     */
+}
+
+void AddUnitToMap(Map * M, TypeUnit Unit)
+{
+
 }
 
 void PrintMap(Map M,int NBrs, int NKol) {
@@ -59,10 +64,10 @@ void PrintMap(Map M,int NBrs, int NKol) {
         idxBrs = 0;
         for (j = 0; j < NKol; j++) {
             if (i % 4 == 0) {
-                printf(" %c *",M.Tiles[idxBrs][j].Building);
+                printf(" %c *",M.Tiles[idxBrs][j].building.ID);
             }
             else if ((i-1) % 4 == 0) {
-                printf(" %c *",M.Tiles[idxBrs][j].Unit);
+                printf(" %c *",M.Tiles[idxBrs][j].unit.ID);
             }
             else if ((i-2) % 4 == 0) {
                 printf(" %c *",M.Tiles[idxBrs][j].Misc);
