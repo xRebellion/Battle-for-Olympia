@@ -94,7 +94,7 @@ void PrintMap(Map M,int NBrs, int NKol)
 
 void AddUnitToMap(Map * M, TypeUnit Unit)
 {
-    (*M).Tiles[PosY(Unit)][PosX(Unit)].unit.ID = Unit.ID;
+    (*M).Tiles[PosY(Unit)][PosX(Unit)].unit = Unit;
 }
 
 void RemoveUnitFromMap(Map * M, TypeUnit Unit)
@@ -104,7 +104,7 @@ void RemoveUnitFromMap(Map * M, TypeUnit Unit)
 
 void AddBuildingToMap(Map * M, Building BuildingIns)
 {
-    (*M).Tiles[PosY(BuildingIns)][PosX(BuildingIns)].building.Type = BuildingIns.Type;
+    (*M).Tiles[PosY(BuildingIns)][PosX(BuildingIns)].building = BuildingIns;
 }
 
 void RemoveBuildingFromMap(Map * M, Building BuildingIns)

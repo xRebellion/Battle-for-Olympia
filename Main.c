@@ -20,9 +20,22 @@ int main()
     //Map Definition
     Map M;
 
+    //Queue of turns
+    Queue Turns;
+    CreateEmptyQ(&Turns,10);
+
+    //List of Buildings
+    ListB LBuildings;
+
 
     //Create New Map
     CreateEmptyMap(&M, &(M.NBrsEff), &(M.NKolEff));
+
+    //InitializeMap(&M);
+
+
+    //Begin Playing
+
 
 
 
