@@ -14,13 +14,13 @@
 
 /* PROTOTYPE */
 /****************** TEST LIST KOSONG ******************/
-boolean IsEmpty (List L)
+boolean IsEmptyUnit (List L)
 /* Mengirim true jika list kosong. Lihat definisi di atas. */
 {
     return (First(L) == Nil && Last(L) == Nil);
 }
 /****************** PEMBUATAN LIST KOSONG ******************/
-void CreateEmptyL (List *L)
+void CreateEmptyUnit (List *L)
 /* I.S. L sembarang  */
 /* F.S. Terbentuk list kosong. Lihat definisi di atas. */
 {
@@ -28,7 +28,7 @@ void CreateEmptyL (List *L)
     Last(*L) = Nil;
 }
 /****************** Manajemen Memori ******************/
-address Alokasi (infotype X)
+address AlokasiUnit (infotype X)
 /* Mengirimkan address hasil alokasi sebuah elemen */
 /* Jika alokasi berhasil, maka address tidak nil. */
 /* Misalnya: menghasilkan P, maka Info(P)=X, Next(P)=Nil, Prev(P)=Nil */
@@ -46,7 +46,7 @@ address Alokasi (infotype X)
         return Nil;
     }
 }
-void Dealokasi (address P)
+void DealokasiUnit (address P)
 /* I.S. P terdefinisi */
 /* F.S. P dikembalikan ke sistem */
 /* Melakukan dealokasi/pengembalian address P */
@@ -55,7 +55,7 @@ void Dealokasi (address P)
 }
 
 /****************** PENCARIAN SEBUAH ELEMEN LIST ******************/
-address Search (List L, infotype X)
+address SearchUnit (List L, infotype X)
 /* Mencari apakah ada elemen list dengan Info(P)=X */
 /* Jika ada, mengirimkan address elemen tersebut. */
 /* Jika tidak ada, mengirimkan Nil */
@@ -76,13 +76,13 @@ address Search (List L, infotype X)
 }
 /****************** PRIMITIF BERDASARKAN NILAI ******************/
 /*** PENAMBAHAN ELEMEN ***/
-void InsVFirst (List *L, infotype X)
+void InsVFirstUnit (List *L, infotype X)
 /* I.S. L mungkin kosong */
 /* F.S. Melakukan alokasi sebuah elemen dan */
 /* menambahkan elemen pertama dengan nilai X jika alokasi berhasil */
 {
     address P = First(*L);
-    First(*L) = Alokasi(X);
+    First(*L) = AlokasiUnit(X);
     if(P != Nil)
     {
         Prev(P) = First(*L);
@@ -92,29 +92,29 @@ void InsVFirst (List *L, infotype X)
         Last(*L) = First(*L);
     }
 }
-void InsVLast (List *L, infotype X)
+void InsVLastUnit (List *L, infotype X)
 /* I.S. L mungkin kosong */
 /* F.S. Melakukan alokasi sebuah elemen dan */
 /* menambahkan elemen list di akhir: elemen terakhir yang baru */
 /* bernilai X jika alokasi berhasil. Jika alokasi gagal: I.S.= F.S. */
 {
     address P = First(*L);
-    if(IsEmpty(*L))
+    if(IsEmptyUnit(*L))
     {
-        First(*L) = Alokasi(X);
+        First(*L) = AlokasiUnit(X);
         Last(*L) = First(*L);
     }
     else
     {
         P = Last(*L);
-        Next(P) = Alokasi(X);
+        Next(P) = AlokasiUnit(X);
         Prev(Next(P)) = P;
         Last(*L) = Next(P);
     }
 }
 
 /*** PENGHAPUSAN ELEMEN ***/
-void DelVFirst (List *L, infotype *X)
+void DelVFirstUnit (List *L, infotype *X)
 /* I.S. List L tidak kosong  */
 /* F.S. Elemen pertama list dihapus: nilai info disimpan pada X */
 /*      dan alamat elemen pertama di-dealokasi */
@@ -123,17 +123,17 @@ void DelVFirst (List *L, infotype *X)
     address Pdel;
     if(Next(First(*L)) == Nil)
     {
-        Dealokasi(First(*L));
+        DealokasiUnit(First(*L));
         CreateEmpty(L);
     } else
     {
         Pdel = First(*L);
         First(*L) = Next(First(*L));
         Prev(First(*L)) = Nil;
-        Dealokasi(Pdel);
+        DealokasiUnit(Pdel);
     }
 }
-void DelVLast (List *L, infotype *X)
+void DelVLastUnit (List *L, infotype *X)
 /* I.S. list tidak kosong */
 /* F.S. Elemen terakhir list dihapus: nilai info disimpan pada X */
 /*      dan alamat elemen terakhir di-dealokasi */
@@ -142,14 +142,14 @@ void DelVLast (List *L, infotype *X)
     if(Next(P) == Nil)
     {
         *X = Info(P);
-        Dealokasi(First(*L));
+        DealokasiUnit(First(*L));
         CreateEmpty(L);
     }
     else
     {
         P = Prev(Last(*L));
         *X = Info(Next(P));
-        Dealokasi(Next(P));
+        DealokasiUnit(Next(P));
         Next(P) = Nil;
         Last(*L) = P;
     }
@@ -157,12 +157,12 @@ void DelVLast (List *L, infotype *X)
 
 /****************** PRIMITIF BERDASARKAN ALAMAT ******************/
 /*** PENAMBAHAN ELEMEN BERDASARKAN ALAMAT ***/
-void InsertFirst (List *L, address P)
+void InsertFirstUnit (List *L, address P)
 /* I.S. Sembarang, P sudah dialokasi  */
 /* F.S. Menambahkan elemen ber-address P sebagai elemen pertama */
 {
     address PTemp;
-    if(IsEmpty(*L))
+    if(IsEmptyUnit(*L))
     {
         First(*L) = P;
         Last(*L) = P;
@@ -174,11 +174,11 @@ void InsertFirst (List *L, address P)
         Prev(Next(First(*L))) = First(*L);
     }
 }
-void InsertLast (List *L, address P)
+void InsertLastUnit (List *L, address P)
 /* I.S. Sembarang, P sudah dialokasi  */
 /* F.S. P ditambahkan sebagai elemen terakhir yang baru */
 {
-    if(IsEmpty(*L))
+    if(IsEmptyUnit(*L))
     {
         First(*L) = P;
         Last(*L) = P;
@@ -190,13 +190,13 @@ void InsertLast (List *L, address P)
         Last(*L) = P;
     }
 }
-void InsertAfter (List *L, address P, address Prec)
+void InsertAfterUnit (List *L, address P, address Prec)
 /* I.S. Prec pastilah elemen list; P sudah dialokasi  */
 /* F.S. Insert P sebagai elemen sesudah elemen beralamat Prec */
 {
     if(Prec == Last(*L))
     {
-        InsertLast(L,P);
+        InsertLastUnit(L,P);
     } else
     {
         address PTemp;
@@ -207,13 +207,13 @@ void InsertAfter (List *L, address P, address Prec)
         Prev(PTemp) = P;
     }
 }
-void InsertBefore (List *L, address P, address Succ)
+void InsertBeforeUnit (List *L, address P, address Succ)
 /* I.S. Succ pastilah elemen list; P sudah dialokasi  */
 /* F.S. Insert P sebagai elemen sebelum elemen beralamat Succ */
 {
     if(Succ == First(*L))
     {
-        InsertFirst(L, P);
+        InsertFirstUnit(L, P);
     } else
     {
         address PTemp;
@@ -228,7 +228,7 @@ void InsertBefore (List *L, address P, address Succ)
 }
 
 /*** PENGHAPUSAN SEBUAH ELEMEN ***/
-void DelFirst (List *L, address *P)
+void DelFirstUnit (List *L, address *P)
 /* I.S. List tidak kosong */
 /* F.S. P adalah alamat elemen pertama list sebelum penghapusan */
 /*      Elemen list berkurang satu (mungkin menjadi kosong) */
@@ -244,7 +244,7 @@ void DelFirst (List *L, address *P)
         CreateEmpty(L);
     }
 }
-void DelLast (List *L, address *P)
+void DelLastUnit (List *L, address *P)
 /* I.S. List tidak kosong */
 /* F.S. P adalah alamat elemen terakhir list sebelum penghapusan  */
 /*      Elemen list berkurang satu (mungkin menjadi kosong) */
@@ -262,7 +262,7 @@ void DelLast (List *L, address *P)
         Next(Last(*L)) = Nil;
     }
 }
-void DelP (List *L, infotype X)
+void DelPUnit (List *L, infotype X)
 /* I.S. Sembarang */
 /* F.S. Jika ada elemen list beraddress P, dengan Info(P)=X  */
 /* maka P dihapus dari list dan didealokasi */
@@ -271,19 +271,19 @@ void DelP (List *L, infotype X)
 {
     address P = First(*L);
     address Pdel;
-    if(Search(*L, X) != Nil)
+    if(SearchUnit(*L, X) != Nil)
     {
 
         if (Info(First(*L)) == X)
         {
-            DelFirst(L,&Pdel);
-            Dealokasi(Pdel);
+            DelFirstUnit(L,&Pdel);
+            DealokasiUnit(Pdel);
         }
         else
         if(Info(Last(*L)) == X)
         {
-            DelLast(L,&Pdel);
-            Dealokasi (Pdel);
+            DelLastUnit(L,&Pdel);
+            DealokasiUnit(Pdel);
         }
         else
         if(Info(P) != X)
@@ -295,12 +295,12 @@ void DelP (List *L, infotype X)
             Pdel = Next(P);
             Next(P) = Next(Next(P));
             Prev(Next(P)) = P;
-            Dealokasi(Pdel);
+            DealokasiUnit(Pdel);
         }
 
     }
 }
-void DelAfter (List *L, address *Pdel, address Prec)
+void DelAfterUnit (List *L, address *Pdel, address Prec)
 /* I.S. List tidak kosong. Prec adalah anggota list. */
 /* F.S. Menghapus Next(Prec): */
 /*      Pdel adalah alamat elemen list yang dihapus  */
@@ -322,7 +322,7 @@ void DelAfter (List *L, address *Pdel, address Prec)
         *Pdel = Nil;
     }
 }
-void DelBefore (List *L, address *Pdel, address Succ)
+void DelBeforeUnit (List *L, address *Pdel, address Succ)
 /* I.S. List tidak kosong. Succ adalah anggota list. */
 /* F.S. Menghapus Prev(Succ): */
 /*      Pdel adalah alamat elemen list yang dihapus  */

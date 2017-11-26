@@ -31,7 +31,7 @@ void Push (Stack * S, infotype X)
 /* I.S. S mungkin kosong, tabel penampung elemen stack TIDAK penuh */
 /* F.S. X menjadi TOP yang baru,TOP bertambah 1 */
 {
-    if(IsEmpty(*S))
+    if(IsEmptyS(*S))
     {
         Top(*S) = 1;
     } else

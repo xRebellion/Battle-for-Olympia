@@ -153,7 +153,7 @@ void MoveCommand(Map * M, TypeUnit currUnit, int * PrevX, int * PrevY)
     *PrevY = PosY(currUnit);
 
     //InsertDummyUnit(M, currUnit);
-    PrintMap(*M,(*M).NBrsEff,(*M).NKolEff);
+ //   PrintMap(*M,(*M).NBrsEff,(*M).NKolEff);
     //RemoveDummyUnit(M, currUnit);
     printf("Where do you want to move? ( Input: x y )\n");
     scanf ("%d %d", &x, &y);

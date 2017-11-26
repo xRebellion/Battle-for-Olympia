@@ -5,13 +5,13 @@ int Earning (Player P)
 /*Untuk menghitung income player */
 {
     int sum = 0;
-    if(!IsEmpty(P.Villages))
+    if(!IsEmptyBuilding(P.Villages))
     {
-        address A;
+        addressB A;
         A = First(P.Villages);
         while (A != Nil)
         {
-            sum = sum + getBuildingGold(Info(A));
+            sum = sum + (Info(A).Gold);
             A = Next(A);
         }
     }
@@ -23,13 +23,13 @@ int Expense (Player P)
 {
 
     int sum = 0;
-    if(!IsEmpty(P.Unit))
+    if(!IsEmptyUnit(P.Unit))
     {
-        address A;
+        addressU A;
         A = First(P.Unit);
         while (A != Nil)
         {
-            sum = sum + getUnitUpkeep(Info(A));
+            sum = sum + (Info(A).Upkeep);
             A = Next(A);
         }
     }
@@ -43,16 +43,16 @@ void PrintUnit (Player P)
     int count = 0;
     char * UnitName;
     boolean AttackStatus;
-    if(!IsEmpty(P.Unit)){
-        address A;
+    if(!IsEmptyUnit(P.Unit)){
+        addressU A;
         A = First(P.Unit);
         while (A != Nil)
         {
             count++;
-            UnitName = getUnitName(Info(A));
-            MovePoint = getUnitMaxMove(Info(A));
-            AttackStatus = getUnitHit(Info(A));
-            printf("%d. %s (%d,%d) | Movement Point: %d | Attack Status: ",count,UnitName,PosX(getUnit(Info(A))),PosY(getUnit(Info(A))),&MovePoint);
+            UnitName = Info(A).Name;
+            MovePoint = Info(A).MaxMove;
+            AttackStatus = Info(A).Attack;
+            printf("%d. %s (%d,%d) | Movement Point: %d | Attack Status: ",count,UnitName,PosX(Info(A)),PosY(Info(A)),MovePoint);
             if (AttackStatus == true) {
                 printf("Available\n");
             }

@@ -11,7 +11,7 @@ void CreateEmptyMap(Map *M,int *NBrs, int *NKol) {
 
     for (i = 0; i < *NBrs; i++) {
         for (j = 0; j < *NKol; j++) {
-            (*M).Tiles[i][j].building.ID = ' ';
+            (*M).Tiles[i][j].building.Type = ' ';
             (*M).Tiles[i][j].unit.ID = ' ';
             (*M).Tiles[i][j].Misc = ' ';
         }
@@ -19,9 +19,8 @@ void CreateEmptyMap(Map *M,int *NBrs, int *NKol) {
 
 }
 
-
-
-void PrintMap(Map M,int NBrs, int NKol) {
+void PrintMap(Map M,int NBrs, int NKol)
+{
     int i,j,idx,idxBrs;
     printf(" ");
     idx = 0;
@@ -51,7 +50,7 @@ void PrintMap(Map M,int NBrs, int NKol) {
         idxBrs = 0;
         for (j = 0; j < NKol; j++) {
             if (i % 4 == 0) {
-                printf(" %c *",M.Tiles[i/4][j].building.ID);
+                printf(" %c *",M.Tiles[i/4][j].building.Type);
 
             }
             else if ((i-1) % 4 == 0) {
@@ -80,14 +79,14 @@ void RemoveUnitFromMap(Map * M, TypeUnit Unit)
     (*M).Tiles[PosY(Unit)][PosX(Unit)].unit.ID = ' ';
 }
 
-void AddBuildingToMap(Map * M, Building building)
+void AddBuildingToMap(Map * M, Building BuildingIns)
 {
-    (*M).Tiles[PosY(building)][PosX(building)].building.ID = building.ID;
+    (*M).Tiles[PosY(BuildingIns)][PosX(BuildingIns)].building.Type = BuildingIns.Type;
 }
 
-void RemoveBuildingFromMap(Map * M, Building building)
+void RemoveBuildingFromMap(Map * M, Building BuildingIns)
 {
-    (*M).Tiles[PosY(building)][PosX(building)].building.ID = ' ';
+    (*M).Tiles[PosY(BuildingIns)][PosX(BuildingIns)].building.Type = ' ';
 }
 
 

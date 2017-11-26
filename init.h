@@ -4,7 +4,8 @@
 #include "ADT/boolean.h"
 
 #include "ADT/point.h"
-#include "ADT/listdp.h"
+#include "ADT/list_unit.h"
+#include "ADT/list_building.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -21,8 +22,8 @@ typedef struct {
     //income, upkeep, gold, warna, dst
     int PlayerID;
     int Gold;
-    List Unit;
-    List Villages;
+    ListU Unit;
+    ListB Villages;
     int Income;
     int Upkeep;
     //Warna
@@ -30,11 +31,11 @@ typedef struct {
 } Player;
 
 //untuk tipe infotype dan address disesuaikan nanti queue mau dipake di bagian mana
-typedef int infotype;
+typedef int infotypeQ;
 typedef int idx;   /* indeks tabel */
 /* Contoh deklarasi variabel bertype Queue : */
 /* Versi I : tabel dinamik, Head dan Tail eksplisit, ukuran disimpan */
-typedef struct { infotype * T;   /* tabel penyimpan elemen */
+typedef struct { infotypeQ * T;   /* tabel penyimpan elemen */
                  idx HEAD;  /* alamat penghapusan */
                  idx TAIL;  /* alamat penambahan */
                  int MaxEl;     /* Max elemen queue */
@@ -52,7 +53,7 @@ typedef struct {
 	char TabKata[30+1]; /* container penyimpan kata, indeks yang dipakai [1..30] */
     int Length;
 } Kata;
-
+/*
 typedef struct {
     char ID;
     char * Name;
@@ -66,20 +67,20 @@ typedef struct {
     POINT Location;
     int Upkeep;
     int Harga;
-} TypeUnit;
+} TypeUnit;*/ // TYPE MOVED TO LIST_UNIT
 
 #define PosX(U) (U).Location.X
 #define PosY(U) (U).Location.Y
 
-
+/*
 typedef struct {
     //kepemilikan, gold, tipe
     char ID;
-    Player Owner;
+    int OwnerID;
     int Gold;
     char Type;
     POINT Location;
-} Building;
+} Building;*/ //TYPE MOVED TO LIST_BUILDING
 // Types:
 // C = Castle
 // V = Village
