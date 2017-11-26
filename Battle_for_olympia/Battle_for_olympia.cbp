@@ -71,6 +71,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="../ListTypeCast.h" />
+		<Unit filename="../ListTypeCastGetter.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../ListTypeCastGetter.h" />
 		<Unit filename="../Main.c">
 			<Option compilerVar="CC" />
 		</Unit>

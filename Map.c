@@ -8,6 +8,7 @@ void CreateEmptyMap(Map *M,int *NBrs, int *NKol) {
     scanf("%d",NBrs);
     printf("Lebar (Sumbu X): \n");
     scanf("%d",NKol);
+
     for (i = 0; i < *NBrs; i++) {
         for (j = 0; j < *NKol; j++) {
             (*M).Tiles[i][j].building.ID = ' ';
@@ -18,15 +19,7 @@ void CreateEmptyMap(Map *M,int *NBrs, int *NKol) {
 
 }
 
-void AddUnitToMap(Map * M, TypeUnit Unit)
-{
-    (*M).Tiles[PosY(Unit)][PosX(Unit)].unit.ID = Unit.ID;
-}
 
-void RemoveUnitFromMap(Map * M, TypeUnit Unit)
-{
-    (*M).Tiles[PosY(Unit)][PosX(Unit)].unit.ID = ' ';
-}
 
 void PrintMap(Map M,int NBrs, int NKol) {
     int i,j,idx,idxBrs;
@@ -76,4 +69,25 @@ void PrintMap(Map M,int NBrs, int NKol) {
     }
 
 }
+
+void AddUnitToMap(Map * M, TypeUnit Unit)
+{
+    (*M).Tiles[PosY(Unit)][PosX(Unit)].unit.ID = Unit.ID;
+}
+
+void RemoveUnitFromMap(Map * M, TypeUnit Unit)
+{
+    (*M).Tiles[PosY(Unit)][PosX(Unit)].unit.ID = ' ';
+}
+
+void AddBuildingToMap(Map * M, Building building)
+{
+    (*M).Tiles[PosY(building)][PosX(building)].building.ID = building.ID;
+}
+
+void RemoveBuildingFromMap(Map * M, Building building)
+{
+    (*M).Tiles[PosY(building)][PosX(building)].building.ID = ' ';
+}
+
 

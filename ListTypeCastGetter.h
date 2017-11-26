@@ -4,6 +4,16 @@
 #include "init.h"
 #include "ListTypeCast.h"
 
+// List of villages and list of units.
+    // Cara pakai:
+    // INSERT
+    // InsVFirst/... (&L, &building)
+    // InsVLast/... (&L, &unit)
+    //
+    // SET
+    // Info(ListAddr) = setBuildingID(Info(ListAddr), NEWID);
+    // Info(ListAddr) = setUnitName(Info(ListAddr), NEWNAME);
+
 char getBuildingID (int addr);
 // Usage : char = getBuildingID(Info(P))
 

@@ -3,6 +3,16 @@
 
 #include "init.h"
 
+// List of villages and list of units.
+    // Cara pakai:
+    // INSERT
+    // InsVFirst/... (&L, &building)
+    // InsVLast/... (&L, &unit)
+    //
+    // SET
+    // Info(ListAddr) = setBuildingID(Info(ListAddr), NEWID);
+    // Info(ListAddr) = setUnitName(Info(ListAddr), NEWNAME);
+
 Building getBuilding (int addr);
 // Usage : building = getBuilding(Info(P))
 
