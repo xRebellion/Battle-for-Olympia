@@ -82,7 +82,7 @@
 1507382260 c:\users\user\desktop\technical stuff\c\battle-for-olympia\adt\stackt.h
 	"boolean.h"
 
-1511517364 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\main.c
+1511687781 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\main.c
 	"Movement.h"
 	"Map.h"
 	"rekruit.h"
@@ -134,10 +134,13 @@
 1511517560 c:\users\user\desktop\technical stuff\c\battle-for-olympia\listtypecast.h
 	"init.h"
 
-1511519199 c:\users\user\desktop\technical stuff\c\battle-for-olympia\listtypecastgetter.h
+1511687480 c:\users\user\desktop\technical stuff\c\battle-for-olympia\listtypecastgetter.h
 	"init.h"
 	"ListTypeCast.h"
 
-1511519889 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\updateinfo.c
+1511687541 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\updateinfo.c
 	"UpdateInfo.h"
+
+1511687442 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\listtypecastgetter.c
+	"ListTypeCastGetter.h"
 

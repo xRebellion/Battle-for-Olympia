@@ -43,14 +43,6 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="../ADT/listdp.h" />
-		<Unit filename="../ADT/listlinier.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="../ADT/listlinier.h" />
-		<Unit filename="../ADT/listsirkuler.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="../ADT/listsirkuler.h" />
 		<Unit filename="../ADT/matriks.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -75,6 +67,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="../ADT/stackt.h" />
+		<Unit filename="../ListTypeCast.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../ListTypeCast.h" />
 		<Unit filename="../Main.c">
 			<Option compilerVar="CC" />
 		</Unit>

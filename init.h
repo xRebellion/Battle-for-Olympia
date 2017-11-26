@@ -78,6 +78,7 @@ typedef struct {
     Player Owner;
     int Gold;
     char Type;
+    POINT Location;
 } Building;
 // Types:
 // C = Castle

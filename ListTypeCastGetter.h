@@ -16,17 +16,24 @@ int getBuildingGold (int addr);
 char getBuildingType (int addr);
 // Usage : type = getBuildingType(Info(P))
 
-int setBuildingID (Building building, char NewID);
+POINT getBuildingLocation(int addr);
+
+
+
+
+int setBuildingID (Building * building, char NewID);
 // Usage : Info(P) = setBuildingID(NewID)
 
-int setBuildingOwner (Building building, Player Owner);
+int setBuildingOwner (Building * building, Player Owner);
 // Usage : Info(P) = setBuildingOwner(NewOwner)
 
-int setBuildingGold (Building building, int Gold);
+int setBuildingGold (Building * building, int Gold);
 // Usage : Info(P) = setBuildingGold(NewGold)
 
-int setBuildingType (Building building, char NewType);
+int setBuildingType (Building * building, char NewType);
 // Usage : Info(P) = setBuildingType(NewType)
+
+int setBuildingLocation(Building * building, POINT Location);
 
 
 
@@ -58,31 +65,37 @@ int getUnitHarga (int addr);
 // Usage : harga = getUnitHarga (Info(P))
 
 
-int setUnitMaxHealth (TypeUnit unit, int MaxHealth);
+int setUnitMaxHealth (TypeUnit * unit, int MaxHealth);
 // Usage : Info(P) = setUnitMaxHealth(MaxHealth)
 
-int setUnitHealth (TypeUnit unit, int Health);
+int setUnitHealth (TypeUnit * unit, int Health);
 // Usage : Info(P) = setUnitHealth(Health)
 
-int setUnitAttack (TypeUnit unit, int Attack);
+int setUnitAttack (TypeUnit * unit, int Attack);
 // Usage : Info(P) = setUnitAttack(Attack)
 
-int setUnitMaxMove (TypeUnit unit, int MaxMove);
+int setUnitMaxMove (TypeUnit * unit, int MaxMove);
 // Usage : Info(P) = setUnitMaxMove(MaxMove)
 
-int setUnitMove (TypeUnit unit, int Move);
+int setUnitMove (TypeUnit * unit, int Move);
 // Usage : Info(P) = setUnitMove(Move)
 
-char setUnitAttackType(TypeUnit unit, char AttackType);
+int setUnitAttackType(TypeUnit * unit, char AttackType);
 // Usage : Info(P) = setUnitAttackType(AttackType)
 
-boolean setUnitHit(TypeUnit unit, boolean Hit);
+int setUnitHit(TypeUnit * unit, boolean Hit);
 // Usage : Info(P) = setUnitHit(Hit)
 
-POINT setUnitLocation(TypeUnit unit, POINT Location);
+int setUnitLocation(TypeUnit * unit, POINT Location);
 // Usage : Info(P) = setUnitLocation(Location)
 
-int setUnitHarga (TypeUnit unit, int Harga);
+int setUnitHarga (TypeUnit * unit, int Harga);
 // Usage : Info(P) = setUnitHarga(Harga)
+
+int setUnitUpkeep (TypeUnit * unit, int Upkeep);
+// Usage : Info(P) = setUnitUpkeep(Upkeep)
+
+int setUnitName (TypeUnit * unit, char * Name);
+// Usage : Info(P) = setUnitUpkeep(Info(P) Upkeep)
 
 #endif

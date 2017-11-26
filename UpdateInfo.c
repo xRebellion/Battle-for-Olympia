@@ -64,7 +64,7 @@ void PrintUnit (Player P)
 }
 
 void UpdateInfo (Player * P)
-/* Mengupdate informasi pemaain tiap turn */
+/* Mengupdate informasi pemain tiap turn */
 {
     (*P).Income = Earning(*P);
     (*P).Upkeep = Expense(*P);

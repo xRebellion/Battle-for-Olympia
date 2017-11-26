@@ -15,23 +15,17 @@ void CreateEmptyMap(Map *M,int *NBrs, int *NKol) {
             (*M).Tiles[i][j].Misc = ' ';
         }
     }
-    /*
-    (*M).Tiles[*NBrs-1][1].Building ='C';
-    (*M).Tiles[*NBrs-2][0].Building ='C';
-    (*M).Tiles[*NBrs-2][2].Building ='C';
-    (*M).Tiles[*NBrs-3][1].Building ='C';
-    (*M).Tiles[*NBrs-2][1].Building ='T';
-    (*M).Tiles[0][*NKol-2].Building ='C';
-    (*M).Tiles[1][*NKol-1].Building ='C';
-    (*M).Tiles[1][*NKol-3].Building ='C';
-    (*M).Tiles[2][*NKol-2].Building ='C';
-    (*M).Tiles[1][*NKol-2].Building ='T';
-    */
+
 }
 
 void AddUnitToMap(Map * M, TypeUnit Unit)
 {
+    (*M).Tiles[PosY(Unit)][PosX(Unit)].unit.ID = Unit.ID;
+}
 
+void RemoveUnitFromMap(Map * M, TypeUnit Unit)
+{
+    (*M).Tiles[PosY(Unit)][PosX(Unit)].unit.ID = ' ';
 }
 
 void PrintMap(Map M,int NBrs, int NKol) {
@@ -64,13 +58,14 @@ void PrintMap(Map M,int NBrs, int NKol) {
         idxBrs = 0;
         for (j = 0; j < NKol; j++) {
             if (i % 4 == 0) {
-                printf(" %c *",M.Tiles[idxBrs][j].building.ID);
+                printf(" %c *",M.Tiles[i/4][j].building.ID);
+
             }
             else if ((i-1) % 4 == 0) {
-                printf(" %c *",M.Tiles[idxBrs][j].unit.ID);
+                printf(" %c *",M.Tiles[i/4][j].unit.ID);
             }
             else if ((i-2) % 4 == 0) {
-                printf(" %c *",M.Tiles[idxBrs][j].Misc);
+                printf(" %c *",M.Tiles[i/4][j].Misc);
             }
             else if ((i-3) % 4 == 0) {
                 printf("****");

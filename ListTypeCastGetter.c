@@ -1,18 +1,14 @@
 #include "ListTypeCastGetter.h"
-
 // List of villages and list of units.
 // Cara pakai:
-
 // Untuk mengeset
 // Info(First(LVillage)) = setBuilding (building)
 // Info(First(LUnit)) = setUnit(unit)
-
 // Untuk meng-get
 // building = getBuilding(Info(P))
 // unit = getUnit (Info(P))
 
-
-char getBuildingID (int addr)
+char getBuildingID(int addr)
 // Usage : char = getBuildingID(Info(P))
 {
     return getBuilding(addr).ID;
@@ -36,32 +32,44 @@ char getBuildingType (int addr)
     return getBuilding(addr).Type;
 }
 
-int setBuildingID (Building building, char NewID)
+POINT getBuildingLocation (int addr)
+// Usage : type = getBuildingType(Info(P))
+{
+    return getBuilding(addr).Location;
+}
+
+int setBuildingID (Building * building, char NewID)
 // Usage : Info(P) = setBuildingID(NewID)
 {
-    building.ID = NewID;
-    return &bulding;
+    (*building).ID = NewID;
+    return building;
 }
 
-int setBuildingOwner (Building building, Player Owner)
+int setBuildingOwner (Building * building, Player Owner)
 // Usage : Info(P) = setBuildingOwner(NewOwner)
 {
-    building.Owner = Owner;
-    return &building;
+    (*building).Owner = Owner;
+    return building;
 }
 
-int setBuildingGold (Building building, int Gold)
+int setBuildingGold (Building * building, int Gold)
 // Usage : Info(P) = setBuildingGold(NewGold)
 {
-    building.Gold = Gold;
-    return &building;
+    (*building).Gold = Gold;
+    return building;
 }
 
-int setBuildingType (Building building, char NewType)
+int setBuildingType (Building * building, char NewType)
 // Usage : Info(P) = setBuildingType(NewType)
 {
-    building.Type = NewType;
-    return &building;
+    (*building).Type = NewType;
+    return building;
+}
+
+int setBuildingLocation(Building * building, POINT Location)
+{
+    (*building).Location = Location;
+    return building;
 }
 
 int getUnitMaxHealth (int addr)
@@ -118,66 +126,92 @@ int getUnitHarga (int addr)
     return getUnit(addr).Harga;
 }
 
+int getUnitUpkeep(int addr)
+// Usage : upkeep = getUnitUpkeep (Info(P))
+{
+    return getUnit(addr).Upkeep;
+}
 
-int setUnitMaxHealth (TypeUnit unit, int MaxHealth)
+char * getUnitName (int addr)
+{
+    return getUnit(addr).Name;
+}
+
+//SET UNIT
+
+int setUnitMaxHealth (TypeUnit * unit, int MaxHealth)
 // Usage : Info(P) = setUnitMaxHealth(MaxHealth)
 {
-    unit.MaxHealth = MaxHealth;
-    return &unit;
+    (*unit).MaxHealth = MaxHealth;
+    return unit;
 }
 
-int setUnitHealth (TypeUnit unit, int Health)
+int setUnitHealth (TypeUnit * unit, int Health)
 // Usage : Info(P) = setUnitHealth(Health)
 {
-    unit.Health = Health;
-    return &unit;
+    (*unit).Health = Health;
+    return unit;
 }
 
-int setUnitAttack (TypeUnit unit, int Attack)
+int setUnitAttack (TypeUnit * unit, int Attack)
 // Usage : Info(P) = setUnitAttack(Attack)
 {
-    unit.Attack = Attack;
-    return &unit;
+    (*unit).Attack = Attack;
+    return unit;
 }
 
-int setUnitMaxMove (TypeUnit unit, int MaxMove)
+int setUnitMaxMove (TypeUnit * unit, int MaxMove)
 // Usage : Info(P) = setUnitMaxMove(MaxMove)
 {
-    unit.MaxMove = MaxMove;
-    return &unit;
+    (*unit).MaxMove = MaxMove;
+    return unit;
 }
 
-int setUnitMove (TypeUnit unit, int Move)
+int setUnitMove (TypeUnit * unit, int Move)
 // Usage : Info(P) = setUnitMove(Move)
 {
-    unit.Move = Move;
-    return &unit;
+    (*unit).Move = Move;
+    return unit;
 }
 
-char setUnitAttackType(TypeUnit unit, char AttackType)
+int setUnitAttackType(TypeUnit * unit, char AttackType)
 // Usage : Info(P) = setUnitAttackType(AttackType)
 {
-    unit.AttackType = AttackType;
-    return &unit;
+    (*unit).AttackType = AttackType;
+    return unit;
 }
 
-boolean setUnitHit(TypeUnit unit, boolean Hit)
+int setUnitHit(TypeUnit * unit, boolean Hit)
 // Usage : Info(P) = setUnitHit(Hit)
 {
-    unit.Hit = Hit;
-    return &unit;
+    (*unit).Hit = Hit;
+    return unit;
 }
 
-POINT setUnitLocation(TypeUnit unit, POINT Location)
+int setUnitLocation(TypeUnit * unit, POINT Location)
 // Usage : Info(P) = setUnitLocation(Location)
 {
-    unit.Location = Location;
-    return &unit;
+    (*unit).Location = Location;
+    return unit;
 }
 
-int setUnitHarga (TypeUnit unit, int Harga)
+int setUnitHarga (TypeUnit * unit, int Harga)
 // Usage : Info(P) = setUnitHarga(Harga)
 {
-    unit.Harga = Harga;
-    return &unit;
+    (*unit).Harga = Harga;
+    return unit;
 }
+
+int setUnitUpkeep (TypeUnit * unit, int Upkeep)
+// Usage : Info(P) = setUnitUpkeep(Upkeep)
+{
+    (*unit).Upkeep = Upkeep;
+    return unit;
+}
+
+int setUnitName (TypeUnit * unit, char * Name)
+{
+    (*unit).Name = Name;
+    return unit;
+}
+
