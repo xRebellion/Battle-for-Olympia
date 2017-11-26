@@ -82,7 +82,7 @@
 1507382260 c:\users\user\desktop\technical stuff\c\battle-for-olympia\adt\stackt.h
 	"boolean.h"
 
-1511693927 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\main.c
+1511703590 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\main.c
 	"Movement.h"
 	"Map.h"
 	"rekruit.h"
@@ -94,7 +94,7 @@
 	"init.h"
 	"Map.h"
 
-1511701818 c:\users\user\desktop\technical stuff\c\battle-for-olympia\init.h
+1511703499 c:\users\user\desktop\technical stuff\c\battle-for-olympia\init.h
 	"ADT/boolean.h"
 	"ADT/point.h"
 	"ADT/list_unit.h"
@@ -120,7 +120,7 @@
 	"ListTypeCast.h"
 	"ListTypeCastGetter.h"
 
-1511701924 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\map.c
+1511703033 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\map.c
 	"Map.h"
 
 1511698922 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\movement.c
@@ -139,24 +139,26 @@
 	"init.h"
 	"ListTypeCast.h"
 
-1511699747 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\updateinfo.c
+1511702117 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\updateinfo.c
 	"UpdateInfo.h"
 
 1511688775 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\listtypecastgetter.c
 	"ListTypeCastGetter.h"
 
-1511699399 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\adt\list_unit.c
-	"listdp.h"
+1511704086 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\adt\list_unit.c
+	"list_unit.h"
 	<stdio.h>
 	<stdlib.h>
 
-1511701762 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\adt\list_building.c
+1511703749 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\adt\list_building.c
 	"list_building.h"
 	<stdio.h>
 	<stdlib.h>
 
-1511701846 c:\users\user\desktop\technical stuff\c\battle-for-olympia\adt\list_unit.h
+1511704343 c:\users\user\desktop\technical stuff\c\battle-for-olympia\adt\list_unit.h
+	"point.h"
 	"boolean.h"
+	<string.h>
 
 1511701522 c:\users\user\desktop\technical stuff\c\battle-for-olympia\adt\list_building.h
 	"point.h"
@@ -170,4 +172,7 @@
 	"ADT/list_building.h"
 	<stdio.h>
 	<stdlib.h>
+
+1511703481 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\init.c
+	"init.h"
 

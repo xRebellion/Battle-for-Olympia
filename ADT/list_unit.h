@@ -6,7 +6,9 @@
 #ifndef list_unit_H
 #define list_unit_H
 
+#include "point.h"
 #include "boolean.h"
+#include <string.h>
 
 #define Nil NULL
 
@@ -50,6 +52,7 @@ typedef struct {
 #define Last(L) ((L).Last)
 
 /* PROTOTYPE */
+boolean IsUnitEQ(TypeUnit U1, TypeUnit U2);
 /****************** TEST LIST KOSONG ******************/
 boolean IsEmptyUnit (ListU L);
 /* Mengirim true jika list kosong. Lihat definisi di atas. */

@@ -148,7 +148,7 @@ void DelVLastBuilding (ListB *L, infotypeB *X)
     {
         *X = Info(P);
         DealokasiBuilding(First(*L));
-        CreateEmpty(L);
+        CreateEmptyBuilding(L);
     }
     else
     {
@@ -246,7 +246,7 @@ void DelFirstBuilding (ListB *L, addressB *P)
         Prev(First(*L)) = Nil;
     } else
     {
-        CreateEmpty(L);
+        CreateEmptyBuilding(L);
     }
 }
 void DelLastBuilding (ListB *L, addressB *P)
@@ -258,7 +258,7 @@ void DelLastBuilding (ListB *L, addressB *P)
     if(Next(First(*L)) == Nil)
     {
         *P = First(*L);
-        CreateEmpty(L);
+        CreateEmptyBuilding(L);
     }
     else
     {

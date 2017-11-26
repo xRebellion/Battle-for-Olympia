@@ -8,29 +8,22 @@
 
 int main()
 {
+    //Player Definition & Initialization
+    Player P1;
+    Player P2;
 
-    //List LVillage;
-    //sebenarnya list of building, tetapi yang dimasukkan hanya building bertipe village saja.
-    //List LUnit;
-    TypeUnit unit;
-    //Building building;
-    int NBrsMap, NKolMap;
-    NBrsMap = NKolMap = 0;
+    //PLAYER 1
+    InitializePlayer(P1,1);
+    //PLAYER 2
+    InitializePlayer(P2,2);
 
+    //Map Definition
     Map M;
 
 
-    unit.ID = 'A';
-    PosX(unit) = 0;
-    PosY(unit) = 0;
+    //Create New Map
+    CreateEmptyMap(&M, &(M.NBrsEff), &(M.NKolEff));
 
-    CreateEmptyMap(&M,&NBrsMap,&NKolMap);
-    printf("NBrsMap : %d, NKolMap : %d", NBrsMap,NKolMap);
-    AddUnitToMap(&M, unit);
-    PrintMap(M, NBrsMap, NKolMap);
-
-    RemoveUnitFromMap(&M, unit);
-    //PrintMap(M,NBrsMap,NKolMap);
 
 
     return 0;

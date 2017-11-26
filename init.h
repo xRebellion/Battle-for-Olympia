@@ -1,5 +1,5 @@
-#ifndef tipebentukan_H
-#define tipebentukan_H
+#ifndef init_H
+#define init_H
 
 #include "ADT/boolean.h"
 
@@ -110,7 +110,7 @@ typedef struct {
 #define Info(P) (P)->info
 #define Next(P) (P)->next
 
-
+void InitializePlayer(Player P, int PlayerID);
 
 
 

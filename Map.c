@@ -3,11 +3,30 @@
 
 void CreateEmptyMap(Map *M,int *NBrs, int *NKol) {
     int i,j;
-    printf("Masukkan Ukuran Map\n");
-    printf("Panjang (Sumbu Y): \n");
-    scanf("%d",NBrs);
-    printf("Lebar (Sumbu X): \n");
+    printf("========================================\n");
+    printf("              Map Creation\n");
+    printf("========================================\n");
+    do
+    {
+        printf("Insert Map Rows (Y Axis): ");
+        scanf("%d",NBrs);
+        if(*NBrs < 8)
+        {
+            printf("Minimum Map Size: 8x8\n");
+            printf("Try Again!\n");
+        }
+    }
+    while(*NBrs < 8);
+    do{
+    printf("Insert Map Columns (X Axis): ");
     scanf("%d",NKol);
+
+        if(*NKol < 8)
+        {
+            printf("Minimum Map Size: 8x8\n");
+            printf("Try Again!\n");
+        }
+    } while (*NKol < 8);
 
     for (i = 0; i < *NBrs; i++) {
         for (j = 0; j < *NKol; j++) {
@@ -16,6 +35,10 @@ void CreateEmptyMap(Map *M,int *NBrs, int *NKol) {
             (*M).Tiles[i][j].Misc = ' ';
         }
     }
+
+    printf("========================================\n");
+    printf("        Map Successfully Created!\n");
+    printf("========================================\n");
 
 }
 
