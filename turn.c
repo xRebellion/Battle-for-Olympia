@@ -6,7 +6,6 @@ void ChangeTurn (Queue *P) {
     infotypeQ temp;
     DelQ(&(*P), &temp);
     AddQ(&(*P), temp);
-    UpdateInfo(&InfoHead(*P));
     RefreshMovementAndAttack(&InfoHead(*P));
 
 }

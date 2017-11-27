@@ -36,6 +36,8 @@ int main()
     //Queue of turns
     Queue Turns;
     CreateEmptyQ(&Turns);
+    AddQ(&Turns, P1);
+    AddQ(&Turns, P2);
 
     //List of Buildings
     ListB LBuildings;
@@ -122,7 +124,9 @@ int main()
     scanf("%c", &buffer);
     do
     {
-        selectedUnit = Info(First(P1.Unit));
+
+            selectedUnit = Info(Last(P1.Unit));
+
         UpdateInfo(&P1);
         PrintInfo(selectedUnit);
 
