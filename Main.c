@@ -42,9 +42,9 @@ int main()
     //Create New Map
     CreateEmptyMap(&M, &(M.NBrsEff), &(M.NKolEff));
     MoveCommand(&M, currUnit, &PrevLoc);
-    //PrintMap(M);
+    PrintMap(M);
 
-    //InitializeMap(&M);
+    //InitializeMap(&M, M.NBrsEff, M.NKolEff);
 
 
     //Begin Playing
