@@ -45,33 +45,33 @@ void Recruit(Map *M, Player *P, int *NBrs, int *NKol)
     WMage.Harga = 10;
 
     //Pengecekan status castle apakah terisi atau tidak
-    if(M.Tiles[0][*NBrs - 2].building.OwnerID!=(*P).PlayerID){
+    if((*M).Tiles[0][*NBrs - 2].building.OwnerID!=(*P).PlayerID){
        c1 = false;
     }
     else{
-        if(M.Tiles[0][*NBrs - 2].unit.ID!=' '){
+        if((*M).Tiles[0][*NBrs - 2].unit.ID!=' '){
             c1=false;
         }
         else{
             c1=true;
         }
     }
-    if(M.Tiles[1][*NBrs - 3].building.OwnerID!=(*P).PlayerID){
+    if((*M).Tiles[1][*NBrs - 3].building.OwnerID!=(*P).PlayerID){
         c2 = false;
     }
     else{
-        if(M.Tiles[1][*NBrs - 3].unit.ID!=' '){
+        if((*M).Tiles[1][*NBrs - 3].unit.ID!=' '){
             c2=false;
         }
         else{
             c2=true;
         }
     }
-    if(M.Tiles[1][*NBrs - 1].building.OwnerID!=(*P).PlayerID){
+    if((*M).Tiles[1][*NBrs - 1].building.OwnerID!=(*P).PlayerID){
         c3 = false;
     }
     else{
-        if(M.Tiles[1][*NBrs - 1].unit.ID!=' '){
+        if((*M).Tiles[1][*NBrs - 1].unit.ID!=' '){
             c3 = false;
         }
         else{
@@ -79,55 +79,55 @@ void Recruit(Map *M, Player *P, int *NBrs, int *NKol)
         }
 
     }
-    if(M.Tiles[2][*NBrs - 2].building.OwnerID!=(*P).PlayerID){
+    if((*M).Tiles[2][*NBrs - 2].building.OwnerID!=(*P).PlayerID){
         c4 = false;
     }
     else{
-        if(M.Tiles[2][*NBrs - 2].unit.ID!=' '){
+        if((*M).Tiles[2][*NBrs - 2].unit.ID!=' '){
             c4 = false;
         }
         else{
             c4 = true;
         }
     }
-    if(M.Tiles[*NKol - 3][1].building.OwnerID!=(*P).PlayerID){
+    if((*M).Tiles[*NKol - 3][1].building.OwnerID!=(*P).PlayerID){
         c5 = false;
     }
     else{
-        if(M.Tiles[*NKol - 3][1].unit.ID!=' '){
+        if((*M).Tiles[*NKol - 3][1].unit.ID!=' '){
             c5 = false;
         }
         else{
             c5 = true;
         }
     }
-    if(M.Tiles[*NKol - 2][0].building.OwnerID!=(*P).PlayerID){
+    if((*M).Tiles[*NKol - 2][0].building.OwnerID!=(*P).PlayerID){
         c6 = false;
     }
     else{
-        if(M.Tiles[*NKol - 2][0].unit.ID!=' '){
+        if((*M).Tiles[*NKol - 2][0].unit.ID!=' '){
             c6 = false;
         }
         else{
             c6 = true;
         }
     }
-    if(M.Tiles[*NKol - 2][2].building.OwnerID!=(*P).PlayerID){
+    if((*M).Tiles[*NKol - 2][2].building.OwnerID!=(*P).PlayerID){
         c7 = false;
     }
     else{
-        if(M.Tiles[*NKol - 2][2].unit.ID!=' '){
+        if((*M).Tiles[*NKol - 2][2].unit.ID!=' '){
             c7 = false;
         }
         else{
             c7 = true;
         }
     }
-    if(M.Tiles[*NKol-1][1].building.OwnerID!=(*P).PlayerID){
+    if((*M).Tiles[*NKol-1][1].building.OwnerID!=(*P).PlayerID){
         c8 = false;
     }
     else{
-        if(M.Tiles[*NKol-1][1].unit.ID!=' '){
+        if((*M).Tiles[*NKol-1][1].unit.ID!=' '){
             c8 = false;
         }
         else{
@@ -145,19 +145,19 @@ void Recruit(Map *M, Player *P, int *NBrs, int *NKol)
 
         kosong = false;
         while(!kosong){
-            if (M.Tiles[X][Y].building.ID!='C'){//koordinat yang dituju bukan castle
+            if ((*M).Tiles[X][Y].building.ID!='C'){//koordinat yang dituju bukan castle
                     printf("This is not a castle, please enter castle coordinate\n");
                     printf("Please enter castle coordinate : ");
                     scanf("%d %d",&X,&Y);
             }
             else{//koordinat yang dituju castle
-                if (M.Tiles[X][Y].building.OwnerID != (*P).PlayerID){//bukan castle milik player tersebut
-                    printf("This is not your castle!\nPlease enter your castle coordinate:");
+                if ((*M).Tiles[Y][X].building.OwnerID != (*P).PlayerID){//bukan castle milik player tersebut
+                    printf("This is not your castle!\nPlease enter your castle coordinate: ");
 
                     scanf("%d %d",&X,&Y);
                 }
                 else {//castle milik player tersebut
-                    if (M.Tiles[X][Y].unit.ID!=' ') {//castle terisi
+                    if ((*M).Tiles[X][Y].unit.ID!=' ') {//castle terisi
                         printf("Castle is occupied\n");
                         printf("Please enter another castle coordinate : ");
                         scanf("%d %d",&X,&Y);

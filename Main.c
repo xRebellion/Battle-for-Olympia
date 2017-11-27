@@ -124,9 +124,7 @@ int main()
     scanf("%c", &buffer);
     do
     {
-
-            selectedUnit = Info(Last(P1.Unit));
-
+        selectedUnit = Info(Last(P2.Unit));
         UpdateInfo(&P1);
         PrintInfo(selectedUnit);
 
@@ -176,7 +174,7 @@ int main()
                 } else
                 if(IsStringEQ(commandArr,recruit))
                 {
-                    Recruit(M, &P1, &M.NBrsEff, &M.NKolEff);
+                    Recruit(&M, &P1, &M.NBrsEff, &M.NKolEff);
                 } else
                 if(IsStringEQ(commandArr,attack))
                 {
@@ -194,6 +192,7 @@ int main()
                 {
                     ChangeTurn(&Turns);
                     P1 = InfoHead(Turns);
+                    P2 = InfoTail(Turns);
                 } else
                 if(IsStringEQ(commandArr, exit))
                 {
