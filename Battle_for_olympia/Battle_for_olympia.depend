@@ -69,20 +69,20 @@
 1511085738 c:\users\user\desktop\technical stuff\c\battle-for-olympia\adt\point.h
 	"boolean.h"
 
-1511699425 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\adt\queue.c
+1511717648 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\adt\queue.c
 	"queue.h"
 	<stdlib.h>
 
-1506950794 c:\users\user\desktop\technical stuff\c\battle-for-olympia\adt\queue.h
+1511717648 c:\users\user\desktop\technical stuff\c\battle-for-olympia\adt\queue.h
 	"boolean.h"
 
-1511699439 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\adt\stackt.c
+1511716207 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\adt\stackt.c
 	"stackt.h"
 
-1507382260 c:\users\user\desktop\technical stuff\c\battle-for-olympia\adt\stackt.h
+1511716168 c:\users\user\desktop\technical stuff\c\battle-for-olympia\adt\stackt.h
 	"boolean.h"
 
-1511703590 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\main.c
+1511742404 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\main.c
 	"Movement.h"
 	"Map.h"
 	"rekruit.h"
@@ -90,19 +90,21 @@
 	"init.h"
 	"ListTypeCast.h"
 
-1511365050 c:\users\user\desktop\technical stuff\c\battle-for-olympia\movement.h
+1511716300 c:\users\user\desktop\technical stuff\c\battle-for-olympia\movement.h
 	"init.h"
 	"Map.h"
 
-1511703499 c:\users\user\desktop\technical stuff\c\battle-for-olympia\init.h
+1511717504 c:\users\user\desktop\technical stuff\c\battle-for-olympia\init.h
 	"ADT/boolean.h"
 	"ADT/point.h"
 	"ADT/list_unit.h"
 	"ADT/list_building.h"
 	<stdio.h>
 	<stdlib.h>
+	"ADT/stackt_undo.h"
+	"ADT/queue.h"
 
-1511693927 c:\users\user\desktop\technical stuff\c\battle-for-olympia\map.h
+1511742310 c:\users\user\desktop\technical stuff\c\battle-for-olympia\map.h
 	<stdio.h>
 	<stdlib.h>
 	"init.h"
@@ -112,18 +114,17 @@
 	<stdio.h>
 	<stdlib.h>
 
-1511519819 c:\users\user\desktop\technical stuff\c\battle-for-olympia\updateinfo.h
+1511717737 c:\users\user\desktop\technical stuff\c\battle-for-olympia\updateinfo.h
 	"ADT/boolean.h"
 	"ADT/point.h"
-	"ADT/listdp.h"
 	"init.h"
 	"ListTypeCast.h"
 	"ListTypeCastGetter.h"
 
-1511703033 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\map.c
+1511742298 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\map.c
 	"Map.h"
 
-1511698922 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\movement.c
+1511742510 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\movement.c
 	"Movement.h"
 
 1511514950 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\rekruit.c
@@ -175,4 +176,11 @@
 
 1511703481 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\init.c
 	"init.h"
+
+1511717689 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\adt\stackt_undo.c
+	"stackt_undo.h"
+
+1511717681 c:\users\user\desktop\technical stuff\c\battle-for-olympia\adt\stackt_undo.h
+	"point.h"
+	"boolean.h"
 

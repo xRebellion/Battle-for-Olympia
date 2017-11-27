@@ -1,11 +1,12 @@
 #include "queue.h"
 #include <stdlib.h>
 
+
 /* ********* Prototype ********* */
 boolean IsQEmpty (Queue Q)
 /* Mengirim true jika Q kosong: lihat definisi di atas */
 {
-    return (Head(Q) == Nil && Tail(Q) == Nil);
+    return (Head(Q) == NILQ && Tail(Q) == NILQ);
 }
 boolean IsQFull (Queue Q)
 /* Mengirim true jika tabel penampung elemen Q sudah penuh */
@@ -44,8 +45,8 @@ void CreateEmptyQ (Queue * Q, int Max)
     if((*Q).T != NULL)
     {
         MaxEl(*Q) = Max;
-        Head(*Q) = Nil;
-        Tail(*Q) = Nil;
+        Head(*Q) = NILQ;
+        Tail(*Q) = NILQ;
     } else
     {
         MaxEl(*Q) = 0;
@@ -91,10 +92,10 @@ void Del (Queue * Q, infotype * X)
         Q mungkin kosong */
 {
     *X = InfoHead(*Q);
-    InfoHead(*Q) = Nil;
+    InfoHead(*Q) = NILQ;
     if(Head(*Q) == Tail(*Q))
     {
-        Head(*Q) = Tail(*Q) = Nil;
+        Head(*Q) = Tail(*Q) = NILQ;
     } else
     {
         if(Head(*Q) == MaxEl(*Q))

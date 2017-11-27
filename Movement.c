@@ -57,7 +57,20 @@ char determineDirection(TypeUnit unit, int x, int y)
 
 
 boolean isMovePossible (Map * M, TypeUnit unit, char direction, int x, int y)
-{/*
+{
+    int i;
+    int maxmove = unit.MaxMove;
+    POINT location = unit.Location;
+    if (direction == 'n') {
+        return ((x == PosX(unit)) && (y<=(*M).NKolEff) && (y>=0) && (PosY(unit)-y <= unit.MaxMove));
+    } else if (direction == 's') {
+        return ((x == PosX(unit)) && (y<=(*M).NKolEff) && (y>=0) && (y-PosY(unit) <= unit.MaxMove));
+    } else if (direction == 'e') {
+        return ((y == PosY(unit)) && (x<=(*M).NBrsEff) && (x>=0) && (x-PosX(unit) <= unit.MaxMove));
+    } else if (direction == 'w') {
+        return ((y == PosY(unit)) && (x<=(*M).NBrsEff) && (x>=0) && (PosX(unit)-x <= unit.MaxMove));
+    }
+/*
     int i;
     boolean blocked = false;
     int * step = &unit.MaxMove;
@@ -121,11 +134,10 @@ boolean isMovePossible (Map * M, TypeUnit unit, char direction, int x, int y)
 
 boolean Move(Map * M, TypeUnit * unit, int x, int y)
 {
-    char direction = 'x'; //Initial State: X, arti: not possible
-    int * step; //pointer to maxmove
-    boolean movePossible = true;
+    char direction = determineDirection(*unit,x,y); //Initial State: X, arti: not possible
+    boolean movePossible = isMovePossible(M, *unit, direction, x, y);
     //step = &(unit.MaxMove);
-    //movePossible = isMovePossible(M, *unit, direction);
+    //movePossible = isMovePossible(M, *unit, direction, x, y);
     if(!movePossible)
     {
         return false;
@@ -140,20 +152,70 @@ boolean Move(Map * M, TypeUnit * unit, int x, int y)
 
 }
 
-void InsertDummyUnit(Map * M, TypeUnit currUnit)
+void InsertDummyMap(Map * M, Map * MDummy, TypeUnit currUnit)
 {
+    *MDummy = *M;
 
+    TypeUnit Dummy[100];
+    int count=0,i;
+    int n,s,e,w;
+
+    n=0;s=0;e=0;w=0;
+    //n
+    for (i=1; i<=currUnit.MaxMove; i++) {
+        if (isMovePossible(M, currUnit, n, PosX(currUnit)+i, PosY(currUnit))) {
+            count++;
+            Dummy[count] = currUnit;
+            Dummy[count].Location.X = PosX(currUnit)+i;
+            Dummy[count].Location.Y = PosY(currUnit);
+        }
+    }
+    //s
+    for (i=1; i<=currUnit.MaxMove; i++) {
+        if (isMovePossible(M, currUnit, s, PosX(currUnit)-i, PosY(currUnit))) {
+            count++;
+            Dummy[count] = currUnit;
+            Dummy[count].Location.X = PosX(currUnit)-i;
+            Dummy[count].Location.Y = PosY(currUnit);
+        }
+    }
+    //e
+    for (i=1; i<=currUnit.MaxMove; i++) {
+        if (isMovePossible(M, currUnit, e, PosX(currUnit), PosY(currUnit)+i)) {
+            count++;
+            Dummy[count] = currUnit;
+            Dummy[count].Location.X = PosX(currUnit);
+            Dummy[count].Location.Y = PosY(currUnit)+i;
+        }
+    }
+    //w
+    for (i=1; i<=currUnit.MaxMove; i++) {
+        if (isMovePossible(M, currUnit, w, PosX(currUnit), PosY(currUnit)-i)) {
+            count++;
+            Dummy[count] = currUnit;
+            Dummy[count].Location.X = PosX(currUnit);
+            Dummy[count].Location.Y = PosY(currUnit)-i;
+        }
+    }
+
+    for (i=1; i<=count; i++) {
+        //AddUnitToMap(MDummy, Dummy[i]);
+    }
+    //PrintMap(*MDummy,(*MDummy).NBrsEff,(*MDummy).NKolEff);
 }
 
-void MoveCommand(Map * M, TypeUnit currUnit, int * PrevX, int * PrevY)
+void MoveCommand(Map * M, TypeUnit currUnit, POINT * PrevLoc)
 {
+
+    Map MDummy;
     char direction;
     int x, y;
-    *PrevX = PosX(currUnit);
-    *PrevY = PosY(currUnit);
 
-    //InsertDummyUnit(M, currUnit);
- //   PrintMap(*M,(*M).NBrsEff,(*M).NKolEff);
+    (*PrevLoc).X = PosX(currUnit);
+    (*PrevLoc).Y = PosY(currUnit);
+    //InsertDummyMap(M, &MDummy, currUnit);
+    //printf("%d, %d\n", (*M).NBrsEff,(*M).NKolEff);
+    //PrintMap(*M,(*M).NBrsEff,(*M).NKolEff);
     //RemoveDummyUnit(M, currUnit);
     printf("Where do you want to move? ( Input: x y )\n");
     scanf ("%d %d", &x, &y);
@@ -165,6 +227,8 @@ void MoveCommand(Map * M, TypeUnit currUnit, int * PrevX, int * PrevY)
     } else
     {
         printf("You have successfully moved to (%d,%d)\n", x, y);
+        PosX(currUnit) = x;
+        PosY(currUnit) = y;
     }
 
 }

@@ -17,6 +17,10 @@ int main()
     //PLAYER 2
     InitializePlayer(P2,2);
 
+    //Previous Moves
+    POINT PrevLoc;
+    Stack MoveHistory;
+
     //Map Definition
     Map M;
 
@@ -28,8 +32,17 @@ int main()
     ListB LBuildings;
 
 
+    //Testing Environment
+    TypeUnit currUnit;
+
+    currUnit.ID = 'A';
+    PosX(currUnit) = 3;
+    PosY(currUnit) = 3;
+
     //Create New Map
     CreateEmptyMap(&M, &(M.NBrsEff), &(M.NKolEff));
+    MoveCommand(&M, currUnit, &PrevLoc);
+    //PrintMap(M);
 
     //InitializeMap(&M);
 

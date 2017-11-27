@@ -6,7 +6,7 @@
 
 void CreateEmptyMap(Map *M,int *NBrs, int *NKol);
 
-void PrintMap(Map M,int NBrs, int NKol);
+void PrintMap(Map M);
 
 void AddUnitToMap(Map * M, TypeUnit Unit);
 

@@ -16,6 +16,6 @@ boolean isMovePossible (Map * M, TypeUnit unit, char direction, int x, int y);
 
 boolean Move(Map * M, TypeUnit * unit, int x, int y);
 
-void InsertDummyUnit(Map * M, TypeUnit currUnit);
+void InsertDummyMap(Map * M, Map * MDummy, TypeUnit currUnit);
 
-void MoveCommand(Map * M, TypeUnit currUnit, int * PrevX, int * PrevY);
+void MoveCommand(Map * M, TypeUnit currUnit, POINT * PrevLoc);

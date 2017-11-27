@@ -8,6 +8,8 @@
 #include "ADT/list_building.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include "ADT/stackt_undo.h"
+#include "ADT/queue.h"
 
 
 /*
@@ -30,22 +32,7 @@ typedef struct {
     //aing gatau warna pake tipe apa lul
 } Player;
 
-//untuk tipe infotype dan address disesuaikan nanti queue mau dipake di bagian mana
-typedef int infotypeQ;
-typedef int idx;   /* indeks tabel */
-/* Contoh deklarasi variabel bertype Queue : */
-/* Versi I : tabel dinamik, Head dan Tail eksplisit, ukuran disimpan */
-typedef struct { infotypeQ * T;   /* tabel penyimpan elemen */
-                 idx HEAD;  /* alamat penghapusan */
-                 idx TAIL;  /* alamat penambahan */
-                 int MaxEl;     /* Max elemen queue */
-               } Queue;
-/* Jika Q adalah Queue, maka akses elemen : */
-#define Head(Q) (Q).HEAD
-#define Tail(Q) (Q).TAIL
-#define InfoHead(Q) (Q).T[(Q).HEAD]
-#define InfoTail(Q) (Q).T[(Q).TAIL]
-#define MaxEl(Q) (Q).MaxEl
+
 
 
 //untuk mesin kata
