@@ -259,7 +259,7 @@ void MoveCommand(Stack *S, Player P1, Player P2, Map * M, TypeUnit *currUnit, PO
         PosY(*currUnit) = y;
         (*currUnit).Move -= mx;
         AddUnitToMap(M, *currUnit);
-        if ((*M).Tiles[y][x].building.Type = 'V') {
+        if ((*M).Tiles[y][x].building.Type == 'V') {
             (*M).Tiles[y][x].building.OwnerID = P1.PlayerID;
             InsVLastBuilding(&(P1).Villages,(*M).Tiles[y][x].building);
         }

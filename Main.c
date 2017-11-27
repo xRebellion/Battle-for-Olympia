@@ -44,17 +44,17 @@ int main()
     char command;
     Kata commandArr;
 
-    Kata Move;
-    Kata Undo;
-    Kata Change_Unit;
-    Kata Recruit;
-    Kata Attack;
-    Kata Map;
-    Kata Info;
-    Kata End_Turn;
-    Kata Exit;
+    Kata move;
+    Kata undo;
+    Kata change_Unit;
+    Kata recruit;
+    Kata attack;
+    Kata map;
+    Kata info;
+    Kata end_Turn;
+    Kata exit;
 
-    InitializeKata(&Move,&Undo,&Change_Unit,&Recruit,&Attack,&Map,&Info,&End_Turn,&Exit);
+    InitializeKata(&move,&undo,&change_Unit,&recruit,&attack,&map,&info,&end_Turn,&exit);
 
     //Begin Game
 
@@ -68,13 +68,14 @@ int main()
     //Testing Environment
 
     TypeUnit selectedUnit;
+    addressU addrUnit;
 
     TypeUnit currUnit;
 
     currUnit.ID = 'A';
     PosX(currUnit) = 4;
     PosY(currUnit) = 3;
-    currUnit.MaxMove = 2;
+    currUnit.Move = 2;
 
     AddUnitToMap(&M, currUnit);
 
@@ -83,7 +84,7 @@ int main()
     currUnit2.ID = 'B';
     PosX(currUnit2) = 5;
     PosY(currUnit2) = 3;
-    currUnit2.MaxMove = 2;
+    currUnit2.Move = 2;
 
     AddUnitToMap(&M, currUnit2);
 
@@ -114,7 +115,9 @@ int main()
     // P2 = Other player
     do
     {
+        selectedUnit = Info(First(P1.Unit));
         UpdateInfo(&P1);
+        PrintInfo(selectedUnit);
         printf("==============================================================\n");
         printf("Input Command: ");
             //READ COMMAND
@@ -125,7 +128,6 @@ int main()
                 do
                 {
                     scanf("%c", &command);
-                    printf("%c", command);
                     if(command != '\n')
                     {
                         commandArr.Length++;
@@ -136,21 +138,20 @@ int main()
                 } while (command != '\n');
 
                 /////
-                printf("%d\n",commandArr.Length);
                 //printf("move = %d\n4 exit = %d\n undo = %d\n",IsStringEQ(command,"move"), IsStringEQ(command,"exit"),IsStringEQ(command,"undo"));
-                if(IsStringEQ(commandArr, Move))
+                if(IsStringEQ(commandArr, move))
                 {
-                    MoveCommand(&MoveHistory,P1,P2,&M,&currUnit,&PrevLoc);
+                    MoveCommand(&MoveHistory,P1,P2,&M,&selectedUnit,&PrevLoc);
                 } else
-                if(IsStringEQ(commandArr, Undo))
+                if(IsStringEQ(commandArr, undo))
                 {
-                    //UNDO
+                    Undo(&MoveHistory, &P1, &M, &selectedUnit);
                 } else
-                if(IsStringEQ(commandArr, Change_Unit))
+                if(IsStringEQ(commandArr, change_Unit))
                 {
 
                 } else
-                if(IsStringEQ(commandArr, Exit))
+                if(IsStringEQ(commandArr, exit))
                 {
                     printf("Exiting...\n");
                 }
@@ -163,7 +164,7 @@ int main()
 
 
     }
-    while(!IsStringEQ(commandArr, Exit));
+    while(!IsStringEQ(commandArr, exit));
 
 
 
@@ -201,7 +202,6 @@ boolean IsStringEQ(Kata S1, Kata S2)
             {
                 EQ = false;
             }
-            printf("%c | %c\n",S1.TabKata[i], S2.TabKata[i]);
         }
 
     }

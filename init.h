@@ -8,7 +8,7 @@
 #include "ADT/list_building.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include "ADT/stackt_undo.h"
+#include "ADT/stackt.h"
 #include "ADT/queue.h"
 #include "ADT/mesinkata.h"
 
@@ -76,7 +76,8 @@ typedef struct {
 #define KolMin 0
 #define KolMax 20
 
-typedef int indeks; /* indeks baris, kolom */
+//typedef int indeks; /* indeks baris, kolom */
+/*
 typedef struct {
     Building building;
     TypeUnit unit;
@@ -85,9 +86,10 @@ typedef struct {
 
 typedef struct {
 	ElType Tiles[BrsMax][KolMax];
-    int NBrsEff; /* banyaknya/ukuran baris yg terdefinisi */
-	int NKolEff; /* banyaknya/ukuran kolom yg terdefinisi */
+    int NBrsEff; // banyaknya/ukuran baris yg terdefinisi
+    int NKolEff; // banyaknya/ukuran kolom yg terdefinisi
 } Map;
+*/
 
 
 
