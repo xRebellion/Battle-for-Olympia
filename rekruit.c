@@ -45,33 +45,57 @@ void Recruit(Map *M, Player *P, int *NBrs, int *NKol)
     WMage.Harga = 10;
 
     //Pengecekan status castle apakah terisi atau tidak
+<<<<<<< HEAD
     if((*M).Tiles[0][*NBrs - 2].building.OwnerID!=(*P).PlayerID){
        c1 = false;
     }
     else{
         if((*M).Tiles[0][*NBrs - 2].unit.ID!=' '){
+=======
+    if(M.Tiles[*NBrs - 2][0].building.OwnerID!=(*P).PlayerID){
+       c1 = false;
+    }
+    else{
+        if(M.Tiles[*NBrs - 2][0].unit.ID!=' '){
+>>>>>>> 0510c3408a05807fc73792367492d77a9fdbf6f8
             c1=false;
         }
         else{
             c1=true;
         }
     }
+<<<<<<< HEAD
     if((*M).Tiles[1][*NBrs - 3].building.OwnerID!=(*P).PlayerID){
         c2 = false;
     }
     else{
         if((*M).Tiles[1][*NBrs - 3].unit.ID!=' '){
+=======
+    if(M.Tiles[*NBrs - 3][1].building.OwnerID!=(*P).PlayerID){
+        c2 = false;
+    }
+    else{
+        if(M.Tiles[*NBrs - 3][1].unit.ID!=' '){
+>>>>>>> 0510c3408a05807fc73792367492d77a9fdbf6f8
             c2=false;
         }
         else{
             c2=true;
         }
     }
+<<<<<<< HEAD
     if((*M).Tiles[1][*NBrs - 1].building.OwnerID!=(*P).PlayerID){
         c3 = false;
     }
     else{
         if((*M).Tiles[1][*NBrs - 1].unit.ID!=' '){
+=======
+    if(M.Tiles[*NBrs - 1][1].building.OwnerID!=(*P).PlayerID){
+        c3 = false;
+    }
+    else{
+        if(M.Tiles[*NBrs - 1][1].unit.ID!=' '){
+>>>>>>> 0510c3408a05807fc73792367492d77a9fdbf6f8
             c3 = false;
         }
         else{
@@ -79,55 +103,95 @@ void Recruit(Map *M, Player *P, int *NBrs, int *NKol)
         }
 
     }
+<<<<<<< HEAD
     if((*M).Tiles[2][*NBrs - 2].building.OwnerID!=(*P).PlayerID){
         c4 = false;
     }
     else{
         if((*M).Tiles[2][*NBrs - 2].unit.ID!=' '){
+=======
+    if(M.Tiles[*NBrs - 2][2].building.OwnerID!=(*P).PlayerID){
+        c4 = false;
+    }
+    else{
+        if(M.Tiles[*NBrs - 2][2].unit.ID!=' '){
+>>>>>>> 0510c3408a05807fc73792367492d77a9fdbf6f8
             c4 = false;
         }
         else{
             c4 = true;
         }
     }
+<<<<<<< HEAD
     if((*M).Tiles[*NKol - 3][1].building.OwnerID!=(*P).PlayerID){
         c5 = false;
     }
     else{
         if((*M).Tiles[*NKol - 3][1].unit.ID!=' '){
+=======
+    if(M.Tiles[1][*NKol - 3].building.OwnerID!=(*P).PlayerID){
+        c5 = false;
+    }
+    else{
+        if(M.Tiles[1][*NKol - 3].unit.ID!=' '){
+>>>>>>> 0510c3408a05807fc73792367492d77a9fdbf6f8
             c5 = false;
         }
         else{
             c5 = true;
         }
     }
+<<<<<<< HEAD
     if((*M).Tiles[*NKol - 2][0].building.OwnerID!=(*P).PlayerID){
         c6 = false;
     }
     else{
         if((*M).Tiles[*NKol - 2][0].unit.ID!=' '){
+=======
+    if(M.Tiles[0][*NKol - 2].building.OwnerID!=(*P).PlayerID){
+        c6 = false;
+    }
+    else{
+        if(M.Tiles[0][*NKol - 2].unit.ID!=' '){
+>>>>>>> 0510c3408a05807fc73792367492d77a9fdbf6f8
             c6 = false;
         }
         else{
             c6 = true;
         }
     }
+<<<<<<< HEAD
     if((*M).Tiles[*NKol - 2][2].building.OwnerID!=(*P).PlayerID){
         c7 = false;
     }
     else{
         if((*M).Tiles[*NKol - 2][2].unit.ID!=' '){
+=======
+    if(M.Tiles[2][*NKol - 2].building.OwnerID!=(*P).PlayerID){
+        c7 = false;
+    }
+    else{
+        if(M.Tiles[2][*NKol - 2].unit.ID!=' '){
+>>>>>>> 0510c3408a05807fc73792367492d77a9fdbf6f8
             c7 = false;
         }
         else{
             c7 = true;
         }
     }
+<<<<<<< HEAD
     if((*M).Tiles[*NKol-1][1].building.OwnerID!=(*P).PlayerID){
         c8 = false;
     }
     else{
         if((*M).Tiles[*NKol-1][1].unit.ID!=' '){
+=======
+    if(M.Tiles[1][*NKol-1].building.OwnerID!=(*P).PlayerID){
+        c8 = false;
+    }
+    else{
+        if(M.Tiles[1][*NKol-1].unit.ID!=' '){
+>>>>>>> 0510c3408a05807fc73792367492d77a9fdbf6f8
             c8 = false;
         }
         else{
@@ -145,19 +209,32 @@ void Recruit(Map *M, Player *P, int *NBrs, int *NKol)
 
         kosong = false;
         while(!kosong){
+<<<<<<< HEAD
             if ((*M).Tiles[X][Y].building.ID!='C'){//koordinat yang dituju bukan castle
+=======
+            if (M.Tiles[Y][X].building.ID!='C'){//koordinat yang dituju bukan castle
+>>>>>>> 0510c3408a05807fc73792367492d77a9fdbf6f8
                     printf("This is not a castle, please enter castle coordinate\n");
                     printf("Please enter castle coordinate : ");
                     scanf("%d %d",&X,&Y);
             }
             else{//koordinat yang dituju castle
+<<<<<<< HEAD
                 if ((*M).Tiles[Y][X].building.OwnerID != (*P).PlayerID){//bukan castle milik player tersebut
                     printf("This is not your castle!\nPlease enter your castle coordinate: ");
+=======
+                if (M.Tiles[Y][X].building.OwnerID != (*P).PlayerID){//bukan castle milik player tersebut
+                    printf("This is not your castle!\nPlease enter your castle coordinate:");
+>>>>>>> 0510c3408a05807fc73792367492d77a9fdbf6f8
 
                     scanf("%d %d",&X,&Y);
                 }
                 else {//castle milik player tersebut
+<<<<<<< HEAD
                     if ((*M).Tiles[X][Y].unit.ID!=' ') {//castle terisi
+=======
+                    if (M.Tiles[Y][X].unit.ID!=' ') {//castle terisi
+>>>>>>> 0510c3408a05807fc73792367492d77a9fdbf6f8
                         printf("Castle is occupied\n");
                         printf("Please enter another castle coordinate : ");
                         scanf("%d %d",&X,&Y);
@@ -252,5 +329,6 @@ void InitializeKing(Map * M, Player *P1, Player *P2)
     InsVFirstUnit(&(*P2).Unit, King);
     AddUnitToMap(M, King);
 }
+
 
 
