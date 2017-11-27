@@ -5,5 +5,5 @@
 void Recruit(Map M, Player *P,int *NBrs, int *NKol);
 //Fungsi recruit untuk melakukan perekruitan unit
 
-void InitializeKing(Player *P1, Player *P2, int *NBrs, int *NKol);
+void InitializeKing(Map * M, Player *P1, Player *P2);
 //Fungsi untuk mengcreate king

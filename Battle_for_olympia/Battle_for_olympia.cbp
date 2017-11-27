@@ -39,10 +39,14 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="../ADT/jam.h" />
-		<Unit filename="../ADT/listdp.c">
+		<Unit filename="../ADT/list_building.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="../ADT/listdp.h" />
+		<Unit filename="../ADT/list_building.h" />
+		<Unit filename="../ADT/list_unit.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../ADT/list_unit.h" />
 		<Unit filename="../ADT/matriks.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -63,18 +67,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="../ADT/queue.h" />
-		<Unit filename="../ADT/stackt.c">
+		<Unit filename="../ADT/stackt_undo.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="../ADT/stackt.h" />
-		<Unit filename="../ListTypeCast.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="../ListTypeCast.h" />
-		<Unit filename="../ListTypeCastGetter.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="../ListTypeCastGetter.h" />
+		<Unit filename="../ADT/stackt_undo.h" />
 		<Unit filename="../Main.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -82,19 +78,31 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="../Map.h" />
+		<Unit filename="../MapInitialize.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../MapInitialize.h" />
 		<Unit filename="../Movement.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="../Movement.h" />
 		<Unit filename="../UpdateInfo.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="../UpdateInfo.h" />
 		<Unit filename="../boolean.h" />
+		<Unit filename="../init.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="../init.h" />
 		<Unit filename="../rekruit.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="../rekruit.h" />
+		<Unit filename="../turn.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../turn.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />

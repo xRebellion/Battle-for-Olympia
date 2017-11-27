@@ -222,7 +222,7 @@ void Recruit(Map M, Player *P, int *NBrs, int *NKol)
     }
 }
 
-void InitializeKing(Player *P1, Player *P2, int *NBrs, int *NKol)
+void InitializeKing(Map * M, Player *P1, Player *P2)
 {
     //Kamus lokal
     TypeUnit King;
@@ -240,12 +240,13 @@ void InitializeKing(Player *P1, Player *P2, int *NBrs, int *NKol)
     King.Harga = 0;
 
     King.Location.X = 1;
-    King.Location.Y = *NBrs - 1;
+    King.Location.Y = (*M).NBrsEff - 1;
     InsVFirstUnit(&(*P1).Unit, King);
+    AddUnitToMap(M, King);
 
-    King.Location.X = *NKol - 1;
+    King.Location.X = (*M).NKolEff - 1;
     King.Location.Y = 1;
     InsVFirstUnit(&(*P2).Unit, King);
-
+    AddUnitToMap(M, King);
 }
 

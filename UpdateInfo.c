@@ -59,6 +59,7 @@ void PrintUnit (Player P)
             else {
                 printf("Not Available\n");
             }
+            A = Next(A);
         }
     }
 }
