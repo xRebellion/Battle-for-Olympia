@@ -77,7 +77,7 @@ boolean isMovePossible (Player P1, Player P2, Map M, TypeUnit unit, char directi
     if (direction == 'n') {
         if ((x == PosX(unit)) && (y<=(M).NKolEff) && (y>=0) && (PosY(unit)-y <= unit.MaxMove)) {
             i = 1;
-            while ((i<=y) && (!cek)) {
+            while ((i<=(PosY(unit)-y)) && (!cek)) {
                 cek = isThereEnemy(P1,P2,unit,x,y-i);
                 i++;
             }
@@ -86,7 +86,7 @@ boolean isMovePossible (Player P1, Player P2, Map M, TypeUnit unit, char directi
     } else if (direction == 's') {
         if ((x == PosX(unit)) && (y<=(M).NKolEff) && (y>=0) && (y-PosY(unit) <= unit.MaxMove)) {
             i = 1;
-            while ((i<=y) && (!cek)) {
+            while ((i<=(y-PosY(unit)) && (!cek)) {
                 cek = isThereEnemy(P1,P2,unit,x,y+i);
                 i++;
             }
@@ -95,7 +95,7 @@ boolean isMovePossible (Player P1, Player P2, Map M, TypeUnit unit, char directi
     } else if (direction == 'e') {
         if ((y == PosY(unit)) && (x<=(M).NBrsEff) && (x>=0) && (x-PosX(unit) <= unit.MaxMove)) {
             i = 1;
-            while ((i<=y) && (!cek)) {
+            while ((i<=(x-PosX(unit)) && (!cek)) {
                 cek = isThereEnemy(P1,P2,unit,x+i,y);
                 i++;
             }
@@ -104,7 +104,7 @@ boolean isMovePossible (Player P1, Player P2, Map M, TypeUnit unit, char directi
     } else if (direction == 'w') {
         if ((y == PosY(unit)) && (x<=(M).NBrsEff) && (x>=0) && (PosX(unit)-x <= unit.MaxMove)) {
             i = 1;
-            while ((i<=y) && (!cek)) {
+            while ((i<=(PosX(unit)-x) && (!cek)) {
                 cek = isThereEnemy(P1,P2,unit,x-i,y);
                 i++;
             }
