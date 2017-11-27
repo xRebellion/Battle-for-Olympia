@@ -8,8 +8,11 @@
 #include "ADT/list_building.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <strings.h>
 #include "ADT/stackt_undo.h"
 #include "ADT/queue.h"
+
+
 
 
 /*
@@ -19,7 +22,7 @@ typedef struct {
 } Point; //Ini udah ada di adt point.
 */
 
-
+/*
 typedef struct {
     //income, upkeep, gold, warna, dst
     int PlayerID;
@@ -32,7 +35,7 @@ typedef struct {
     //aing gatau warna pake tipe apa lul
 } Player;
 
-
+*/
 
 
 //untuk mesin kata

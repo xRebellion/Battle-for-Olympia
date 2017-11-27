@@ -69,12 +69,16 @@
 1511085738 c:\users\user\desktop\technical stuff\c\battle-for-olympia\adt\point.h
 	"boolean.h"
 
-1511717648 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\adt\queue.c
+1511783924 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\adt\queue.c
 	"queue.h"
+	<stdio.h>
 	<stdlib.h>
 
-1511717648 c:\users\user\desktop\technical stuff\c\battle-for-olympia\adt\queue.h
+1511783924 c:\users\user\desktop\technical stuff\c\battle-for-olympia\adt\queue.h
 	"boolean.h"
+	<stdlib.h>
+	"list_unit.h"
+	"list_building.h"
 
 1511716207 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\adt\stackt.c
 	"stackt.h"
@@ -91,26 +95,25 @@
 	"ListTypeCast.h"
 	"MapInitialize.h"
 
-1511754092 c:\users\user\desktop\technical stuff\c\battle-for-olympia\movement.h
+1511783924 c:\users\user\desktop\technical stuff\c\battle-for-olympia\movement.h
 	"init.h"
 	"Map.h"
 
-1511757023 c:\users\user\desktop\technical stuff\c\battle-for-olympia\init.h
+1511784368 c:\users\user\desktop\technical stuff\c\battle-for-olympia\init.h
 	"ADT/boolean.h"
 	"ADT/point.h"
 	"ADT/list_unit.h"
 	"ADT/list_building.h"
 	<stdio.h>
 	<stdlib.h>
+	<strings.h>
 	"ADT/stackt_undo.h"
 	"ADT/queue.h"
 
-1511742310 c:\users\user\desktop\technical stuff\c\battle-for-olympia\map.h
-	<stdio.h>
-	<stdlib.h>
+1511784267 c:\users\user\desktop\technical stuff\c\battle-for-olympia\map.h
 	"init.h"
 
-1511759682 c:\users\user\desktop\technical stuff\c\battle-for-olympia\rekruit.h
+1511783924 c:\users\user\desktop\technical stuff\c\battle-for-olympia\rekruit.h
 	"init.h"
 	<stdio.h>
 	<stdlib.h>
@@ -177,7 +180,7 @@
 	<stdio.h>
 	<stdlib.h>
 
-1511757050 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\init.c
+1511783868 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\init.c
 	"init.h"
 
 1511717689 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\adt\stackt_undo.c

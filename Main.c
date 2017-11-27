@@ -1,13 +1,12 @@
-#include "Movement.h"
+
+#include "init.h"
 #include "Map.h"
+#include "Movement.h"
 #include "rekruit.h"
 #include "UpdateInfo.h"
-#include "init.h"
-#include "ListTypeCast.h"
 #include "MapInitialize.h"
-#include <strings.h>
-
 boolean IsStringEQ(char * S1, char * S2);
+
 int main()
 {
     //Player Definition & Initialization
@@ -28,7 +27,7 @@ int main()
 
     //Queue of turns
     Queue Turns;
-    CreateEmptyQ(&Turns,10);
+    CreateEmptyQ(&Turns);
 
     //List of Buildings
     ListB LBuildings;
