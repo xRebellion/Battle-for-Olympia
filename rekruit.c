@@ -170,9 +170,9 @@ void Recruit(Map M, Player *P, int *NBrs, int *NKol)
 
         }
         printf("=== List of Recruits ===\n");
-        printf("1. Archer | Health 20 | ATK 4 | 5G\n");
-        printf("2. Swordsman | Health 20 | ATK 3 | 4G\n");
-        printf("3. White Mage | Health 15 | ATK 2 | 10G\n");
+        printf("1. Archer | Health 20 | ATK 4 | Upkeep 3G | Harga 5G\n");
+        printf("2. Swordsman | Health 20 | ATK 3 | Upkeep 2G | Harga 4G\n");
+        printf("3. White Mage | Health 15 | ATK 2 | Upkeep 5G | Harga 10G\n");
         printf("Enter no. of unit you want to recruit:");
         scanf("%d",&pilunit);
         loop = true;
@@ -229,7 +229,7 @@ void InitializeKing(Player *P1, Player *P2, int *NBrs, int *NKol)
 
     //Pendefinisian status King
     King.ID = 'K';
-    King.Nama = "King";
+    King.Name = "King";
     King.MaxHealth = 35;
     King.Health = 35;
     King.MaxMove = 2;
@@ -241,10 +241,11 @@ void InitializeKing(Player *P1, Player *P2, int *NBrs, int *NKol)
 
     King.Location.X = 1;
     King.Location.Y = *NBrs - 1;
-    InsVFirstUnit((*P1).Unit, King);
+    InsVFirstUnit(&(*P1).Unit, King);
 
     King.Location.X = *NKol - 1;
     King.Location.Y = 1;
-    InsVFirstUnit((*P2).Unit, King);
+    InsVFirstUnit(&(*P2).Unit, King);
 
 }
+
