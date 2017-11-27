@@ -14,7 +14,7 @@ char determineDirection(TypeUnit unit, int x, int y);
 
 boolean isThereEnemy (Player P1, Player P2, TypeUnit unit, int x, int y);
 
-boolean isThereUnit (Player P1, TypeUnit unit, int x, int y)
+boolean isThereUnit (Player P1, TypeUnit unit, int x, int y);
 
 boolean isMovePossible (Player P1, Player P2, Map M, TypeUnit unit, char direction, int x, int y);
 

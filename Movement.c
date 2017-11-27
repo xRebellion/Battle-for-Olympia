@@ -58,7 +58,7 @@ boolean isThereUnit (Player P1, TypeUnit unit, int x, int y) {
     boolean cek = false;
 
     while ((P != Nil) && (!cek)) {
-        if ((x == PosX(Info(P))) && (y == PosY(Info(P))) && (!IsUnitEQ(unit, P))) {
+        if ((x == PosX(Info(P))) && (y == PosY(Info(P))) && (!IsUnitEQ(unit, Info(P)))) {
             cek = true;
         }
         P = Next(P);
