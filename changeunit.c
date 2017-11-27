@@ -1,6 +1,6 @@
 #include <stdio.h>
-#include "init.h"
-#include "ADT/point.h"
+
+#include "changeunit.h"
 
 void change_unit(Player Player1) {
 //I.S.: Player terdefinisi
@@ -20,7 +20,7 @@ void change_unit(Player Player1) {
     if (count == 0) {
         printf("Oops. All of your units already moved/attacked.\n");
     } else {
-        P = First(Player.Unit);
+        P = First(Player1.Unit);
         printf("Please enter the no. of unit you want to select: ");
         scanf("%d", &x);
         for (i=1;i<x;i++) {
@@ -31,7 +31,7 @@ void change_unit(Player Player1) {
     }
 }
 
-void next_unit(){
+void next_unit(Player Player1){
     addressU P = First(Player1.Unit);
     int x; //sebagai input user
     int count = 0;
