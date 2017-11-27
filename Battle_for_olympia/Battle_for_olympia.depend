@@ -82,13 +82,14 @@
 1511716168 c:\users\user\desktop\technical stuff\c\battle-for-olympia\adt\stackt.h
 	"boolean.h"
 
-1511765103 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\main.c
+1511782681 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\main.c
 	"Movement.h"
 	"Map.h"
 	"rekruit.h"
 	"UpdateInfo.h"
 	"init.h"
 	"ListTypeCast.h"
+	"MapInitialize.h"
 
 1511754092 c:\users\user\desktop\technical stuff\c\battle-for-olympia\movement.h
 	"init.h"
@@ -121,10 +122,10 @@
 	"ListTypeCast.h"
 	"ListTypeCastGetter.h"
 
-1511764485 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\map.c
+1511782927 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\map.c
 	"Map.h"
 
-1511766003 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\movement.c
+1511775059 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\movement.c
 	"Movement.h"
 
 1511759682 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\rekruit.c
@@ -186,15 +187,13 @@
 	"point.h"
 	"boolean.h"
 
-1511743372 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\mapinitialize.c
+1511782984 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\mapinitialize.c
 	"MapInitialize.h"
 
-1511743377 c:\users\user\desktop\technical stuff\c\battle-for-olympia\mapinitialize.h
+1511779095 c:\users\user\desktop\technical stuff\c\battle-for-olympia\mapinitialize.h
 	"Map.h"
 	"stdio.h"
 	"ADT/list_building.h"
 	"ADT/point.h"
 	"ADT/boolean.h"
-	"ListTypeCastGetter.h"
-	"ListTypeCast.h"
 

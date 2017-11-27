@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "init.h"
-#include "point.h"
+#include "ADT/point.h"
 
 void change_unit(Player Player1) {
 //I.S.: Player terdefinisi

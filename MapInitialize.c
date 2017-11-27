@@ -1,196 +1,207 @@
 #include "MapInitialize.h"
 
+boolean IsThereBuilding(Map M, int X, int Y)
+{
+    return M.Tiles[Y][X].building.Type != ' ';
+}
+
+
 void InitializeMap(Map *M,int NBrs, int NKol)
 {
     /*Menginisialisasi map*/
     CreateEmptyMap(M,&NBrs,&NKol);
+    (*M).NBrsEff = NBrs;
+    (*M).NKolEff = NKol;
 
     ListB B;
     POINT Coor;
     infotypeB C1,C2,C3,C4,C5,C6,C7,C8,T1,T2,V1,V2,V3,V4,V5;
-    Player P1,P2;
-    CreateEmptyBuilding(&B);
 
+    CreateEmptyBuilding(&B);
     /*Menaruh building di list*/
     /*Building player 1*/
     InsVFirstBuilding(&B,C1);
-    setBuildingID (&C1,'C');
-    setBuildingOwner (&C1,P1);
-    setBuildingGold (&C1,0);
-    setBuildingType (&C1,'C');
+    C1.ID = 'C';
+    C1.OwnerID = 1;
+    C1.Gold = 0;
+    C1.Type = 'C';
     Coor.X = 0;
-    Coor.Y = NBrs-1;
-    setBuildingLocation(&C1,Coor);
+    Coor.Y = NBrs-2;
+    C1.Location = Coor;
+    AddBuildingToMap(M,C1);
 
     InsVFirstBuilding(&B,C2);
-    setBuildingID (&C2,'C');
-    setBuildingOwner (&C2,P1);
-    setBuildingGold (&C2,0);
-    setBuildingType (&C2,'C');
+    C2.ID = 'C';
+    C2.OwnerID = 1;
+    C2.Gold = 0;
+    C2.Type = 'C';
     Coor.X = 1;
-    Coor.Y = NBrs-2;
-    setBuildingLocation(&C2,Coor);
+    Coor.Y = NBrs-3;
+    C2.Location = Coor;
+    AddBuildingToMap(M,C2);
 
     InsVFirstBuilding(&B,C3);
-    setBuildingID (&C3,'C');
-    setBuildingOwner (&C3,P1);
-    setBuildingGold (&C3,0);
-    setBuildingType (&C3,'C');
+    C3.ID = 'C';
+    C3.OwnerID = 1;
+    C3.Gold = 0;
+    C3.Type = 'C';
     Coor.X = 1;
-    Coor.Y = NBrs;
-    setBuildingLocation(&C3,Coor);
+    Coor.Y = NBrs-1;
+    C3.Location = Coor;
+    AddBuildingToMap(M,C3);
 
     InsVFirstBuilding(&B,C4);
-    setBuildingID (&C4,'C');
-    setBuildingOwner (&C4,P1);
-    setBuildingGold (&C4,0);
-    setBuildingType (&C4,'C');
+    C4.ID = 'C';
+    C4.OwnerID = 1;
+    C4.Gold = 0;
+    C4.Type = 'C';
     Coor.X = 2;
-    Coor.Y = NBrs-1;
-    setBuildingLocation(&C4,Coor);
+    Coor.Y = NBrs-2;
+    C4.Location = Coor;
+    AddBuildingToMap(M,C4);
 
     InsVFirstBuilding(&B,T1);
-    setBuildingID (&T1,'T');
-    setBuildingOwner (&T1,P1);
-    setBuildingGold (&T1,0);
-    setBuildingType (&T1,'T');
+    T1.ID = 'T';
+    T1.OwnerID = 1;
+    T1.Gold = 0;
+    T1.Type = 'T';
     Coor.X = 1;
-    Coor.Y = NBrs-1;
-    setBuildingLocation(&T1,Coor);
+    Coor.Y = NBrs-2;
+    T1.Location = Coor;
+    AddBuildingToMap(M,T1);
 
     /*Building player 2*/
     InsVFirstBuilding(&B,C5);
-    setBuildingID (&C5,'C');
-    setBuildingOwner (&C5,P2);
-    setBuildingGold (&C5,0);
-    setBuildingType (&C5,'C');
-    Coor.X = NKol-2;
+    C5.ID = 'C';
+    C5.OwnerID = 2;
+    C5.Gold = 0;
+    C5.Type = 'C';
+    Coor.X = NKol-3;
     Coor.Y = 1;
-    setBuildingLocation(&C5,Coor);
+    C5.Location = Coor;
+    AddBuildingToMap(M,C5);
 
     InsVFirstBuilding(&B,C6);
-    setBuildingID (&C6,'C');
-    setBuildingOwner (&C6,P2);
-    setBuildingGold (&C6,0);
-    setBuildingType (&C6,'C');
-    Coor.X = NKol-1;
+    C6.ID = 'C';
+    C6.OwnerID = 2;
+    C6.Gold = 0;
+    C6.Type = 'C';
+    Coor.X = NKol-2;
     Coor.Y = 0;
-    setBuildingLocation(&C6,Coor);
+    C6.Location = Coor;
+    AddBuildingToMap(M,C6);
 
     InsVFirstBuilding(&B,C7);
-    setBuildingID (&C7,'C');
-    setBuildingOwner (&C7,P2);
-    setBuildingGold (&C7,0);
-    setBuildingType (&C7,'C');
-    Coor.X = NKol-1;
+    C7.ID = 'C';
+    C7.OwnerID = 2;
+    C7.Gold = 0;
+    C7.Type = 'C';
+    Coor.X = NKol-2;
     Coor.Y = 2;
-    setBuildingLocation(&C7,Coor);
+    C7.Location = Coor;
+    AddBuildingToMap(M,C7);
 
     InsVFirstBuilding(&B,C8);
-    setBuildingID (&C8,'C');
-    setBuildingOwner (&C8,P2);
-    setBuildingGold (&C8,0);
-    setBuildingType (&C8,'C');
-    Coor.X = NKol;
-    Coor.Y = 1;
-    setBuildingLocation(&C8,Coor);
-
-    InsVFirstBuilding(&B,T2);
-    setBuildingID (&T2,'T');
-    setBuildingOwner (&T2,P2);
-    setBuildingGold (&T2,0);
-    setBuildingType (&T2,'T');
+    C8.ID = 'C';
+    C8.OwnerID = 2;
+    C8.Gold = 0;
+    C8.Type = 'C';
     Coor.X = NKol-1;
     Coor.Y = 1;
-    setBuildingLocation(&T2,Coor);
+    C8.Location = Coor;
+    AddBuildingToMap(M,C8);
+
+    InsVFirstBuilding(&B,T2);
+    T2.ID = 'T';
+    T2.OwnerID = 2;
+    T2.Gold = 0;
+    T2.Type = 'T';
+    Coor.X = NKol-2;
+    Coor.Y = 1;
+    T2.Location = Coor;
+    AddBuildingToMap(M,T2);
 
     /*Village*/
     InsVFirstBuilding(&B,V1);
-    setBuildingID (&V1,'V');
-    setBuildingGold (&V1,10);
-    setBuildingType (&V1,'V');
+    V1.ID = 'V';
+    V1.Gold = 10;
+    V1.Type = 'V';
     if ((NKol % 2) == 1){
-        Coor.X = (NKol-1)/2;
+        Coor.X = ((NKol-1)/2) - 1;
     }
     else {
-        Coor.X = NKol/2;
+        Coor.X = (NKol/2) - 1;
     }
     if ((NBrs % 2) == 1){
-        Coor.Y = (NBrs-1)/2;
+        Coor.Y = ((NBrs-1)/2) - 1;
     }
     else {
-        Coor.Y = NBrs/2;
+        Coor.Y = (NBrs/2) - 1;
     }
-    setBuildingLocation(&V1,Coor);
+    V1.Location = Coor;
+    AddBuildingToMap(M,V1);
 
     InsVFirstBuilding(&B,V2);
-    setBuildingID (&V2,'V');
-    setBuildingGold (&V2,5);
-    setBuildingType (&V2,'V');
-    Coor.X = rand() % ((NKol/2) + 1 - 0) + 0;
-    Coor.Y = rand() % ((NBrs) + 1 - 0) + 0;
-    if (Coor.X <= 2){
-        while (Coor.X <=2){
-            Coor.X = rand() % ((NKol/2) + 1 - 0) + 0;
+    V2.ID = 'V';
+    V2.Gold = 5;
+    V2.Type = 'V';
+    Coor.X = rand() % (NKol - 1);
+    Coor.Y = rand() % (NBrs - 1);
+    if (IsThereBuilding(*M,Coor.X,Coor.Y)){
+        while (IsThereBuilding(*M,Coor.X,Coor.Y)){
+            Coor.X = rand() % (NKol - 1);
+            Coor.Y = rand() % (NBrs - 1);
         }
     }
-    if (Coor.Y >= (NBrs-2)){
-        while (Coor.Y >= (NBrs-2)){
-            Coor.Y = rand() % ((NBrs) + 1 - 0) + 0;
-        }
-    }
-    setBuildingLocation(&V2,Coor);
+    V2.Location = Coor;
+    AddBuildingToMap(M,V2);
 
     InsVFirstBuilding(&B,V3);
-    setBuildingID (&V3,'V');
-    setBuildingGold (&V3,5);
-    setBuildingType (&V3,'V');
-    Coor.X = rand() % ((NKol/2) + 1 - 0) + 0;
-    Coor.Y = rand() % ((NBrs) + 1 - 0) + 0;
-    if (Coor.X <= 2){
-        while (Coor.X <=2){
-            Coor.X = rand() % ((NKol/2) + 1 - 0) + 0;
+    V3.ID = 'V';
+    V3.Gold = 5;
+    V3.Type = 'V';
+     Coor.X = rand() % (NKol - 1);
+    Coor.Y = rand() % (NBrs - 1);
+    if (IsThereBuilding(*M,Coor.X,Coor.Y)){
+        while (IsThereBuilding(*M,Coor.X,Coor.Y)){
+            Coor.X = rand() % (NKol - 1);
+            Coor.Y = rand() % (NBrs - 1);
         }
     }
-    if (Coor.Y >= (NBrs-2)){
-        while (Coor.Y >= (NBrs-2)){
-            Coor.Y = rand() % ((NBrs) + 1 - 0) + 0;
-        }
-    }
-    setBuildingLocation(&V3,Coor);
+    V3.Location = Coor;
+    AddBuildingToMap(M,V3);
 
     InsVFirstBuilding(&B,V4);
-    setBuildingGold (&V4,5);
-    setBuildingType (&V4,'V');
-    Coor.X = rand() % ((NKol) + 1 - 0) + (NKol/2);
-    Coor.Y = rand() % ((NBrs) + 1 - 0) + 0;
-    if (Coor.X >= (NKol-2)){
-        while (Coor.X <=2){
-            Coor.X = rand() % ((NKol) + 1 - 0) + (NKol/2);
+    V4.ID = 'V';
+    V4.Gold = 5;
+    V4.Type = 'V';;
+    Coor.X = rand() % (NKol - 1);
+    Coor.Y = rand() % (NBrs - 1);
+    if (IsThereBuilding(*M,Coor.X,Coor.Y)){
+        while (IsThereBuilding(*M,Coor.X,Coor.Y)){
+            Coor.X = rand() % (NKol - 1);
+            Coor.Y = rand() % (NBrs - 1);
         }
     }
-    if (Coor.Y <= 2){
-        while (Coor.Y >= (NBrs-2)){
-            Coor.Y = rand() % ((NBrs) + 1 - 0) + 0;
-        }
-    }
-    setBuildingLocation(&V4,Coor);
+    V4.Location = Coor;
+    AddBuildingToMap(M,V4);
 
     InsVFirstBuilding(&B,V5);
-    setBuildingGold (&V5,5);
-    setBuildingType (&V5,'V');
-    Coor.X = rand() % ((NKol) + 1 - 0) + (NKol/2);
-    Coor.Y = rand() % ((NBrs) + 1 - 0) + 0;
-    if (Coor.X >= (NKol-2)){
-        while (Coor.X <=2){
-            Coor.X = rand() % ((NKol) + 1 - 0) + (NKol/2);
+    V5.ID = 'V';
+    V5.Gold = 5;
+    V5.Type = 'V';
+    Coor.X = rand() % (NKol - 1);
+    Coor.Y = rand() % (NBrs - 1);
+    if (IsThereBuilding(*M,Coor.X,Coor.Y)){
+        while (IsThereBuilding(*M,Coor.X,Coor.Y)){
+            Coor.X = rand() % (NKol - 1);
+            Coor.Y = rand() % (NBrs - 1);
         }
     }
-    if (Coor.Y <= 2){
-        while (Coor.Y >= (NBrs-2)){
-            Coor.Y = rand() % ((NBrs) + 1 - 0) + 0;
-        }
-    }
-    setBuildingLocation(&V5,Coor);
-
+    V5.Location = Coor;
+    AddBuildingToMap(M,V5);
+    PrintMap(*M);
+    printf("==============================================================\n");
+    printf("               Map Successfully Initialized!\n");
+    printf("==============================================================\n");
 }

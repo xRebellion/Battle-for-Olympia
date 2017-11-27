@@ -3,9 +3,9 @@
 
 void CreateEmptyMap(Map *M,int *NBrs, int *NKol) {
     int i,j;
-    printf("========================================\n");
-    printf("              Map Creation\n");
-    printf("========================================\n");
+    printf("==============================================================\n");
+    printf("                        Map Creation\n");
+    printf("==============================================================\n");
     do
     {
         printf("Insert Map Rows (Y Axis): ");
@@ -35,10 +35,12 @@ void CreateEmptyMap(Map *M,int *NBrs, int *NKol) {
             (*M).Tiles[i][j].Misc = ' ';
         }
     }
+    (*M).NBrsEff = *NBrs;
+    (*M).NKolEff = *NKol;
 
-    printf("========================================\n");
-    printf("        Map Successfully Created!\n");
-    printf("========================================\n");
+    printf("==============================================================\n");
+    printf("                  Map Successfully Created!\n");
+    printf("==============================================================\n");
 
 }
 
@@ -46,18 +48,35 @@ void PrintMap(Map M)
 {
 
     int i,j,idx;
-    printf(" ");
+    printf("  ");
     idx = 0;
     for (j = 1; j <= M.NKolEff*5-M.NKolEff+1; j++) {
-        if ((j-3) % 4 == 0) {
-            printf("%d",idx);
-            idx++;
+        if(idx < 10)
+        {
+            if ((j-3) % 4 == 0) {
+                printf("%d",idx);
+                idx++;
+            }
+            else {
+                printf(" ");
+            }
+        } else
+        {
+            if ((j-3) % 3 == 0) {
+                printf("%d",idx);
+                idx++;
+            }
+            else {
+                printf(" ");
+            }
+            if(idx == M.NKolEff)
+            {
+                break;
+            }
         }
-        else {
-            printf(" ");
-        }
+
     }
-    printf("\n ");
+    printf("\n  ");
     for (j = 1; j <= M.NKolEff*5-M.NKolEff+1; j++) {
         printf("*");
     }
@@ -65,11 +84,18 @@ void PrintMap(Map M)
     idx = 0;
     for (i = 0; i < M.NBrsEff*4; i++) {
         if ((i-1) % 4 == 0) {
-            printf("%d*",idx);
+            if(idx < 10)
+            {
+                printf("%d *",idx);
+            } else
+            {
+                printf("%d*",idx);
+            }
+
             idx++;
         }
         else {
-            printf(" *");
+            printf("  *");
         }
         for (j = 0; j < M.NKolEff; j++) {
             if (i % 4 == 0) {
@@ -93,7 +119,7 @@ void PrintMap(Map M)
 void AddUnitToMap(Map * M, TypeUnit Unit)
 {
     (*M).Tiles[PosY(Unit)][PosX(Unit)].unit = Unit;
-    printf("unit ID x y = %c %d %d\n", (*M).Tiles[PosY(Unit)][PosX(Unit)].unit.ID, PosX(Unit), PosY(Unit));
+    //printf("unit ID x y = %c %d %d\n", (*M).Tiles[PosY(Unit)][PosX(Unit)].unit.ID, PosX(Unit), PosY(Unit));
 }
 
 void RemoveUnitFromMap(Map * M, TypeUnit Unit)
