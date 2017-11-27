@@ -74,9 +74,9 @@ typedef struct {
 // T = Tower
 
 #define BrsMin 0
-#define BrsMax 100
+#define BrsMax 20
 #define KolMin 0
-#define KolMax 100
+#define KolMax 20
 
 typedef int indeks; /* indeks baris, kolom */
 typedef struct {
@@ -97,7 +97,7 @@ typedef struct {
 #define Info(P) (P)->info
 #define Next(P) (P)->next
 
-void InitializePlayer(Player P, int PlayerID);
+void InitializePlayer(Player * P, int PlayerID);
 
 
 

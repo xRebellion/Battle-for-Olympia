@@ -75,7 +75,6 @@ void PrintMap(Map M)
         for (j = 0; j < M.NKolEff; j++) {
             if (i % 4 == 0) {
                 printf(" %c *",M.Tiles[i/4][j].building.Type);
-
             }
             else if ((i-1) % 4 == 0) {
                 printf(" %c *",M.Tiles[i/4][j].unit.ID);
@@ -96,6 +95,7 @@ void PrintMap(Map M)
 void AddUnitToMap(Map * M, TypeUnit Unit)
 {
     (*M).Tiles[PosY(Unit)][PosX(Unit)].unit = Unit;
+    printf("unit ID x y = %c %d %d\n", (*M).Tiles[PosY(Unit)][PosX(Unit)].unit.ID, PosX(Unit), PosY(Unit));
 }
 
 void RemoveUnitFromMap(Map * M, TypeUnit Unit)
