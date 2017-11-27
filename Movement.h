@@ -26,4 +26,4 @@ boolean Move(Player P1, Player P2, Map * M, TypeUnit unit, int x, int y);
 
 void InsertDummyMap(Player P1, Player P2, Map M, Map * MDummy, TypeUnit currUnit);
 
-void MoveCommand(Stack *S, Player P1, Player P2, Map * M, TypeUnit *currUnit, POINT * PrevLoc);
+void MoveCommand(Stack *S, Player P1, Player P2, Map * M, TypeUnit currUnit, POINT * PrevLoc);
