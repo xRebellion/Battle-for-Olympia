@@ -50,25 +50,25 @@ void ChooseTarget(Map M, POINT *P, TypeUnit T1, Player P1, Player P2) {
     if (T1.Hit) {
         printf("Please select enemy you want to attack: \n");
         if (isEnemyUnit(M,(Pt1),P2)) {
-            printf("1. %s (%d,%d) | Health %d/%d ", M.Tiles[Pt1.X][Pt1.Y].unit.name, Pt1.X,Pt1.Y,  M.Tiles[Pt1.X][Pt1.Y].unit.Health, M.Tiles[Pt1.X][Pt1.Y].unit.MaxHealth);
+            printf("1. %s (%d,%d) | Health %d/%d ", M.Tiles[Pt1.X][Pt1.Y].unit.Name, Pt1.X,Pt1.Y,  M.Tiles[Pt1.X][Pt1.Y].unit.Health, M.Tiles[Pt1.X][Pt1.Y].unit.MaxHealth);
             if (((T1).AttackType ==  M.Tiles[Pt1.X][Pt1.Y].unit.AttackType) || ( M.Tiles[Pt1.X][Pt1.Y].unit.AttackType == 'k')) {
                 printf("(Retaliates)\n");
             }
         }
         if (isEnemyUnit(M,(Pt2),P2)) {
-            printf("1. %s (%d,%d) | Health %d/%d ",M.Tiles[Pt2.X][Pt2.Y].unit.name, Pt2.X,Pt2.Y,  M.Tiles[Pt2.X][Pt2.Y].unit.Health, M.Tiles[Pt2.X][Pt2.Y].unit.MaxHealth);
+            printf("1. %s (%d,%d) | Health %d/%d ",M.Tiles[Pt2.X][Pt2.Y].unit.Name, Pt2.X,Pt2.Y,  M.Tiles[Pt2.X][Pt2.Y].unit.Health, M.Tiles[Pt2.X][Pt2.Y].unit.MaxHealth);
             if (((T1).AttackType ==  M.Tiles[Pt2.X][Pt2.Y].unit.AttackType) || ( M.Tiles[Pt2.X][Pt2.Y].unit.AttackType == 'k')) {
                 printf("(Retaliates)\n");
             }
         }
         if (isEnemyUnit(M,(Pt3),P2)) {
-            printf("1. %s (%d,%d) | Health %d/%d ",M.Tiles[Pt3.X][Pt3.Y].unit.name, Pt3.X,Pt3.Y,  M.Tiles[Pt3.X][Pt3.Y].unit.Health, M.Tiles[Pt3.X][Pt3.Y].unit.MaxHealth);
+            printf("1. %s (%d,%d) | Health %d/%d ",M.Tiles[Pt3.X][Pt3.Y].unit.Name, Pt3.X,Pt3.Y,  M.Tiles[Pt3.X][Pt3.Y].unit.Health, M.Tiles[Pt3.X][Pt3.Y].unit.MaxHealth);
             if (((T1).AttackType == M.Tiles[Pt3.X][Pt3.Y].unit.AttackType) || (M.Tiles[Pt3.X][Pt3.Y].unit.AttackType == 'k')) {
                 printf("(Retaliates)\n");
             }
         }
         if (isEnemyUnit(M,(Pt4),P2)) {
-            printf("1. %s (%d,%d) | Health %d/%d ",M.Tiles[Pt4.X][Pt4.Y].unit.name, Pt4.X,Pt4.Y,  M.Tiles[Pt4.X][Pt4.Y].unit.Health, M.Tiles[Pt4.X][Pt4.Y].unit.MaxHealth);
+            printf("1. %s (%d,%d) | Health %d/%d ",M.Tiles[Pt4.X][Pt4.Y].unit.Name, Pt4.X,Pt4.Y,  M.Tiles[Pt4.X][Pt4.Y].unit.Health, M.Tiles[Pt4.X][Pt4.Y].unit.MaxHealth);
             if (((T1).AttackType == M.Tiles[Pt4.X][Pt4.Y].unit.AttackType) || (M.Tiles[Pt4.X][Pt4.Y].unit.AttackType == 'k')) {
                 printf("(Retaliates)\n");
             }
@@ -110,11 +110,11 @@ void Attack(TypeUnit *T1, TypeUnit *T2, Player *P1, Player *P2, Map *M)
 {
     if (AccuracyCheck) {
         (*T2).Health -= (*T1).Attack;
-        printf("Enemy's %s is damaged by %d.\n",(*T2).name,(*T1).Attack);
+        printf("Enemy's %s is damaged by %d.\n",(*T2).Name,(*T1).Attack);
         if ((*T2).Health <= 0) {
             DelPUnit(&(*P2).Unit,(*T2));
             RemoveUnitFromMap(M,*T2);
-            printf("The enemy's %s is dead.\n",(*T2).name);
+            printf("The enemy's %s is dead.\n",(*T2).Name);
         }
     }
     else {
@@ -123,11 +123,11 @@ void Attack(TypeUnit *T1, TypeUnit *T2, Player *P1, Player *P2, Map *M)
     if (((*T2).Health >0) && (((*T1).AttackType == (*T2).AttackType) || ((*T2).AttackType == 'k'))) {  //Retaliation
         if (AccuracyCheck) {
             (*T1).Health -= (*T2).Attack;
-            printf("Your %s is damaged by %d\n",(*T1).name,(*T2).Attack);
+            printf("Your %s is damaged by %d\n",(*T1).Name,(*T2).Attack);
             if ((*T1).Health <= 0) {
                 DelPUnit(&(*P1).Unit,(*T1));
                 RemoveUnitFromMap(M,*T1);
-                printf("Your %s is dead :( \n",(*T1).name);
+                printf("Your %s is dead :( \n",(*T1).Name);
             }
         }
         else {

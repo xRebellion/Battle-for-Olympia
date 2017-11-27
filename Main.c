@@ -124,7 +124,7 @@ int main()
     scanf("%c", &buffer);
     do
     {
-        selectedUnit = Info(Last(P2.Unit));
+        selectedUnit = Info(Last(P1.Unit));
         UpdateInfo(&P1);
         PrintInfo(selectedUnit);
 
@@ -178,7 +178,7 @@ int main()
                 } else
                 if(IsStringEQ(commandArr,attack))
                 {
-                    //ChooseTarget(M, &P, selectedUnit, TypeUnit T2, P1, P2);
+                    //ChooseTarget(M, &P, selectedUnit, P1, P2);
                 } else
                 if(IsStringEQ(commandArr,map))
                 {
