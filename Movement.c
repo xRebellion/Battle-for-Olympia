@@ -143,7 +143,7 @@ void PushStack (Stack *S, Player P1, Map M, TypeUnit currUnit) {
     temp.M = M;
     temp.P = P1;
     temp.unit = currUnit;
-
+    Push(&(*S), temp);
 }
 
 void Undo (Stack *S, Player *P1, Map *M, TypeUnit *currUnit) {
@@ -151,10 +151,14 @@ void Undo (Stack *S, Player *P1, Map *M, TypeUnit *currUnit) {
     if(IsEmptyS(*S)) {
         printf("Oops! You can undo no more.\n");
     } else {
+        RemoveUnitFromMap(&(*M),*currUnit);
+        Pop(&(*S), &temp);
         Pop(&(*S), &temp);
         *P1 = temp.P;
         *M = temp.M;
         *currUnit = temp.unit;
+        printf("%d %d\n", (*currUnit).Location.X,(*currUnit).Location.Y);
+        AddUnitToMap(&(*M),*currUnit);
     }
 }
 
@@ -227,43 +231,44 @@ void InsertDummyMap(Player P1, Player P2, Map M, Map * MDummy, TypeUnit currUnit
         AddUnitToMap(&(*MDummy), Dummy[i]);
         printf("\n");
     }
+    PrintMap(*MDummy);
 }
 
 
-void MoveCommand(Stack *S, Player P1, Player P2, Map * M, TypeUnit *currUnit, POINT * PrevLoc)
+void MoveCommand(Stack *S, Player P1, Player P2, Map * M, TypeUnit currUnit, POINT * PrevLoc)
 {
     Map MDummy;
     MDummy = *M;
 
     char direction;
     int x, y;
-    (*PrevLoc).X = PosX(*currUnit);
-    (*PrevLoc).Y = PosY(*currUnit);
-    PushStack (&(*S), P1, *M, *currUnit);
-    InsertDummyMap(P1, P2, * M, &MDummy, *currUnit);
+    (*PrevLoc).X = PosX(currUnit);
+    (*PrevLoc).Y = PosY(currUnit);
+    PushStack (&(*S), P1, *M, currUnit);
+    InsertDummyMap(P1, P2, * M, &MDummy, currUnit);
     PrintMap(MDummy);
-    //RemoveDummyUnit(M, *currUnit);
+    //RemoveDummyUnit(M, currUnit);
     printf("Where do you want to move? ( Input: x y )\n");
     scanf ("%d %d", &x, &y);
-    direction = determineDirection(*currUnit,x,y);
-    printf("%d %d %c\nx y %d %d\n",!isMovePossible(P1, P2, *M, *currUnit, direction,x,y), isThereEnemy(P1, P2, *currUnit,x,y), direction,x,y);
-    if(!isMovePossible(P1, P2, *M, *currUnit, direction,x,y) || isThereEnemy(P1, P2, *currUnit,x,y) || isThereUnit(P1, *currUnit, x, y)) //Kalo movenya gagal
+    direction = determineDirection(currUnit,x,y);
+    printf("%d %d %c\nx y %d %d\n",!isMovePossible(P1, P2, *M, currUnit, direction,x,y), isThereEnemy(P1, P2, currUnit,x,y), direction,x,y);
+    if(!isMovePossible(P1, P2, *M, currUnit, direction,x,y) || isThereEnemy(P1, P2, currUnit,x,y) || isThereUnit(P1, currUnit, x, y)) //Kalo movenya gagal
     {
         printf("Oops, you can't move there!\n");
     } else
     {
         printf("You have successfully moved to (%d,%d)\n", x, y);
-        RemoveUnitFromMap(M, *currUnit);
-        int mx = abs(PosX(*currUnit) - x + PosY(*currUnit) - y);
-        PosX(*currUnit) = x;
-        PosY(*currUnit) = y;
-        (*currUnit).Move -= mx;
-        AddUnitToMap(M, *currUnit);
-        if ((*M).Tiles[y][x].building.Type = 'V') {
+        RemoveUnitFromMap(M, currUnit);
+        int mx = abs(PosX(currUnit) - x + PosY(currUnit) - y);
+        PosX(currUnit) = x;
+        PosY(currUnit) = y;
+        (currUnit).Move -= mx;
+        AddUnitToMap(M, currUnit);
+        if ((*M).Tiles[y][x].building.Type == 'V') {
             (*M).Tiles[y][x].building.OwnerID = P1.PlayerID;
             InsVLastBuilding(&(P1).Villages,(*M).Tiles[y][x].building);
         }
-        PushStack (&(*S), P1, *M, *currUnit);
+        PushStack (&(*S), P1, *M, currUnit);
     }
 
 }
