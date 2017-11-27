@@ -48,8 +48,8 @@ int main()
     TypeUnit currUnit2;
 
     currUnit2.ID = 'B';
-    PosX(currUnit2) = 4;
-    PosY(currUnit2) = 1;
+    PosX(currUnit2) = 6;
+    PosY(currUnit2) = 3;
     currUnit2.MaxMove = 2;
 
     AddUnitToMap(&M, currUnit2);
@@ -63,6 +63,7 @@ int main()
 
     MoveCommand(P1,P2,&M, currUnit, &PrevLoc);
 
+    PrintMap(M);
     //InitializeMap(&M, M.NBrsEff, M.NKolEff);
 
 

@@ -82,7 +82,7 @@
 1511716168 c:\users\user\desktop\technical stuff\c\battle-for-olympia\adt\stackt.h
 	"boolean.h"
 
-1511757872 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\main.c
+1511765103 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\main.c
 	"Movement.h"
 	"Map.h"
 	"rekruit.h"
@@ -109,7 +109,7 @@
 	<stdlib.h>
 	"init.h"
 
-1511699827 c:\users\user\desktop\technical stuff\c\battle-for-olympia\rekruit.h
+1511759682 c:\users\user\desktop\technical stuff\c\battle-for-olympia\rekruit.h
 	"init.h"
 	<stdio.h>
 	<stdlib.h>
@@ -121,14 +121,16 @@
 	"ListTypeCast.h"
 	"ListTypeCastGetter.h"
 
-1511757303 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\map.c
+1511764485 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\map.c
 	"Map.h"
 
-1511757716 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\movement.c
+1511766003 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\movement.c
 	"Movement.h"
 
-1511514950 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\rekruit.c
+1511759682 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\rekruit.c
 	"rekruit.h"
+	<stdio.h>
+	<stdlib.h>
 
 1511517316 source:c:\users\user\desktop\technical stuff\c\battle-for-olympia\listtypecast.c
 	"ListTypeCast.h"

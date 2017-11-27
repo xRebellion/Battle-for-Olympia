@@ -45,7 +45,7 @@ void CreateEmptyMap(Map *M,int *NBrs, int *NKol) {
 void PrintMap(Map M)
 {
 
-    int i,j,idx,idxBrs;
+    int i,j,idx;
     printf(" ");
     idx = 0;
     for (j = 1; j <= M.NKolEff*5-M.NKolEff+1; j++) {
@@ -71,7 +71,6 @@ void PrintMap(Map M)
         else {
             printf(" *");
         }
-        idxBrs = 0;
         for (j = 0; j < M.NKolEff; j++) {
             if (i % 4 == 0) {
                 printf(" %c *",M.Tiles[i/4][j].building.Type);
@@ -85,7 +84,6 @@ void PrintMap(Map M)
             else if ((i-3) % 4 == 0) {
                 printf("****");
             }
-            idxBrs++;
         }
         printf("\n");
     }

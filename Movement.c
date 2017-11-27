@@ -75,7 +75,7 @@ boolean isMovePossible (Player P1, Player P2, Map M, TypeUnit unit, char directi
     boolean cek=false;
     POINT location = unit.Location;
     if (direction == 'n') {
-        if ((x == PosX(unit)) && (y<=(M).NKolEff) && (y>=0) && (PosY(unit)-y <= unit.MaxMove)) {
+        if ((x == PosX(unit)) && (y<=(M).NBrsEff) && (y>=0) && (PosY(unit)-y <= unit.MaxMove)) {
             i = 1;
             while ((i<=(PosY(unit)-y)) && (!cek)) {
                 cek = isThereEnemy(P1,P2,unit,x,y-i);
@@ -84,27 +84,27 @@ boolean isMovePossible (Player P1, Player P2, Map M, TypeUnit unit, char directi
             return (!cek);
         }
     } else if (direction == 's') {
-        if ((x == PosX(unit)) && (y<=(M).NKolEff) && (y>=0) && (y-PosY(unit) <= unit.MaxMove)) {
+        if ((x == PosX(unit)) && (y<=(M).NBrsEff) && (y>=0) && (y-PosY(unit) <= unit.MaxMove)) {
             i = 1;
-            while ((i<=(y-PosY(unit)) && (!cek)) {
+            while ((i<=(y-PosY(unit)) && (!cek))) {
                 cek = isThereEnemy(P1,P2,unit,x,y+i);
                 i++;
             }
             return (!cek);
         }
     } else if (direction == 'e') {
-        if ((y == PosY(unit)) && (x<=(M).NBrsEff) && (x>=0) && (x-PosX(unit) <= unit.MaxMove)) {
+        if ((y == PosY(unit)) && (x<=(M).NKolEff) && (x>=0) && (x-PosX(unit) <= unit.MaxMove)) {
             i = 1;
-            while ((i<=(x-PosX(unit)) && (!cek)) {
+            while ((i<=(x-PosX(unit)) && (!cek))) {
                 cek = isThereEnemy(P1,P2,unit,x+i,y);
                 i++;
             }
             return (!cek);
         }
     } else if (direction == 'w') {
-        if ((y == PosY(unit)) && (x<=(M).NBrsEff) && (x>=0) && (PosX(unit)-x <= unit.MaxMove)) {
-            i = 1;
-            while ((i<=(PosX(unit)-x) && (!cek)) {
+        if ((y == PosY(unit)) && (x<=(M).NKolEff) && (x>=0) && (PosX(unit)-x <= unit.MaxMove)) {
+            i = unit.MaxMove;
+            while ((i<=(PosX(unit)-x) && (!cek))) {
                 cek = isThereEnemy(P1,P2,unit,x-i,y);
                 i++;
             }
@@ -198,15 +198,12 @@ void InsertDummyMap(Player P1, Player P2, Map M, Map * MDummy, TypeUnit currUnit
         if (isMovePossible(P1, P2,M, currUnit, 'n', PosX(currUnit), PosY(currUnit)-i)) {
             if(M.Tiles[PosY(currUnit)-i][PosX(currUnit)].unit.ID == ' ')
             {
-
                 count++;
                 Dummy[count] = currUnit;
                 Dummy[count].ID = '#';
                 Dummy[count].Location.X = PosX(currUnit);
                 Dummy[count].Location.Y = PosY(currUnit)-i;
-
             }
-
         }
     }
     //s
@@ -220,6 +217,7 @@ void InsertDummyMap(Player P1, Player P2, Map M, Map * MDummy, TypeUnit currUnit
                 Dummy[count].Location.X = PosX(currUnit);
                 Dummy[count].Location.Y = PosY(currUnit)+i;
             }
+
         }
     }
     //e
@@ -260,14 +258,17 @@ void MoveCommand(Player P1, Player P2, Map * M, TypeUnit currUnit, POINT * PrevL
     Map MDummy;
     MDummy = *M;
 
-    char direction;
+
     int x, y;
     (*PrevLoc).X = PosX(currUnit);
     (*PrevLoc).Y = PosY(currUnit);
 
+    char direction;
     InsertDummyMap(P1, P2, * M, &MDummy, currUnit);
     PrintMap(MDummy);
     //RemoveDummyUnit(M, currUnit);
+    printf("%d\n", isMovePossible(P1,P2,*M,currUnit,'e',6,3));
+
     printf("Where do you want to move? ( Input: x y )\n");
     scanf ("%d %d", &x, &y);
     direction = determineDirection(currUnit,x,y);
