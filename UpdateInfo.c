@@ -78,3 +78,14 @@ void UpdateInfo (Player * P)
     printf("Unit: \n");
     PrintUnit(*P);
 }
+
+void PrintInfo (TypeUnit selectedunit) {
+    printf("%s (%d,%d) | Health: %d/%d | Movement Point: %d | Attack Status: ", selectedunit.Name,selectedunit.Location.X,
+           selectedunit.Location.Y, selectedunit.Health,selectedunit.MaxHealth,selectedunit.Move);
+    if (selectedunit.Hit == true) {
+        printf("Available\n");
+    }
+    else {
+        printf("Not Available\n");
+    }
+}
