@@ -235,24 +235,24 @@ void InsertDummyMap(Player P1, Player P2, Map M, Map * MDummy, TypeUnit currUnit
 }
 
 
-void MoveCommand(Stack *S, Player P1, Player P2, Map * M, TypeUnit currUnit, POINT * PrevLoc)
+void MoveCommand(Stack *S, Player P1, Player P2, Map * M, TypeUnit * currUnit, POINT * PrevLoc)
 {
     Map MDummy;
     MDummy = *M;
 
     char direction;
     int x, y;
-    (*PrevLoc).X = PosX(currUnit);
-    (*PrevLoc).Y = PosY(currUnit);
-    PushStack (&(*S), P1, *M, currUnit);
-    InsertDummyMap(P1, P2, * M, &MDummy, currUnit);
+    (*PrevLoc).X = PosX(*currUnit);
+    (*PrevLoc).Y = PosY(*currUnit);
+    PushStack (&(*S), P1, *M, *currUnit);
+    InsertDummyMap(P1, P2, * M, &MDummy, *currUnit);
     PrintMap(MDummy);
-    //RemoveDummyUnit(M, currUnit);
+    //RemoveDummyUnit(M, *currUnit);
     printf("Where do you want to move? ( Input: x y )\n");
     scanf ("%d %d", &x, &y);
-    direction = determineDirection(currUnit,x,y);
-    printf("%d %d %c\nx y %d %d\n",!isMovePossible(P1, P2, *M, currUnit, direction,x,y), isThereEnemy(P1, P2, currUnit,x,y), direction,x,y);
-    if(!isMovePossible(P1, P2, *M, currUnit, direction,x,y) || isThereEnemy(P1, P2, currUnit,x,y) || isThereUnit(P1, currUnit, x, y)) //Kalo movenya gagal
+    direction = determineDirection(*currUnit,x,y);
+    printf("%d %d %c\nx y %d %d\n",!isMovePossible(P1, P2, *M, *currUnit, direction,x,y), isThereEnemy(P1, P2, *currUnit,x,y), direction,x,y);
+    if(!isMovePossible(P1, P2, *M, *currUnit, direction,x,y) || isThereEnemy(P1, P2, *currUnit,x,y) || isThereUnit(P1, *currUnit, x, y)) //Kalo movenya gagal
     {
         printf("Oops, you can't move there!\n");
     } else
@@ -268,7 +268,7 @@ void MoveCommand(Stack *S, Player P1, Player P2, Map * M, TypeUnit currUnit, POI
             (*M).Tiles[y][x].building.OwnerID = P1.PlayerID;
             InsVLastBuilding(&(P1).Villages,(*M).Tiles[y][x].building);
         }
-        PushStack (&(*S), P1, *M, currUnit);
+        PushStack (&(*S), P1, *M, *currUnit);
     }
 
 }

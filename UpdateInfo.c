@@ -75,8 +75,7 @@ void UpdateInfo (Player * P)
     (*P).Gold = (*P).Gold + (*P).Income - (*P).Upkeep;
     printf("Player %d's Turn\n",(*P).PlayerID);
     printf("Cash: %dG | Income: %dG | Upkeep: %dG\n",(*P).Gold,(*P).Income,(*P).Upkeep);
-    printf("Unit: \n");
-    PrintUnit(*P);
+    printf("Unit: ");
 }
 
 void PrintInfo (TypeUnit selectedunit) {
