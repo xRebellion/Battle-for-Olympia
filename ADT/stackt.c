@@ -1,53 +1,65 @@
-//IMPLEMENTASI STACKT.H
+#include "boolean.h"
+#include <stdio.h>
+#include <stdlib.h>
 #include "stackt.h"
 
-
-/* ************ Prototype ************ */
-/* *** Konstruktor/Kreator *** */
-void CreateEmpty (Stack *S)
-/* I.S. sembarang; */
-/* F.S. Membuat sebuah stack S yang kosong berkapasitas MaxEl */
-/* jadi indeksnya antara 1.. MaxEl+1 karena 0 tidak dipakai */
-/* Ciri stack kosong : TOP bernilai NIL */
+void AlokasiS (addressS *P, infotypeS X)
+/* I.S. Sembarang */
+/* F.S. Alamat P dialokasi, jika berhasil maka InfoS(P)=X dan
+        NextS(P)=Nil */
+/*      P=Nil jika alokasi gagal */
 {
-    Top(*S) = NIL;
-}
-
-/* ************ Predikat Untuk test keadaan KOLEKSI ************ */
-boolean IsEmptyS (Stack S)
-/* Mengirim true jika Stack kosong: lihat definisi di atas */
-{
-    return Top(S) == NIL;
-}
-boolean IsFullS (Stack S)
-/* Mengirim true jika tabel penampung nilai elemen stack penuh */
-{
-    return Top(S) == MaxEl;
-}
-
-/* ************ Menambahkan sebuah elemen ke Stack ************ */
-void Push (Stack * S, infotype X)
-/* Menambahkan X sebagai elemen Stack S. */
-/* I.S. S mungkin kosong, tabel penampung elemen stack TIDAK penuh */
-/* F.S. X menjadi TOP yang baru,TOP bertambah 1 */
-{
-    if(IsEmptyS(*S))
-    {
-        Top(*S) = 1;
-    } else
-    {
-        Top(*S)++;
+    *P = (addressS) malloc (sizeof(ElmtStack));
+    if (*P!=Nil) {
+        InfoS(*P) = X;
+        NextS(*P) = Nil;
     }
-
-    InfoTop(*S) = X;
 }
 
-/* ************ Menghapus sebuah elemen Stack ************ */
-void Pop (Stack * S, infotype* X)
-/* Menghapus X dari Stack S. */
-/* I.S. S  tidak mungkin kosong */
-/* F.S. X adalah nilai elemen TOP yang lama, TOP berkurang 1 */
+void DealokasiS (addressS P)
+/* I.S. P adalah hasil alokasi, P != Nil */
+/* F.S. Alamat P didealokasi, dikembalikan ke sistem */
 {
-    *X = InfoTop(*S);
-    Top(*S)--;
+    free(P);
+}
+
+boolean IsEmptyS (Stack S)
+/* Mengirim true jika Stack kosong: TOP(S) = Nil */
+{
+    return (Top(S) == Nil);
+}
+
+void CreateEmptyS (Stack * S)
+/* I.S. sembarang */
+/* F.S. Membuat sebuah stack S yang kosong */
+{
+    Top(*S) = Nil;
+}
+
+void Push (Stack * S, infotypeS X)
+/* Menambahkan X sebagai elemen Stack S */
+/* I.S. S mungkin kosong, X terdefinisi */
+/* F.S. X menjadi TOP yang baru jika alokasi X berhasil, */
+/*      jika tidak, S tetap */
+/* Pada dasarnya adalah operasi Insert First pada list linier */
+{
+    addressS P;
+    AlokasiS(&P,X);
+    if (P != Nil) {
+        NextS(P) = Top(*S);
+        Top(*S) = P;
+    }
+}
+
+void Pop (Stack * S, infotypeS * X)
+/* Menghapus X dari Stack S. */
+/* I.S. S tidak mungkin kosong */
+/* F.S. X adalah nilai elemen TOP yang lama, */
+/*      elemen TOP yang lama didealokasi */
+/* Pada dasarnya adalah operasi Delete First pada list linier */
+{
+    addressS P = Top(*S);
+    *X = InfoS(Top(*S));
+    Top(*S) = NextS(Top(*S));
+    DealokasiS(P);
 }
