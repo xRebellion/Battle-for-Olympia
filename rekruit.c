@@ -1,6 +1,6 @@
 #include "rekruit.h"
 
-void Recruit(Map M, Player *P, int *NBrs, int *NKol)
+void Recruit(Map *M, Player *P, int *NBrs, int *NKol)
 {
     //Kamus lokal
     TypeUnit Swordsman, Archer, WMage;
@@ -185,6 +185,7 @@ void Recruit(Map M, Player *P, int *NBrs, int *NKol)
                     Archer.Location.X = X;
                     Archer.Location.Y = Y;
                     InsVLastUnit(&(*P).Unit, Archer);
+                    AddUnitToMap(&*M,Archer);
 
                 }
                 else {//P.Gold< harga
@@ -198,6 +199,7 @@ void Recruit(Map M, Player *P, int *NBrs, int *NKol)
                     Swordsman.Location.X = X;
                     Swordsman.Location.Y = Y;
                     InsVLastUnit(&(*P).Unit, Swordsman);
+                    AddUnitToMap(&*M,Swordsman);
                 }
                 else {//P.Gold< harga
                     printf("You don't have enough gold \n");
@@ -210,6 +212,7 @@ void Recruit(Map M, Player *P, int *NBrs, int *NKol)
                     WMage.Location.X = X;
                     WMage.Location.Y = Y;
                     InsVLastUnit(&(*P).Unit, WMage);
+                    AddUnitToMap(&*M, WMage);
                 }
                 else {//P.Gold< harga
                     printf("You don't have enough gold \n");
@@ -249,4 +252,5 @@ void InitializeKing(Map * M, Player *P1, Player *P2)
     InsVFirstUnit(&(*P2).Unit, King);
     AddUnitToMap(M, King);
 }
+
 
