@@ -1,110 +1,90 @@
 #include "queue.h"
+#include <stdio.h>
 #include <stdlib.h>
 
-
-/* ********* Prototype ********* */
-boolean IsQEmpty (Queue Q)
-/* Mengirim true jika Q kosong: lihat definisi di atas */
+void AlokasiQ (addressQ *P, infotypeQ X)
+/* I.S. Sembarang */
+/* F.S. Alamat P dialokasi, jika berhasil maka InfoQ(P)=X dan
+        NextQ(P)=Nil */
+/*      P=Nil jika alokasi gagal */
 {
-    return (Head(Q) == NILQ && Tail(Q) == NILQ);
-}
-boolean IsQFull (Queue Q)
-/* Mengirim true jika tabel penampung elemen Q sudah penuh */
-/* yaitu mengandung elemen sebanyak MaxEl */
-{
-    return (((Tail(Q) - Head(Q)) == -1) || ((Tail(Q) - Head(Q)) ==  (MaxEl(Q) - 1)));
-}
-//tail = 100
-//head = 1
-int NBElmtQ (Queue Q)
-/* Mengirimkan banyaknya elemen queue. Mengirimkan 0 jika Q kosong. */
-{
-    if(IsQEmpty(Q))
-    {
-        return 0;
-    } else
-    {
-        if (Tail(Q) >= Head(Q))
-        {
-            return (Tail(Q) - Head(Q) + 1);
-        } else
-        {
-            return ((Tail(Q) + MaxEl(Q)) - Head(Q) + 1);
-        }
+    *P = (addressQ) malloc (sizeof(ElmtQueue));
+    if (*P!=Nil) {
+        InfoQ(*P) = X;
+        NextQ(*P) = Nil;
     }
 }
-/* *** Kreator *** */
-void CreateEmptyQ (Queue * Q, int Max)
+
+void DealokasiQ (addressQ  P)
+/* I.S. P adalah hasil alokasi, P != Nil */
+/* F.S. Alamat P didealokasi, dikembalikan ke sistem */
+{
+    free(P);
+}
+
+boolean IsEmptyQ (Queue Q)
+/* Mengirim true jika Q kosong: HEAD(Q)=Nil and TAIL(Q)=Nil */
+{
+    return ((Head(Q) == Nil) && (Tail(Q) == Nil));
+}
+
+int NbElmtQ(Queue Q)
+/* Mengirimkan banyaknya elemen queue. Mengirimkan 0 jika Q kosong */
+{
+    int i;
+    i = 0;
+    addressQ P;
+    if (!IsEmptyQ(Q)) {
+        P = Head(Q);
+        while (P != Tail(Q)) {
+            i++;
+            P = NextQ(P);
+        }
+        i++;
+    }
+    return i;
+}
+
+void CreateEmptyQ(Queue * Q)
 /* I.S. sembarang */
-/* F.S. Sebuah Q kosong terbentuk dan salah satu kondisi sbb: */
-/* Jika alokasi berhasil, Tabel memori dialokasi berukuran Max+1 */
-/* atau : jika alokasi gagal, Q kosong dg MaxEl=0 */
-/* Proses : Melakukan alokasi, membuat sebuah Q kosong */
+/* F.S. Sebuah Q kosong terbentuk */
 {
-    (*Q).T = (infotype *) malloc ((Max + 1) * sizeof(infotype));
-    if((*Q).T != NULL)
-    {
-        MaxEl(*Q) = Max;
-        Head(*Q) = NILQ;
-        Tail(*Q) = NILQ;
-    } else
-    {
-        MaxEl(*Q) = 0;
-    }
-}
-/* *** Destruktor *** */
-void DeAlokasi(Queue * Q)
-/* Proses: Mengembalikan memori Q */
-/* I.S. Q pernah dialokasi */
-/* F.S. Q menjadi tidak terdefinisi lagi, MaxEl(Q) diset 0 */
-{
-    MaxEl(*Q) = 0;
-    free((*Q).T);
+    Head(*Q) = Nil;
+    Tail(*Q) = Nil;
 }
 
-/* *** Primitif Add/Delete *** */
-void Add (Queue * Q, infotype X)
-/* Proses: Menambahkan X pada Q dengan aturan FIFO */
-/* I.S. Q mungkin kosong, tabel penampung elemen Q TIDAK penuh */
-/* F.S. X menjadi TAIL yang baru, TAIL "maju" dengan mekanisme circular buffer */
+void AddQ (Queue * Q, infotypeQ X)
+/* Proses: Mengalokasi X dan menambahkan X pada bagian TAIL dari Q
+   jika alokasi berhasil; jika alokasi gagal Q tetap */
+/* Pada dasarnya adalah proses insert last */
+/* I.S. Q mungkin kosong */
+/* F.S. X menjadi TAIL, TAIL "maju" */
 {
-    if (IsQEmpty(*Q))
-    {
-        Head(*Q) = 1;
-        Tail(*Q) = 1;
-    } else
-    {
-        if(Tail(*Q) == MaxEl(*Q))
-        {
-            Tail(*Q) = 1;
-        } else
-        {
-            Tail(*Q) += 1;
+    addressQ P;
+    AlokasiQ(&P,X);
+    if (P != Nil) {
+        if (IsEmptyQ(*Q)) {
+            Head(*Q) = P;
+        } else {
+            NextQ(Tail(*Q)) = P;
         }
+        Tail(*Q) = P;
     }
-        InfoTail(*Q) = X;
 }
 
-void Del (Queue * Q, infotype * X)
-/* Proses: Menghapus X pada Q dengan aturan FIFO */
+void DelQ(Queue * Q, infotypeQ * X)
+/* Proses: Menghapus X pada bagian HEAD dari Q dan mendealokasi
+   elemen HEAD */
+/* Pada dasarnya operasi delete first */
 /* I.S. Q tidak mungkin kosong */
-/* F.S. X = nilai elemen HEAD pd I.S., HEAD "maju" dengan mekanisme circular buffer;
-        Q mungkin kosong */
+/* F.S. X = nilai elemen HEAD pd I.S., HEAD "mundur" */
 {
-    *X = InfoHead(*Q);
-    InfoHead(*Q) = NILQ;
-    if(Head(*Q) == Tail(*Q))
-    {
-        Head(*Q) = Tail(*Q) = NILQ;
-    } else
-    {
-        if(Head(*Q) == MaxEl(*Q))
-        {
-            Head(*Q) += 1 - MaxEl(*Q);
-
-        } else
-        {
-            Head(*Q) += 1;
-        }
+    addressQ P = Head(*Q);
+    *X = InfoQ(P);
+    if (Head(*Q) != Tail(*Q)) {
+        Head(*Q) = NextQ(P);
+    } else {
+        CreateEmptyQ(&*Q);
     }
+    DealokasiQ(P);
 }
