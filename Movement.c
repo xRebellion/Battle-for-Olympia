@@ -53,7 +53,18 @@ char determineDirection(TypeUnit unit, int x, int y)
     }
     return direction;
 }
+boolean isThereUnit (Player P1, TypeUnit unit, int x, int y) {
+    addressU P = First(P1.Unit);
+    boolean cek = false;
 
+    while ((P != Nil) && (!cek)) {
+        if ((x == PosX(Info(P))) && (y == PosY(Info(P))) && (!IsUnitEQ(unit, P))) {
+            cek = true;
+        }
+        P = Next(P);
+    }
+    return cek;
+}
 boolean isThereEnemy (Player P1, Player P2, TypeUnit unit, int x, int y) {
     //P2 dianggap enemy, x y adalah di petak tsb
     addressU P = First(P2.Unit);
@@ -272,7 +283,7 @@ void MoveCommand(Player P1, Player P2, Map * M, TypeUnit currUnit, POINT * PrevL
     scanf ("%d %d", &x, &y);
     direction = determineDirection(currUnit,x,y);
     printf("%d %d %c\nx y %d %d\n",!isMovePossible(P1, P2, *M, currUnit, direction,x,y), isThereEnemy(P1, P2, currUnit,x,y), direction,x,y);
-    if(!isMovePossible(P1, P2, *M, currUnit, direction,x,y) || isThereEnemy(P1, P2, currUnit,x,y)) //Kalo movenya gagal
+    if(!isMovePossible(P1, P2, *M, currUnit, direction,x,y) || isThereEnemy(P1, P2, currUnit,x,y) || isThereUnit(P1, currUnit, x, y)) //Kalo movenya gagal
     {
         printf("Oops, you can't move there!\n");
     } else
