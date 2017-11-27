@@ -1,20 +1,20 @@
-#include "boolean.h"
+#include "ADT/boolean.h"
 #include "init.h"
-#include "listunit.h"
-#include "map.h"
-#include "point.h"
+#include "ADT/list_unit.h"
+#include "Map.h"
+#include "ADT/point.h"
 #include <stdio.h>
 
-boolean AccuracyCheck()
+boolean AccuracyCheck();
 /* Fungsi untuk menentukan hit/miss suatu serangan */
 
-isAdjacent(T1 TypeUnit, T2 TypeUnit);
+boolean isAdjacent(TypeUnit T1, TypeUnit T2);
 /* Memeriksa apakah T1 dan T2 bersebelahan */
 
-void ChooseTarget(Map M, Point *P, TypeUnit T1, TypeUnit T2, Player P1, Player P2);
+void ChooseTarget(Map M, POINT *P, TypeUnit T1, TypeUnit T2, Player P1, Player P2);
 /* Meminta input koordinat unit yang ingin diserang dan menyerangnya jika dipenuhi syarat-syarat tertentu */
 
-boolean isEnemyUnit(Map M, Point P, Player P2);
+boolean isEnemyUnit(Map M, POINT P, Player P2);
 /* Memeriksa apakah ada unit milih P2 di koordinat P */
 
 void Attack(TypeUnit *T1, TypeUnit *T2, Player *P1, Player *P2, Map *M);

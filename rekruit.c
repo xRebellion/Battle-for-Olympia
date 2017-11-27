@@ -45,33 +45,33 @@ void Recruit(Map M, Player *P, int *NBrs, int *NKol)
     WMage.Harga = 10;
 
     //Pengecekan status castle apakah terisi atau tidak
-    if(M.Tiles[0][*NBrs - 1].building.OwnerID!=(*P).PlayerID){
+    if(M.Tiles[0][*NBrs - 2].building.OwnerID!=(*P).PlayerID){
        c1 = false;
     }
     else{
-        if(M.Tiles[0][*NBrs - 1].unit.ID!=' '){
+        if(M.Tiles[0][*NBrs - 2].unit.ID!=' '){
             c1=false;
         }
         else{
             c1=true;
         }
     }
-    if(M.Tiles[1][*NBrs - 2].building.OwnerID!=(*P).PlayerID){
+    if(M.Tiles[1][*NBrs - 3].building.OwnerID!=(*P).PlayerID){
         c2 = false;
     }
     else{
-        if(M.Tiles[1][*NBrs - 2].unit.ID!=' '){
+        if(M.Tiles[1][*NBrs - 3].unit.ID!=' '){
             c2=false;
         }
         else{
             c2=true;
         }
     }
-    if(M.Tiles[1][*NBrs].building.OwnerID!=(*P).PlayerID){
+    if(M.Tiles[1][*NBrs - 1].building.OwnerID!=(*P).PlayerID){
         c3 = false;
     }
     else{
-        if(M.Tiles[1][*NBrs].unit.ID!=' '){
+        if(M.Tiles[1][*NBrs - 1].unit.ID!=' '){
             c3 = false;
         }
         else{
@@ -79,55 +79,55 @@ void Recruit(Map M, Player *P, int *NBrs, int *NKol)
         }
 
     }
-    if(M.Tiles[2][*NBrs - 1].building.OwnerID!=(*P).PlayerID){
+    if(M.Tiles[2][*NBrs - 2].building.OwnerID!=(*P).PlayerID){
         c4 = false;
     }
     else{
-        if(M.Tiles[2][*NBrs - 1].unit.ID!=' '){
+        if(M.Tiles[2][*NBrs - 2].unit.ID!=' '){
             c4 = false;
         }
         else{
             c4 = true;
         }
     }
-    if(M.Tiles[*NKol - 2][1].building.OwnerID!=(*P).PlayerID){
+    if(M.Tiles[*NKol - 3][1].building.OwnerID!=(*P).PlayerID){
         c5 = false;
     }
     else{
-        if(M.Tiles[*NKol - 2][1].unit.ID!=' '){
+        if(M.Tiles[*NKol - 3][1].unit.ID!=' '){
             c5 = false;
         }
         else{
             c5 = true;
         }
     }
-    if(M.Tiles[*NKol - 1][0].building.OwnerID!=(*P).PlayerID){
+    if(M.Tiles[*NKol - 2][0].building.OwnerID!=(*P).PlayerID){
         c6 = false;
     }
     else{
-        if(M.Tiles[*NKol - 1][0].unit.ID!=' '){
+        if(M.Tiles[*NKol - 2][0].unit.ID!=' '){
             c6 = false;
         }
         else{
             c6 = true;
         }
     }
-    if(M.Tiles[*NKol - 1][2].building.OwnerID!=(*P).PlayerID){
+    if(M.Tiles[*NKol - 2][2].building.OwnerID!=(*P).PlayerID){
         c7 = false;
     }
     else{
-        if(M.Tiles[*NKol - 1][2].unit.ID!=' '){
+        if(M.Tiles[*NKol - 2][2].unit.ID!=' '){
             c7 = false;
         }
         else{
             c7 = true;
         }
     }
-    if(M.Tiles[*NKol][1].building.OwnerID!=(*P).PlayerID){
+    if(M.Tiles[*NKol-1][1].building.OwnerID!=(*P).PlayerID){
         c8 = false;
     }
     else{
-        if(M.Tiles[*NKol][1].unit.ID!=' '){
+        if(M.Tiles[*NKol-1][1].unit.ID!=' '){
             c8 = false;
         }
         else{
@@ -240,11 +240,11 @@ void InitializeKing(Map * M, Player *P1, Player *P2)
     King.Harga = 0;
 
     King.Location.X = 1;
-    King.Location.Y = (*M).NBrsEff - 1;
+    King.Location.Y = (*M).NBrsEff - 2;
     InsVFirstUnit(&(*P1).Unit, King);
     AddUnitToMap(M, King);
 
-    King.Location.X = (*M).NKolEff - 1;
+    King.Location.X = (*M).NKolEff - 2;
     King.Location.Y = 1;
     InsVFirstUnit(&(*P2).Unit, King);
     AddUnitToMap(M, King);

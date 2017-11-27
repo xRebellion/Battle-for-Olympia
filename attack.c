@@ -2,7 +2,7 @@
 /* Tinggal Memanggil fungsi ChooseTarget(Map M, Point *P, TypeUnit T1, TypeUnit T2, Player P1, Player P2) di program utama! */
 
 boolean AccuracyCheck() {
-    int i,Accuracy,Chance,AccCheck;
+    int Accuracy,Chance,AccCheck;
     /*scanf("%d",&Accuracy);
     while (Accuracy <0 && Accuracy >100) {
         scanf("%d",&Accuracy);
@@ -19,30 +19,30 @@ boolean AccuracyCheck() {
     }
 }
 
-isAdjacent(T1 TypeUnit, T2 TypeUnit) {
+boolean isAdjacent(TypeUnit T1, TypeUnit T2) {
     boolean Adjacent = false;
-    if ((T1.Location.X == T2.Location.X) && (T1.Location.X == T2.Location+1)) {
+    if ((T1.Location.X == T2.Location.X) && (T1.Location.Y == T2.Location.Y+1)) {
         Adjacent = true;
     }
-    else ((T1.Location.X == T2.Location.X) && (T1.Location.X == T2.Location-1)) {
+    else if((T1.Location.X == T2.Location.X) && (T1.Location.Y == T2.Location.Y-1)) {
         Adjacent = true;
     }
-    else ((T1.Location.X == T2.Location.X+1) && (T1.Location.X == T2.Location)) {
+    else if((T1.Location.X == T2.Location.X+1) && (T1.Location.Y == T2.Location.Y)) {
         Adjacent = true;
     }
-    else ((T1.Location.X == T2.Location.X-1) && (T1.Location.X == T2.Location)) {
+    else if((T1.Location.X == T2.Location.X-1) && (T1.Location.Y == T2.Location.Y)) {
         Adjacent = true;
     }
     return Adjacent;
 }
 
-void ChooseTarget(Map M, Point *P, TypeUnit T1, TypeUnit T2, Player P1, Player P2) {
+void ChooseTarget(Map M, POINT *P, TypeUnit T1, TypeUnit T2, Player P1, Player P2) {
     if (T1.Hit) {
         printf("Masukan lokasi musuh (Sb X) : ");
-        scanf("%d",P.X);
+        scanf("%d",&(*P).X);
         printf("Masukan lokasi musuh (Sb Y) : ");
-        scanf("%d", P.Y);
-        if ((isEnemyUnit(M,*P)) && (isAdjacent(T1,T2))) {
+        scanf("%d", &(*P).Y);
+        if ((isEnemyUnit(M,*P,P2)) && (isAdjacent(T1,T2))) {
             Attack(&T1,&T2,&P1,&P2,&M);
         }
         else {
@@ -54,10 +54,10 @@ void ChooseTarget(Map M, Point *P, TypeUnit T1, TypeUnit T2, Player P1, Player P
     }
 }
 
-boolean isEnemyUnit(Map M, Point P, Player P2) {
+boolean isEnemyUnit(Map M, POINT P, Player P2) {
     TypeUnit T;
     T = M.Tiles[P.X][P.Y].unit;
-    if (SearchUnit(P2.ListU,T) != Nil) {
+    if (SearchUnit(P2.Unit,T) != Nil) {
         return true;
     }
     else {
@@ -73,7 +73,7 @@ void Attack(TypeUnit *T1, TypeUnit *T2, Player *P1, Player *P2, Map *M)
         (*T2).Health -= (*T1).Attack;
         printf("You attacked the enemy for %d damage!\n",(*T1).Attack);
         if ((*T2).Health <= 0) {
-            DelPUnit(P2.ListU,(*T2));
+            DelPUnit(&(*P2).Unit,(*T2));
             RemoveUnitFromMap(M,*T2);
             printf("The enemy unit is killed.\n");
         }
@@ -81,12 +81,12 @@ void Attack(TypeUnit *T1, TypeUnit *T2, Player *P1, Player *P2, Map *M)
     else {
         printf("Miss!\n");
     }
-    if (((*T2).Health >0) && ((*T1).AttackType == (*T2).AttackType)) {  //Retaliation
+    if (((*T2).Health >0) && (((*T1).AttackType == (*T2).AttackType) || ((*T2).AttackType == 'k'))) {  //Retaliation
         if (AccuracyCheck) {
             (*T1).Health -= (*T2).Attack;
             printf("The enemy hit you for %d damage!\n",(*T2).Attack);
             if ((*T1).Health <= 0) {
-                DelPUnit(P1.ListU,(*T1));
+                DelPUnit(&(*P1).Unit,(*T1));
                 RemoveUnitFromMap(M,*T1);
                 printf("Your unit is killed.\n");
             }
@@ -95,5 +95,5 @@ void Attack(TypeUnit *T1, TypeUnit *T2, Player *P1, Player *P2, Map *M)
             printf("The enemy counters but it missed!\n");
         }
     }
-    T1.Hit = false;
+    (*T1).Hit = false;
 }

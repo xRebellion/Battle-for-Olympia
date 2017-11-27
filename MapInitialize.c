@@ -174,7 +174,8 @@ void InitializeMap(Map *M,int NBrs, int NKol)
     InsVFirstBuilding(&B,V4);
     V4.ID = 'V';
     V4.Gold = 5;
-    V4.Type = 'V';;
+    V4.Type = 'V';
+    srand(time(NULL));
     Coor.X = rand() % (NKol - 1);
     Coor.Y = rand() % (NBrs - 1);
     if (IsThereBuilding(*M,Coor.X,Coor.Y)){
@@ -200,8 +201,5 @@ void InitializeMap(Map *M,int NBrs, int NKol)
     }
     V5.Location = Coor;
     AddBuildingToMap(M,V5);
-    PrintMap(*M);
-    printf("==============================================================\n");
-    printf("               Map Successfully Initialized!\n");
-    printf("==============================================================\n");
+
 }

@@ -17,4 +17,4 @@ void AddBuildingToMap(Map * M, Building building);
 
 void RemoveBuildingFromMap(Map * M, Building building);
 
-void InfoM (Player P1, Player P2, Map M,int *x, int *y);
+void InfoM (Player P1, Player P2, Map M);
