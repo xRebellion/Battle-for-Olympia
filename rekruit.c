@@ -235,7 +235,7 @@ void InitializeKing(Map * M, Player *P1, Player *P2)
     King.MaxMove = 2;
     King.Move = 2;
     King.AttackType ='k';
-    King.Hit = false;
+    King.Hit = true;
     King.Upkeep = 0;
     King.Harga = 0;
 

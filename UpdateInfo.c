@@ -50,9 +50,12 @@ void PrintUnit (Player P)
         {
             count++;
             UnitName = Info(A).Name;
-            MovePoint = Info(A).MaxMove;
-            AttackStatus = Info(A).Attack;
-            printf("%d. %s (%d,%d) | Movement Point: %d | Attack Status: ",count,UnitName,PosX(Info(A)),PosY(Info(A)),MovePoint);
+            MovePoint = Info(A).Move;
+            AttackStatus = Info(A).Hit;
+
+            printf("%d. %s (%d,%d) | Health: %d/%d | Movement Point: %d | Attack Status: ",
+            count,UnitName,PosX(Info(A)),PosY(Info(A)),Info(A).Health,Info(A).MaxHealth,MovePoint);
+
             if (AttackStatus == true) {
                 printf("Available\n");
             }

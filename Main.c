@@ -5,7 +5,9 @@
 #include "rekruit.h"
 #include "UpdateInfo.h"
 #include "MapInitialize.h"
-boolean IsStringEQ(char * S1, char * S2);
+boolean IsStringEQ(Kata S1, Kata S2);
+boolean IsCommandValid(Kata command);
+
 
 int main()
 {
@@ -38,7 +40,22 @@ int main()
     ListB LBuildings;
 
     //String Command Input
-    char * command = (char *) malloc (30 * sizeof(char));
+    char buffer;
+    char command;
+    Kata commandArr;
+
+    Kata Move;
+    Kata Undo;
+    Kata Change_Unit;
+    Kata Recruit;
+    Kata Attack;
+    Kata Map;
+    Kata Info;
+    Kata End_Turn;
+    Kata Exit;
+
+    InitializeKata(&Move,&Undo,&Change_Unit,&Recruit,&Attack,&Map,&Info,&End_Turn,&Exit);
+
     //Begin Game
 
     printf("Battle for Olympia!\n");
@@ -51,7 +68,9 @@ int main()
     //Testing Environment
 
     TypeUnit selectedUnit;
-    /*
+
+    TypeUnit currUnit;
+
     currUnit.ID = 'A';
     PosX(currUnit) = 4;
     PosY(currUnit) = 3;
@@ -70,7 +89,7 @@ int main()
 
     InsVFirstUnit(&P1.Unit,currUnit);
     InsVFirstUnit(&P1.Unit,currUnit2);
-    */
+
 
     //Enter Game
     printf("\n\n==============================================================\n");
@@ -97,28 +116,55 @@ int main()
     {
         UpdateInfo(&P1);
         printf("==============================================================\n");
-        printf("Input Command : ");
-        do
-        {
-            scanf("%d", command);
-            if(IsStringEQ(command, "Move"))
+        printf("Input Command: ");
+            //READ COMMAND
+            do
             {
-                MoveCommand(P1,P2,&M,selectedUnit,&PrevLoc);
-            } else
-            if(IsStringEQ(command, "Undo"))
-            {
-                //UNDO
-            } else
-            if(IsStringEQ(command, "Change_Unit"))
-            {
+                commandArr.Length = 0;
+                scanf("%c", &buffer);
+                do
+                {
+                    scanf("%c", &command);
+                    printf("%c", command);
+                    if(command != '\n')
+                    {
+                        commandArr.Length++;
+                        commandArr.TabKata[commandArr.Length] = command;
+                    }
 
+
+                } while (command != '\n');
+
+                /////
+                printf("%d\n",commandArr.Length);
+                //printf("move = %d\n4 exit = %d\n undo = %d\n",IsStringEQ(command,"move"), IsStringEQ(command,"exit"),IsStringEQ(command,"undo"));
+                if(IsStringEQ(commandArr, Move))
+                {
+                    MoveCommand(P1,P2,&M,currUnit,&PrevLoc);
+                } else
+                if(IsStringEQ(commandArr, Undo))
+                {
+                    //UNDO
+                } else
+                if(IsStringEQ(commandArr, Change_Unit))
+                {
+
+                } else
+                if(IsStringEQ(commandArr, Exit))
+                {
+                    printf("Exiting...\n");
+                }
+                else
+                {
+                    printf("Invalid Command!\n");
+                }
             }
-        }
-        while(!IsStringEQ(command, "exit"));
+            while(!IsCommandValid(commandArr));
 
 
     }
-    while(!IsStringEQ(command, "exit"));
+    while(!IsStringEQ(commandArr, Exit));
+
 
 
 
@@ -140,7 +186,44 @@ int main()
 
     return 0;
 }
-boolean IsStringEQ(char * S1, char * S2)
+boolean IsStringEQ(Kata S1, Kata S2)
 {
-    return !strcmpi(S1,S2);
+    int i;
+    boolean EQ = true;
+    if(S1.Length != S2.Length)
+    {
+        return false;
+    } else
+    {
+        for(i = 1; (i <= S1.Length)&& EQ; i++)
+        {
+            if(S1.TabKata[i] != S2.TabKata[i])
+            {
+                EQ = false;
+            }
+            printf("%c | %c\n",S1.TabKata[i], S2.TabKata[i]);
+        }
+
+    }
+    return EQ;
+
+}
+
+boolean IsCommandValid(Kata command)
+{
+    Kata Move;
+    Kata Undo;
+    Kata Change_Unit;
+    Kata Recruit;
+    Kata Attack;
+    Kata Map;
+    Kata Info;
+    Kata End_Turn;
+    Kata Exit;
+
+    InitializeKata(&Move,&Undo,&Change_Unit,&Recruit,&Attack,&Map,&Info,&End_Turn,&Exit);
+
+    return IsStringEQ(command,Move) || IsStringEQ(command, Undo) || IsStringEQ(command, Change_Unit)
+            || IsStringEQ(command,Recruit) || IsStringEQ(command,Attack) || IsStringEQ(command, Map)
+            || IsStringEQ(command, Info) || IsStringEQ(command, End_Turn) || IsStringEQ(command, Exit);
 }

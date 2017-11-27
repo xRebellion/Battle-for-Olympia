@@ -8,9 +8,9 @@
 #include "ADT/list_building.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include <strings.h>
 #include "ADT/stackt_undo.h"
 #include "ADT/queue.h"
+#include "ADT/mesinkata.h"
 
 
 
@@ -38,11 +38,6 @@ typedef struct {
 */
 
 
-//untuk mesin kata
-typedef struct {
-	char TabKata[30+1]; /* container penyimpan kata, indeks yang dipakai [1..30] */
-    int Length;
-} Kata;
 /*
 typedef struct {
     char ID;
@@ -102,6 +97,7 @@ typedef struct {
 
 void InitializePlayer(Player * P, int PlayerID);
 
-
+void InitializeKata(Kata * Move, Kata * Undo, Kata * Change_Unit, Kata * Recruit, Kata * Attack,
+                    Kata * Map, Kata * Info, Kata * End_Turn, Kata * Exit);
 
 #endif
