@@ -2,7 +2,7 @@
 
 void InitializePlayer(Player * P, int PlayerID)
 {
-    (*P).Gold = 100;
+    (*P).Gold = 0;
     (*P).Income = 0;
     (*P).PlayerID = PlayerID;
     (*P).Upkeep = 0;
