@@ -140,7 +140,7 @@ int main()
                 //printf("move = %d\n4 exit = %d\n undo = %d\n",IsStringEQ(command,"move"), IsStringEQ(command,"exit"),IsStringEQ(command,"undo"));
                 if(IsStringEQ(commandArr, Move))
                 {
-                    MoveCommand(P1,P2,&M,currUnit,&PrevLoc);
+                    MoveCommand(&MoveHistory,P1,P2,&M,&currUnit,&PrevLoc);
                 } else
                 if(IsStringEQ(commandArr, Undo))
                 {
