@@ -256,7 +256,7 @@ void MoveCommand(Player P1, Player P2, Map * M, TypeUnit currUnit, POINT * PrevL
     int x, y;
     (*PrevLoc).X = PosX(currUnit);
     (*PrevLoc).Y = PosY(currUnit);
-    InsertDummyMap(P1, P2, M, &MDummy, currUnit);
+    InsertDummyMap(P1, P2, *M, &MDummy, currUnit);
     PrintMap(MDummy);
     //RemoveDummyUnit(M, currUnit);
     printf("Where do you want to move? ( Input: x y )\n");

@@ -41,7 +41,7 @@ int main()
 
     //Create New Map
     CreateEmptyMap(&M, &(M.NBrsEff), &(M.NKolEff));
-    MoveCommand(&M, currUnit, &PrevLoc);
+    MoveCommand(P1,P2,&M, currUnit, &PrevLoc);
     PrintMap(M);
 
     //InitializeMap(&M, M.NBrsEff, M.NKolEff);
