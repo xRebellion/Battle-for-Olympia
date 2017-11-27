@@ -2,4 +2,5 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void Recruit(Player P);
+void Recruit(Map M, Player P,int NBrs, int NKol);
+
