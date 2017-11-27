@@ -1,11 +1,12 @@
 #include "Map.h"
-
+#include "ADT/stackt.h"
+#include "UpdateInfo.h"
 
 void CreateEmptyMap(Map *M,int *NBrs, int *NKol) {
     int i,j;
-    printf("==============================================================\n");
-    printf("                        Map Creation\n");
-    printf("==============================================================\n");
+    printf("========================================\n");
+    printf("              Map Creation\n");
+    printf("========================================\n");
     do
     {
         printf("Insert Map Rows (Y Axis): ");
@@ -35,48 +36,29 @@ void CreateEmptyMap(Map *M,int *NBrs, int *NKol) {
             (*M).Tiles[i][j].Misc = ' ';
         }
     }
-    (*M).NBrsEff = *NBrs;
-    (*M).NKolEff = *NKol;
 
-    printf("==============================================================\n");
-    printf("                  Map Successfully Created!\n");
-    printf("==============================================================\n");
+    printf("========================================\n");
+    printf("        Map Successfully Created!\n");
+    printf("========================================\n");
 
 }
 
 void PrintMap(Map M)
 {
 
-    int i,j,idx;
-    printf("  ");
+    int i,j,idx,idxBrs;
+    printf(" ");
     idx = 0;
     for (j = 1; j <= M.NKolEff*5-M.NKolEff+1; j++) {
-        if(idx < 10)
-        {
-            if ((j-3) % 4 == 0) {
-                printf("%d",idx);
-                idx++;
-            }
-            else {
-                printf(" ");
-            }
-        } else
-        {
-            if ((j-3) % 3 == 0) {
-                printf("%d",idx);
-                idx++;
-            }
-            else {
-                printf(" ");
-            }
-            if(idx == M.NKolEff)
-            {
-                break;
-            }
+        if ((j-3) % 4 == 0) {
+            printf("%d",idx);
+            idx++;
         }
-
+        else {
+            printf(" ");
+        }
     }
-    printf("\n  ");
+    printf("\n ");
     for (j = 1; j <= M.NKolEff*5-M.NKolEff+1; j++) {
         printf("*");
     }
@@ -84,19 +66,13 @@ void PrintMap(Map M)
     idx = 0;
     for (i = 0; i < M.NBrsEff*4; i++) {
         if ((i-1) % 4 == 0) {
-            if(idx < 10)
-            {
-                printf("%d *",idx);
-            } else
-            {
-                printf("%d*",idx);
-            }
-
+            printf("%d*",idx);
             idx++;
         }
         else {
-            printf("  *");
+            printf(" *");
         }
+        idxBrs = 0;
         for (j = 0; j < M.NKolEff; j++) {
             if (i % 4 == 0) {
                 printf(" %c *",M.Tiles[i/4][j].building.Type);
@@ -110,6 +86,7 @@ void PrintMap(Map M)
             else if ((i-3) % 4 == 0) {
                 printf("****");
             }
+            idxBrs++;
         }
         printf("\n");
     }
@@ -119,7 +96,7 @@ void PrintMap(Map M)
 void AddUnitToMap(Map * M, TypeUnit Unit)
 {
     (*M).Tiles[PosY(Unit)][PosX(Unit)].unit = Unit;
-    //printf("unit ID x y = %c %d %d\n", (*M).Tiles[PosY(Unit)][PosX(Unit)].unit.ID, PosX(Unit), PosY(Unit));
+    printf("unit ID x y = %c %d %d\n", (*M).Tiles[PosY(Unit)][PosX(Unit)].unit.ID, PosX(Unit), PosY(Unit));
 }
 
 void RemoveUnitFromMap(Map * M, TypeUnit Unit)
@@ -137,4 +114,38 @@ void RemoveBuildingFromMap(Map * M, Building BuildingIns)
     (*M).Tiles[PosY(BuildingIns)][PosX(BuildingIns)].building.Type = ' ';
 }
 
-
+void InfoM (Player P1, Player P2, Map M,int *x, int *y) {
+    printf("Enter the coordinate of the cell x y : ");
+    scanf ("%d %d", &x, &y);
+    if (!(M.Tiles[*y][*x].building.ID == ' ')) {
+        printf("== Cell Info ==\n");
+        if (M.Tiles[*y][*x].building.ID == 'V') {
+            printf("Village\n");
+        } else if (M.Tiles[*y][*x].building.ID == 'C') {
+            printf("Castle\n");
+        } else if (M.Tiles[*y][*x].building.ID == 'T') {
+            printf("Tower\n");
+        }
+        if (M.Tiles[*y][*x].building.OwnerID == 1) {
+            printf("Owned by Player 1\n \n");
+        }
+    }
+    if (!(M.Tiles[*y][*x].unit.ID == ' ')) {
+        printf("== Unit Info==\n");
+        if (M.Tiles[*y][*x].unit.ID == 'S') {
+            printf("Swordsman\n");
+        } else if (M.Tiles[*y][*x].unit.ID == 'A') {
+            printf("Archer\n");
+        } else if (M.Tiles[*y][*x].unit.ID == 'W') {
+            printf("White Mage\n");
+        } else if (M.Tiles[*y][*x].unit.ID == 'K') {
+            printf("King\n");
+        }
+        if (SearchUnit(P1.Unit, M.Tiles[*y][*x].unit)) {
+            printf("Owned by Player 1\n");
+        } else {
+            printf("Owned by Player 2\n");
+        }
+        PrintInfo(M.Tiles[*y][*x].unit);
+    }
+}
