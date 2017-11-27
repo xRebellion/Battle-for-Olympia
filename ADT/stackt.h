@@ -1,60 +1,81 @@
-/* File : stackt.h */
-/* deklarasi stack yang diimplementasi dengan tabel kontigu dan ukuran sama */
-/* TOP adalah alamat elemen puncak */
-/* Implementasi dalam bahasa C dengan alokasi statik */
-#ifndef stackt_H
-#define stackt_H
+/* File : stack.h */
+#ifndef _STACK_H
+#define _STACK_H
 
 #include "boolean.h"
+#include <stdlib.h>
+#include "queue.h"
+#include "..\init.h"
 
-#define NIL 0
-#define MaxEl 10
-/* Nil adalah stack dengan elemen kosong . */
-/* Karena indeks dalam bhs C dimulai 0 maka tabel dg indeks 0 tidak dipakai */
-
-typedef int infotype;
-typedef int address;   /* indeks tabel */
-
-/* Contoh deklarasi variabel bertype stack dengan ciri TOP : */
-/* Versi I : dengan menyimpan tabel dan alamat top secara eksplisit*/
+/* Konstanta */
+#define Nil NULL
+#define BrsMin 0
+#define BrsMax 20
+#define KolMin 0
+#define KolMax 20
+/* Deklarasi infotypeS */
 typedef struct {
-	infotype T[MaxEl+1]; /* tabel penyimpan elemen */
-	address TOP;  /* alamat TOP: elemen puncak */
+    Building building;
+    TypeUnit unit;
+    char Misc;
+}ElType;
+
+ typedef struct {
+	ElType Tiles[BrsMax][KolMax];
+    int NBrsEff; /* banyaknya/ukuran baris yg terdefinisi */
+	int NKolEff; /* banyaknya/ukuran kolom yg terdefinisi */
+} Map;
+
+typedef struct {
+    TypeUnit unit;
+    Map M;
+    Player P;
+} infotypeS;
+/* Stack dengan representasi berkait dengan pointer */
+typedef struct tElmtStack * addressS;
+typedef struct tElmtStack {
+	infotypeS InfoS;
+	addressS NextS;
+} ElmtStack;
+
+/* Type stack dengan ciri TOP : */
+typedef struct {
+	addressS TOP;  /* alamat TOP: elemen puncak */
 } Stack;
-/* Definisi stack S kosong : S.TOP = Nil */
-/* Elemen yang dipakai menyimpan nilai Stack T[1]..T[MaxEl] */
-/* Jika S adalah Stack maka akses elemen : */
-   /* S.T[(S.TOP)] untuk mengakses elemen TOP */
-   /* S.TOP adalah alamat elemen TOP */
 
-/* Definisi akses dengan Selektor : Set dan Get */
+/* Selektor */
 #define Top(S) (S).TOP
-#define InfoTop(S) (S).T[(S).TOP]
+#define InfoTop(S) (S).TOP->InfoS
+#define NextS(P) (P)->NextS
+#define InfoS(P) (P)->InfoS
 
-/* ************ Prototype ************ */
-/* *** Konstruktor/Kreator *** */
-void CreateEmpty (Stack *S);
-/* I.S. sembarang; */
-/* F.S. Membuat sebuah stack S yang kosong berkapasitas MaxEl */
-/* jadi indeksnya antara 1.. MaxEl+1 karena 0 tidak dipakai */
-/* Ciri stack kosong : TOP bernilai Nil */
+/* Prototype manajemen memori */
+void AlokasiS (addressS *P, infotypeS X);
+/* I.S. Sembarang */
+/* F.S. Alamat P dialokasi, jika berhasil maka InfoS(P)=X dan
+        NextS(P)=Nil */
+/*      P=Nil jika alokasi gagal */
+void DealokasiS (addressS P);
+/* I.S. P adalah hasil alokasi, P != Nil */
+/* F.S. Alamat P didealokasi, dikembalikan ke sistem */
 
-/* ************ Predikat Untuk test keadaan KOLEKSI ************ */
-boolean IsEmpty (Stack S);
-/* Mengirim true jika Stack kosong: lihat definisi di atas */
-boolean IsFull (Stack S);
-/* Mengirim true jika tabel penampung nilai elemen stack penuh */
-
-/* ************ Menambahkan sebuah elemen ke Stack ************ */
-void Push (Stack * S, infotype X);
-/* Menambahkan X sebagai elemen Stack S. */
-/* I.S. S mungkin kosong, tabel penampung elemen stack TIDAK penuh */
-/* F.S. X menjadi TOP yang baru,TOP bertambah 1 */
-
-/* ************ Menghapus sebuah elemen Stack ************ */
-void Pop (Stack * S, infotype* X);
+/* ********* PROTOTYPE REPRESENTASI LOJIK STACK ***************/
+boolean IsEmptyS (Stack S);
+/* Mengirim true jika Stack kosong: TOP(S) = Nil */
+void CreateEmptyS (Stack * S);
+/* I.S. sembarang */
+/* F.S. Membuat sebuah stack S yang kosong */
+void Push (Stack * S, infotypeS X);
+/* Menambahkan X sebagai elemen Stack S */
+/* I.S. S mungkin kosong, X terdefinisi */
+/* F.S. X menjadi TOP yang baru jika alokasi X berhasil, */
+/*      jika tidak, S tetap */
+/* Pada dasarnya adalah operasi Insert First pada list linier */
+void Pop (Stack * S, infotypeS * X);
 /* Menghapus X dari Stack S. */
-/* I.S. S  tidak mungkin kosong */
-/* F.S. X adalah nilai elemen TOP yang lama, TOP berkurang 1 */
+/* I.S. S tidak mungkin kosong */
+/* F.S. X adalah nilai elemen TOP yang lama, */
+/*      elemen TOP yang lama didealokasi */
+/* Pada dasarnya adalah operasi Delete First pada list linier */
 
 #endif
