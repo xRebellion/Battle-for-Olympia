@@ -1,8 +1,6 @@
 #include "rekruit.h"
-#include <stdio.h>
-#include <stdlib.h>
 
-void Recruit(Map M, Player P, int NBrs, int NKol)
+void Recruit(Map M, Player *P, int *NBrs, int *NKol)
 {
     //Kamus lokal
     TypeUnit Swordsman, Archer, WMage;
@@ -47,53 +45,94 @@ void Recruit(Map M, Player P, int NBrs, int NKol)
     WMage.Harga = 10;
 
     //Pengecekan status castle apakah terisi atau tidak
-    if((M.Tiles[0][NBrs - 1].building.OwnerID!=P.PlayerID) && (M.Tiles[0][NBrs - 1].unit.ID!=' ')){
-        c1 = false;
+    if(M.Tiles[0][*NBrs - 1].building.OwnerID!=(*P).PlayerID){
+       c1 = false;
     }
     else{
-        c1 = true;
+        if(M.Tiles[0][*NBrs - 1].unit.ID!=' '){
+            c1=false;
+        }
+        else{
+            c1=true;
+        }
     }
-    if((M.Tiles[1][NBrs - 2].building.OwnerID!=P.PlayerID) && (M.Tiles[1][NBrs - 2].unit.ID!=' ')){
+    if(M.Tiles[1][*NBrs - 2].building.OwnerID!=(*P).PlayerID){
         c2 = false;
     }
     else{
-        c2 = true;
+        if(M.Tiles[1][*NBrs - 2].unit.ID!=' '){
+            c2=false;
+        }
+        else{
+            c2=true;
+        }
     }
-    if((M.Tiles[1][NBrs].building.OwnerID!=P.PlayerID) && (M.Tiles[1][NBrs].unit.ID!=' ')){
+    if(M.Tiles[1][*NBrs].building.OwnerID!=(*P).PlayerID){
         c3 = false;
     }
     else{
-        c3 = true;
+        if(M.Tiles[1][*NBrs].unit.ID!=' '){
+            c3 = false;
+        }
+        else{
+            c3 = true;
+        }
+
     }
-    if((M.Tiles[2][NBrs - 1].building.OwnerID!=P.PlayerID) && (M.Tiles[2][NBrs - 1].unit.ID!=' ')){
+    if(M.Tiles[2][*NBrs - 1].building.OwnerID!=(*P).PlayerID){
         c4 = false;
     }
     else{
-        c4 = true;
+        if(M.Tiles[2][*NBrs - 1].unit.ID!=' '){
+            c4 = false;
+        }
+        else{
+            c4 = true;
+        }
     }
-    if((M.Tiles[NKol - 2][1].building.OwnerID!=P.PlayerID) && (M.Tiles[NKol - 2][1].unit.ID!=' ')){
+    if(M.Tiles[*NKol - 2][1].building.OwnerID!=(*P).PlayerID){
         c5 = false;
     }
     else{
-        c5 = true;
+        if(M.Tiles[*NKol - 2][1].unit.ID!=' '){
+            c5 = false;
+        }
+        else{
+            c5 = true;
+        }
     }
-    if((M.Tiles[NKol - 1][0].building.OwnerID!=P.PlayerID) && (M.Tiles[NKol - 1][0].unit.ID!=' ')){
+    if(M.Tiles[*NKol - 1][0].building.OwnerID!=(*P).PlayerID){
         c6 = false;
     }
     else{
-        c6 = true;
+        if(M.Tiles[*NKol - 1][0].unit.ID!=' '){
+            c6 = false;
+        }
+        else{
+            c6 = true;
+        }
     }
-    if((M.Tiles[NKol - 1][2].building.OwnerID!=P.PlayerID) && (M.Tiles[NKol - 1][2].unit.ID!=' ')){
+    if(M.Tiles[*NKol - 1][2].building.OwnerID!=(*P).PlayerID){
         c7 = false;
     }
     else{
-        c7 = true;
+        if(M.Tiles[*NKol - 1][2].unit.ID!=' '){
+            c7 = false;
+        }
+        else{
+            c7 = true;
+        }
     }
-    if((M.Tiles[NKol][1].building.OwnerID!=P.PlayerID) && (M.Tiles[NKol][1].unit.ID!=' ')){
+    if(M.Tiles[*NKol][1].building.OwnerID!=(*P).PlayerID){
         c8 = false;
     }
     else{
-        c8 = true;
+        if(M.Tiles[*NKol][1].unit.ID!=' '){
+            c8 = false;
+        }
+        else{
+            c8 = true;
+        }
     }
 
     //Cara perekruitan
@@ -112,27 +151,27 @@ void Recruit(Map M, Player P, int NBrs, int NKol)
                     scanf("%d %d",&X,&Y);
             }
             else{//koordinat yang dituju castle
-                if (M.Tiles[X][Y].building.OwnerID != P.PlayerID){//bukan castle milik player tersebut
+                if (M.Tiles[X][Y].building.OwnerID != (*P).PlayerID){//bukan castle milik player tersebut
                     printf("This is not your castle!\nPlease enter your castle coordinate:");
 
                     scanf("%d %d",&X,&Y);
                 }
                 else {//castle milik player tersebut
-                    if (M.Tiles[X][Y].unit.ID!=' ') {//castle tidak terisi
-                        kosong = true;
-                    }
-                    else{//terdapat unit di lokasi castle
+                    if (M.Tiles[X][Y].unit.ID!=' ') {//castle terisi
                         printf("Castle is occupied\n");
                         printf("Please enter another castle coordinate : ");
                         scanf("%d %d",&X,&Y);
+                    }
+                    else{//tidak terdapat unit di lokasi castle
+                        kosong = true;
                     }
                 }
             }
 
         }
         printf("=== List of Recruits ===\n");
-        printf("1. Archer | Health 20 | ATK 4 | 5G\n ");
-        printf("2. Swordsman | Health 20 | ATK 3 | 4G\n ");
+        printf("1. Archer | Health 20 | ATK 4 | 5G\n");
+        printf("2. Swordsman | Health 20 | ATK 3 | 4G\n");
         printf("3. White Mage | Health 15 | ATK 2 | 10G\n");
         printf("Enter no. of unit you want to recruit:");
         scanf("%d",&pilunit);
@@ -141,11 +180,12 @@ void Recruit(Map M, Player P, int NBrs, int NKol)
         while(loop){
             if(pilunit==1){
                 loop = false;
-                if(P.Gold >= Archer.Harga){
-                    P.Gold = P.Gold - Archer.Harga;
+                if((*P).Gold >= Archer.Harga){
+                    (*P).Gold = (*P).Gold - Archer.Harga;
                     Archer.Location.X = X;
                     Archer.Location.Y = Y;
-                    InsVLastUnit(&P.Unit, Archer);
+                    InsVLastUnit(&(*P).Unit, Archer);
+
                 }
                 else {//P.Gold< harga
                     printf("You don't have enough gold \n");
@@ -153,11 +193,11 @@ void Recruit(Map M, Player P, int NBrs, int NKol)
             }
             else if (pilunit==2){
                 loop = false;
-                if(P.Gold >= Swordsman.Harga){
-                    P.Gold = P.Gold - Swordsman.Harga;
+                if((*P).Gold >= Swordsman.Harga){
+                    (*P).Gold = (*P).Gold - Swordsman.Harga;
                     Swordsman.Location.X = X;
                     Swordsman.Location.Y = Y;
-                    InsVLastUnit(&P.Unit, Swordsman);
+                    InsVLastUnit(&(*P).Unit, Swordsman);
                 }
                 else {//P.Gold< harga
                     printf("You don't have enough gold \n");
@@ -165,11 +205,11 @@ void Recruit(Map M, Player P, int NBrs, int NKol)
             }
             else if (pilunit == 3){
                 loop = false;
-                if(P.Gold >= WMage.Harga){
-                    P.Gold = P.Gold - WMage.Harga;
+                if((*P).Gold >= WMage.Harga){
+                    (*P).Gold = (*P).Gold - WMage.Harga;
                     WMage.Location.X = X;
                     WMage.Location.Y = Y;
-                    InsVLastUnit(&P.Unit, WMage);
+                    InsVLastUnit(&(*P).Unit, WMage);
                 }
                 else {//P.Gold< harga
                     printf("You don't have enough gold \n");
