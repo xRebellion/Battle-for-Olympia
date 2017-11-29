@@ -11,7 +11,7 @@ boolean AccuracyCheck();
 boolean isAdjacent(TypeUnit T1, TypeUnit T2);
 /* Memeriksa apakah T1 dan T2 bersebelahan */
 
-void ChooseTarget(Map M, POINT *P, TypeUnit T1,  Player P1, Player P2);
+void ChooseTarget(Map * M, TypeUnit T1,  Player * P1, Player * P2);
 /* Meminta input koordinat unit yang ingin diserang dan menyerangnya jika dipenuhi syarat-syarat tertentu */
 
 boolean isEnemyUnit(Map M, POINT P, Player P2);

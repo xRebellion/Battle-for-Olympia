@@ -36,6 +36,8 @@ int main()
     //Queue of turns
     Queue Turns;
     CreateEmptyQ(&Turns);
+    printf("%d\n", (IsEmptyUnit(P1.Unit)));
+
     AddQ(&Turns, P1);
     AddQ(&Turns, P2);
 
@@ -124,7 +126,9 @@ int main()
     scanf("%c", &buffer);
     do
     {
+
         selectedUnit = Info(Last(P1.Unit));
+
         UpdateInfo(&P1);
         PrintInfo(selectedUnit);
 
@@ -163,14 +167,12 @@ int main()
                 if(IsStringEQ(commandArr, undo))
                 {
                     Undo(&MoveHistory, &P1, &M, &selectedUnit);
-                    scanf("%c", &buffer);
 
                 } else
                 if(IsStringEQ(commandArr, change_Unit))
                 {
                     CreateEmptyS(&MoveHistory);
                     change_unit(P1,&selectedUnit);
-                    scanf("%c", &buffer);
                 } else
                 if(IsStringEQ(commandArr,recruit))
                 {
@@ -178,7 +180,7 @@ int main()
                 } else
                 if(IsStringEQ(commandArr,attack))
                 {
-                    //ChooseTarget(M, &P, selectedUnit, P1, P2);
+                    ChooseTarget(&M,selectedUnit,&P1,&P2);
                 } else
                 if(IsStringEQ(commandArr,map))
                 {
@@ -190,8 +192,10 @@ int main()
                 } else
                 if(IsStringEQ(commandArr,end_Turn))
                 {
-                    ChangeTurn(&Turns);
+                    //printf("%d\n", (IsEmptyUnit(P1.Unit)));
+                    ChangeTurn(&M,&Turns,P1,P2);
                     P1 = InfoHead(Turns);
+                    //printf("%d\n", (IsEmptyUnit(InfoHead(Turns).Unit)));
                     P2 = InfoTail(Turns);
                 } else
                 if(IsStringEQ(commandArr, exit))

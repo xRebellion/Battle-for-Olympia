@@ -165,10 +165,10 @@ void InfoM (Player P1, Player P2, Map M) {
         } else if (M.Tiles[y][x].unit.ID == 'K') {
             printf("King\n");
         }
-        if (SearchUnit(P1.Unit, M.Tiles[y][x].unit)) {
-            printf("Owned by Player 1\n");
+        if (SearchUnit(P1.Unit, M.Tiles[y][x].unit) != Nil) {
+            printf("Owned by Player %d\n", P1.PlayerID);
         } else {
-            printf("Owned by Player 2\n");
+            printf("Owned by Player %d\n", P2.PlayerID);
         }
         PrintInfo(M.Tiles[y][x].unit);
     }

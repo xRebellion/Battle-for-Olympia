@@ -36,6 +36,7 @@ void Recruit(Map *M, Player *P, int *NBrs, int *NKol)
     WMage.ID = 'W';
     WMage.Name = "White Mage";
     WMage.MaxHealth = 15;
+    WMage.Health = 15;
     WMage.Attack = 2;
     WMage.MaxMove = 2;
     WMage.Move = 0;
@@ -240,6 +241,7 @@ void InitializeKing(Map * M, Player *P1, Player *P2)
     King.Health = 35;
     King.MaxMove = 2;
     King.Move = 2;
+    King.Attack = 10;
     King.AttackType ='k';
     King.Hit = true;
     King.Upkeep = 0;
@@ -250,8 +252,8 @@ void InitializeKing(Map * M, Player *P1, Player *P2)
     InsVFirstUnit(&(*P1).Unit, King);
     AddUnitToMap(M, King);
 
-    King.Location.X = (*M).NKolEff - 2;
-    King.Location.Y = 1;
+    King.Location.X = 2;
+    King.Location.Y = (*M).NBrsEff - 2;;
     InsVFirstUnit(&(*P2).Unit, King);
     AddUnitToMap(M, King);
 }
